@@ -2,18 +2,20 @@
 const nuxtApp = useNuxtApp()
 const { activeHeadings, updateHeadings } = useScrollspy()
 
+const name = ref('Beleza Natural')
+
 const links = computed(() => [{
-  label: 'Features',
+  label: 'Serviços',
   to: '#features',
   icon: 'i-heroicons-cube-transparent',
   active: activeHeadings.value.includes('features') && !activeHeadings.value.includes('pricing')
 }, {
-  label: 'Pricing',
+  label: 'Planos',
   to: '#pricing',
   icon: 'i-heroicons-credit-card',
   active: activeHeadings.value.includes('pricing') && !activeHeadings.value.includes('testimonials')
 }, {
-  label: 'Testimonials',
+  label: 'Recomendações',
   to: '#testimonials',
   icon: 'i-heroicons-academic-cap',
   active: activeHeadings.value.includes('testimonials')
@@ -37,11 +39,13 @@ nuxtApp.hooks.hookOnce('page:finish', () => {
 <template>
   <UHeader :links="links">
     <template #logo>
-      Nuxt UI Pro <UBadge label="Landing" variant="subtle" class="mb-0.5" />
+      {{ name }}
+      <UBadge label="premium" variant="subtle" class="mb-0.5" />
     </template>
 
     <template #right>
-      <UButton label="Sign in" color="white" variant="ghost" trailing-icon="i-heroicons-arrow-right-20-solid" class="hidden lg:flex" />
+      <UButton label="Entrar" color="white" variant="ghost" trailing-icon="i-heroicons-arrow-right-20-solid"
+        class="hidden lg:flex" />
     </template>
 
     <template #panel>
@@ -49,8 +53,7 @@ nuxtApp.hooks.hookOnce('page:finish', () => {
 
       <UDivider class="my-6" />
 
-      <UButton label="Sign in" color="white" block class="mb-3" />
-      <UButton label="Get started" block />
+      <UButton label="Entrar" color="white" block class="mb-3" />
     </template>
   </UHeader>
 </template>

@@ -10,6 +10,9 @@ export default defineNuxtConfig({
   ui: {
     icons: ['heroicons', 'simple-icons']
   },
+  colorMode: {
+    preference: 'light'
+  },
   // Fonts
   fontMetrics: {
     fonts: ['DM Sans']

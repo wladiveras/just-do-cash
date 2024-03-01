@@ -1,6 +1,6 @@
 export default defineAppConfig({
   ui: {
-    primary: 'indigo',
+    primary: 'pink',
     gray: 'zinc',
     variables: {
       light: {
@@ -9,6 +9,9 @@ export default defineAppConfig({
       dark: {
         background: 'var(--color-gray-950)'
       }
+    },
+    icons: {
+      dynamic: true
     },
     button: {
       rounded: 'rounded-full',
