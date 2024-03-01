@@ -32,15 +32,7 @@ export default defineAppConfig({
         inactive: 'text-gray-500 hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-200'
       }
     },
-    footer: {
-      top: {
-        wrapper: 'border-t border-gray-200 dark:border-gray-800',
-        container: 'py-8 lg:py-16'
-      },
-      bottom: {
-        wrapper: 'border-t border-gray-200 dark:border-gray-800'
-      }
-    },
+
     pricing: {
       card: {
         highlight: 'ring-gray-900 dark:ring-white',

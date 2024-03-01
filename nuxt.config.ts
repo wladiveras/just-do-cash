@@ -11,7 +11,14 @@ export default defineNuxtConfig({
     icons: ['heroicons', 'simple-icons']
   },
   colorMode: {
-    preference: 'light'
+    preference: 'light',
+    fallback: 'light',
+    hid: 'nuxt-color-mode-script',
+    globalName: '__NUXT_COLOR_MODE__',
+    componentName: 'ColorScheme',
+    classPrefix: '',
+    classSuffix: '-mode',
+    storageKey: 'nuxt-color-mode'
   },
   // Fonts
   fontMetrics: {

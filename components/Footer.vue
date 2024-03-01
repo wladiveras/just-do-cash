@@ -4,10 +4,10 @@ const name = ref('Beleza Natural')
 
 const links = [
   {
-    label: 'Company',
+    label: 'Empresa',
     children: [
       {
-        label: 'About'
+        label: 'Sobre Nós'
       }
     ]
   }
