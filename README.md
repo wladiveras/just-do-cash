@@ -2,8 +2,7 @@
 
 A Sass landing page designed to showcase your product subscription service, with built-in security features. Additionally, it provides a simple dashboard for you to easily monitor all sales and subscriptions.
 
-![fintech](![image](https://github.com/wladi-veras/saas-landing/assets/27956518/905c23b5-65ed-427a-aca5-71b23d5c8a87)
-)
+![fintech](https://i.imgur.com/Zd793kW.png)
 
 ## Setup
 
