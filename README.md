@@ -1,6 +1,6 @@
-# Payment Gateway - Dashboard
+# Saas Landing Page
 
-A payment gateway dashboard is a centralized platform for managing online transactions. It provides real-time data, supports multiple payment methods, ensures secure transactions, and offers robust reporting and analytics tools. It's user-friendly, making payment processing efficient and insightful.A payment gateway dashboard.
+A Sass landing page designed to showcase your product subscription service, with built-in security features. Additionally, it provides a simple dashboard for you to easily monitor all sales and subscriptions.
 
 ![fintech](![image](https://github.com/wladi-veras/saas-landing/assets/27956518/905c23b5-65ed-427a-aca5-71b23d5c8a87)
 )
