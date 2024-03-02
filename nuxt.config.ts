@@ -11,13 +11,31 @@ export default defineNuxtConfig({
   ui: {
     icons: ['heroicons', 'simple-icons']
   }, 
+  runtimeConfig: {
+    public: {
+      baseUrl: process.env.BASE_URL || 'http://localhost:3000'
+    }
+  },
   supabase: {
     redirectOptions: {
       login: '/login',
       callback: '/confirm',
       exclude: ['/'],
-      cookieRedirect: false,
+      cookieRedirect: true,
     },
+    cookieOptions: {
+      maxAge: 60 * 60 * 8,
+      sameSite: 'lax',
+      secure: true
+    },
+    clientOptions: {
+      auth: {
+        flowType: 'pkce',
+        detectSessionInUrl: true,
+        persistSession: true,
+        autoRefreshToken: true
+      },
+    }
   },
   colorMode: {
     preference: 'light',

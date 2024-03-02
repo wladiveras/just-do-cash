@@ -1,0 +1,24 @@
+<template>
+  <div>
+    <Header />
+    <slot />
+    <Footer />
+  </div>
+</template>
+
+<script lang="ts" setup>
+
+const page = reactive({
+  title: 'Beleza Natural',
+  description: 'A beleza que é natural'
+})
+
+useSeoMeta({
+  title: page.title,
+  ogTitle: page.title,
+  description: page.description,
+  ogDescription: page.description
+})
+</script>
+
+<style></style>

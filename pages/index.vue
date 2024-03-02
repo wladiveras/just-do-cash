@@ -249,17 +249,17 @@ const page = reactive({
   }
 })
 
-useSeoMeta({
-  title: page.title,
-  ogTitle: page.title,
-  description: page.description,
-  ogDescription: page.description
-})
+const user = useSupabaseUser()
 
 </script>
 
 <template>
   <div>
+    <h1>
+      aaa
+      {{ user }}
+
+    </h1>
     <ULandingHero :title="page.title" :description="page.hero.description">
       <template #headline>
         <!-- todo: add a new feature can be show above title-->

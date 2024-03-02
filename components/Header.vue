@@ -26,6 +26,7 @@ const links = computed(() => [{
   active: activeHeadings.value.includes('faq')
 }])
 
+
 nuxtApp.hooks.hookOnce('page:finish', () => {
   updateHeadings([
     document.querySelector('#features'),
@@ -34,6 +35,19 @@ nuxtApp.hooks.hookOnce('page:finish', () => {
     document.querySelector('#faq')
   ])
 })
+
+const user = useSupabaseUser()
+
+watch(user, () => {
+  if (user.value) {
+    return navigateTo('/')
+  }
+}, { immediate: true })
+
+const goToLogin = () => {
+  navigateTo('/login')
+}
+
 </script>
 
 <template>
@@ -44,8 +58,8 @@ nuxtApp.hooks.hookOnce('page:finish', () => {
     </template>
 
     <template #right>
-      <UButton label="Entrar" color="white" variant="ghost" trailing-icon="i-heroicons-arrow-right-20-solid"
-        class="hidden lg:flex" />
+      <UButton @click="goToLogin" label="Entrar" color="white" variant="ghost"
+        trailing-icon="i-heroicons-arrow-right-20-solid" class="hidden lg:flex" />
     </template>
 
     <template #panel>
@@ -53,7 +67,8 @@ nuxtApp.hooks.hookOnce('page:finish', () => {
 
       <UDivider class="my-6" />
 
-      <UButton label="Entrar" color="white" block class="mb-3" />
+      <NuxtLink @click="goToLogin" label="Entrar" color="white" block class="mb-3">Entrar</NuxtLink>
+
     </template>
   </UHeader>
 </template>

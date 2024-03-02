@@ -1,17 +1,5 @@
 <script setup lang="ts">
 
-import { supabase } from '@/utils/supabase'
-const countries = ref([])
-
-async function getTodos() {
-  const { data: todos } = await supabase.from('todos').select()
-  countries.value = todos
-}
-
-onMounted(() => {
-  getTodos()
-})
-
 useHead({
   meta: [
     { name: 'viewport', content: 'width=device-width, initial-scale=1' }
@@ -23,22 +11,12 @@ useHead({
     lang: 'en'
   }
 })
-
-
-
-useSeoMeta({
-  ogImage: 'https://landing-template.nuxt.dev/social-card.png',
-  twitterImage: 'https://landing-template.nuxt.dev/social-card.png',
-  twitterCard: 'summary_large_image'
-})
 </script>
 
 <template>
-  <Header />
-
   <UMain>
-    <NuxtPage />
+    <NuxtLayout>
+      <NuxtPage />
+    </NuxtLayout>
   </UMain>
-
-  <Footer />
 </template>
