@@ -2,6 +2,11 @@ export default defineAppConfig({
   ui: {
     primary: 'pink',
     gray: 'zinc',
+    tooltip: {
+      default: {
+        openDelay: 500
+      }
+    },
     variables: {
       light: {
         background: 'var(--color-gray-50)'

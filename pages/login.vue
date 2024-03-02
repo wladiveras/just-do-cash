@@ -10,5 +10,5 @@ useSeoMeta({
 
 
 <template>
-    <Login></Login>
+    <Login />
 </template>

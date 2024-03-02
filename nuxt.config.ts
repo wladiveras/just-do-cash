@@ -1,12 +1,13 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
-  extends: ['@nuxt/ui-pro'],
+  extends: [process.env.NUXT_UI_PRO_PATH || '@nuxt/ui-pro'],
   modules: [
     '@nuxt/content',
     '@nuxt/ui',
     '@nuxtjs/fontaine',
     '@nuxtjs/google-fonts',
-    '@nuxtjs/supabase'
+    '@nuxtjs/supabase',
+    '@vueuse/nuxt'
   ],
   ssr: false,
   ui: {
@@ -17,6 +18,12 @@ export default defineNuxtConfig({
       baseUrl: process.env.BASE_URL || 'http://localhost:3000'
     }
   },
+  components: [{
+    path: '~/components'
+  }, {
+    path: '~/components/common',
+    pathPrefix: false
+  }],
   supabase: {
     redirectOptions: {
       login: '/login',
