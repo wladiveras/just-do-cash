@@ -68,14 +68,12 @@ const handleLogout = async () => {
     </template>
 
     <template #right>
-
+      <ToggleLocation size="sm" />
       <UColorModeButton size="sm" />
-
+      {{ $t('welcome') }}
       <div v-if="!user">
         <UButton @click="handleLogin" :label="loading ? 'Carregando ...' : 'Entrar'" color="white" :disabled="loading"
           variant="ghost" trailing-icon="i-heroicons-arrow-right-20-solid" class="hidden lg:flex" />
-
-
       </div>
 
       <div v-else class="flex">

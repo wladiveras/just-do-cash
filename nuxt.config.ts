@@ -7,9 +7,11 @@ export default defineNuxtConfig({
     '@nuxtjs/fontaine',
     '@nuxtjs/google-fonts',
     '@nuxtjs/supabase',
-    '@vueuse/nuxt'
+    '@vueuse/nuxt',
+    '@nuxtjs/i18n'
   ],
-  ssr: false,
+  ssr: true,
+  
   ui: {
     icons: ['heroicons', 'simple-icons']
   }, 
