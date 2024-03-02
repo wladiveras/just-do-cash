@@ -36,16 +36,18 @@ nuxtApp.hooks.hookOnce('page:finish', () => {
   ])
 })
 
+const supabase = useSupabaseClient()
 const user = useSupabaseUser()
 
-watch(user, () => {
-  if (user.value) {
-    return navigateTo('/')
-  }
-}, { immediate: true })
 
-const goToLogin = () => {
+const handleLogin = () => {
   navigateTo('/login')
+}
+
+const handleLogout = async () => {
+  const { error } = await supabase.auth.signOut()
+  if (error) console.log(error)
+  else navigateTo('/')
 }
 
 </script>
@@ -58,8 +60,10 @@ const goToLogin = () => {
     </template>
 
     <template #right>
-      <UButton @click="goToLogin" label="Entrar" color="white" variant="ghost"
+      <UButton @click="handleLogin" v-if="!user" label="Entrar" color="white" variant="ghost"
         trailing-icon="i-heroicons-arrow-right-20-solid" class="hidden lg:flex" />
+      <UButton @click="handleLogout" v-else label="Sair" color="white" variant="ghost"
+        trailing-icon="i-heroicons-arrow-left-20-solid" class="hidden lg:flex" />
     </template>
 
     <template #panel>
@@ -67,8 +71,8 @@ const goToLogin = () => {
 
       <UDivider class="my-6" />
 
-      <NuxtLink @click="goToLogin" label="Entrar" color="white" block class="mb-3">Entrar</NuxtLink>
-
+      <NuxtLink @click="handleLogin" v-if="!user" label="Entrar" color="white" block class="mb-3">Entrar</NuxtLink>
+      <NuxtLink @click="handleLogout" v-else label="Sair" color="white" block class="mb-3">Sair</NuxtLink>
     </template>
   </UHeader>
 </template>

@@ -5,18 +5,16 @@
         icon="i-heroicons-lock-closed" :ui="{ base: 'text-center', footer: 'text-center' }"
         :submit-button="{ trailingIcon: 'i-heroicons-arrow-right-20-solid' }" @submit="onSubmit">
         <template #description>
-          Não tem uma conta? <NuxtLink to="/signup" class="text-primary font-medium">Cadastre-se</NuxtLink>.
+          Comece com seu email
         </template>
 
         <template #password-hint>
-          <NuxtLink to="/" class="text-primary font-medium">Esqueceu a senha?</NuxtLink>
+
         </template>
 
         <template #footer>
           Ao fazer login, você concorda com nossos <NuxtLink to="/" class="text-primary font-medium">Termos de Serviço
           </NuxtLink>.
-          <UButton class="mt-3" icon="i-mdi-github" block label="Google" variant="black"
-            @click="auth.signInWithOAuth({ provider: 'google', options: { redirectTo } })" />
         </template>
       </UAuthForm>
     </UCard>
@@ -27,24 +25,23 @@
 
 const supabase = useSupabaseClient()
 const user = useSupabaseUser()
-const { auth } = useSupabaseClient()
+
+watch(user, () => {
+  if (user.value) {
+    return navigateTo('/')
+  }
+}, { immediate: true })
 
 const fields = [{
   name: 'email',
   type: 'text',
   label: 'Email',
   placeholder: 'Digite seu email'
-}, {
-  name: 'password',
-  label: 'Senha',
-  type: 'password',
-  placeholder: 'Digite sua senha'
 }]
 
 const validate = (state: any) => {
   const errors = []
   if (!state.email) errors.push({ path: 'email', message: 'É necessário informar um email.' })
-  if (!state.password) errors.push({ path: 'password', message: 'É necessário informar uma senha.' })
   return errors
 }
 
@@ -55,14 +52,22 @@ const providers = [{
   icon: 'i-simple-icons-google',
   color: 'white' as const,
   click: async () => {
-    const { error } = await auth.signInWithOAuth({ provider: 'google', options: { redirectTo } })
+    const { error } = await supabase.auth.signInWithOAuth({
+      provider: 'google',
+      options: {
+        queryParams: {
+          access_type: 'offline',
+          prompt: 'consent',
+        },
+      },
+    })
     if (error) console.log(error)
   }
 }]
 
 async function onSubmit(data: any) {
 
-  const { error } = await auth.signInWithOtp({
+  const { error } = await supabase.auth.signInWithOtp({
     email: data.email,
     options: {
       emailRedirectTo: redirectTo,

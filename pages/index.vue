@@ -256,9 +256,7 @@ const user = useSupabaseUser()
 <template>
   <div>
     <h1>
-      aaa
-      {{ user }}
-
+      <pre><code>{{ JSON.stringify(user, null, 2) }}</code></pre>
     </h1>
     <ULandingHero :title="page.title" :description="page.hero.description">
       <template #headline>

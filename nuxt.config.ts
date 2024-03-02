@@ -8,6 +8,7 @@ export default defineNuxtConfig({
     '@nuxtjs/google-fonts',
     '@nuxtjs/supabase'
   ],
+  ssr: false,
   ui: {
     icons: ['heroicons', 'simple-icons']
   }, 
@@ -59,7 +60,10 @@ export default defineNuxtConfig({
     }
   },
   devtools: {
-    enabled: true
+    enabled: true,
+    timeline: {
+      enabled: true
+    }
   },
   typescript: {
     strict: false
