@@ -5,10 +5,19 @@ export default defineNuxtConfig({
     '@nuxt/content',
     '@nuxt/ui',
     '@nuxtjs/fontaine',
-    '@nuxtjs/google-fonts'
+    '@nuxtjs/google-fonts',
+    '@nuxtjs/supabase'
   ],
   ui: {
     icons: ['heroicons', 'simple-icons']
+  }, 
+  supabase: {
+    redirectOptions: {
+      login: '/login',
+      callback: '/confirm',
+      exclude: ['/'],
+      cookieRedirect: false,
+    },
   },
   colorMode: {
     preference: 'light',

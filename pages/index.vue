@@ -255,6 +255,7 @@ useSeoMeta({
   description: page.description,
   ogDescription: page.description
 })
+
 </script>
 
 <template>
