@@ -38,16 +38,24 @@ nuxtApp.hooks.hookOnce('page:finish', () => {
 
 const supabase = useSupabaseClient()
 const user = useSupabaseUser()
-
+const loading = ref(false)
 
 const handleLogin = () => {
   navigateTo('/login')
 }
 
 const handleLogout = async () => {
-  const { error } = await supabase.auth.signOut()
-  if (error) console.log(error)
-  else navigateTo('/')
+
+  await supabase.auth.signOut()
+    .catch((error) => {
+      return console.log(error)
+    })
+    .then((data) => {
+
+    })
+    .finally(() => {
+
+    })
 }
 
 </script>
@@ -60,10 +68,23 @@ const handleLogout = async () => {
     </template>
 
     <template #right>
-      <UButton @click="handleLogin" v-if="!user" label="Entrar" color="white" variant="ghost"
-        trailing-icon="i-heroicons-arrow-right-20-solid" class="hidden lg:flex" />
-      <UButton @click="handleLogout" v-else label="Sair" color="white" variant="ghost"
-        trailing-icon="i-heroicons-arrow-left-20-solid" class="hidden lg:flex" />
+      <div v-if="!user">
+        <UButton @click="handleLogin" :label="loading ? 'Carregando ...' : 'Entrar'" color="white" :disabled="loading"
+          variant="ghost" trailing-icon="i-heroicons-arrow-right-20-solid" class="hidden lg:flex" />
+
+
+      </div>
+
+      <div v-else class="flex">
+        <UButton to="dashboard" label="Dashboard" color="white" :disabled="loading" variant="ghost"
+          trailing-icon="mdi:view-dashboard-edit" class="hidden lg:flex" />
+
+        <UButton @click="handleLogout" :label="loading ? 'Carregando ...' : 'Sair'" color="white" :disabled="loading"
+          variant="ghost" trailing-icon="i-heroicons-arrow-left-20-solid" class="hidden lg:flex" />
+      </div>
+
+
+
     </template>
 
     <template #panel>
@@ -71,8 +92,13 @@ const handleLogout = async () => {
 
       <UDivider class="my-6" />
 
-      <NuxtLink @click="handleLogin" v-if="!user" label="Entrar" color="white" block class="mb-3">Entrar</NuxtLink>
-      <NuxtLink @click="handleLogout" v-else label="Sair" color="white" block class="mb-3">Sair</NuxtLink>
+      <UButton @click="handleLogin" v-if="!user" label="Entrar" :disabled="loading" color="white" block class="mb-3">
+        {{ loading ? 'Carregando ...' : 'Entrar' }}
+      </UButton>
+
+      <UButton @click="handleLogout" v-else label="Sair" color="white" :disabled="loading" block class="mb-3">
+        {{ loading ? 'Carregando ...' : 'Sair' }}
+      </UButton>
     </template>
   </UHeader>
 </template>
