@@ -1,3 +1,13 @@
 {
-    "welcome": "Welcome"
+  "welcome": "Welcome",
+  "header": {
+    "services": "services",
+    "plans": "Plans",
+    "recommendations": "Recommendations",
+    "faq": "FAQ",
+    "sigin_loading": "Entering...",
+    "sigin": "Sign in",
+    "signout_loading": "Leaving ...",
+    "signout": "Sign out"
+  }
 }

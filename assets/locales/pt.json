@@ -1,3 +1,13 @@
 {
-    "welcome": "Bem vindo"
+  "welcome": "Bem vindo",
+  "header": {
+    "services": "Serviços",
+    "plans": "Planos",
+    "recommendations": "Recomendações",
+    "faq": "FAQ",
+    "signout": "Sair",
+    "signout_loading": "Saindo ...",
+    "sigin_loading": "Entrando...",
+    "sigin": "Entrar"
+  }
 }
