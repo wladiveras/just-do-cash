@@ -66,7 +66,7 @@ const providers = [{
 }]
 
 async function onSubmit(data: any) {
-
+  console.log(redirectTo)
   const { error } = await supabase.auth.signInWithOtp({
     email: data.email,
     options: {
