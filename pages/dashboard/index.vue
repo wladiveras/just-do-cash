@@ -2,6 +2,8 @@
 import { sub } from 'date-fns'
 import type { Period, Range } from '~/types'
 
+const { t } = useI18n()
+
 definePageMeta({
   layout: 'dashboard'
 })
@@ -13,13 +15,13 @@ useSeoMeta({
 const { isNotificationsSlideoverOpen } = useDashboard()
 
 const items = [[{
-  label: 'New mail',
+  label: t('dashboard.layout.links.home'),
   icon: 'i-heroicons-paper-airplane',
-  to: '/inbox'
+  to: '/dashboard/inbox'
 }, {
-  label: 'New user',
+  label: t('dashboard.layout.links.users'),
   icon: 'i-heroicons-user-plus',
-  to: '/users'
+  to: '/dashboard/users'
 }]]
 
 const range = ref<Range>({ start: sub(new Date(), { days: 14 }), end: new Date() })
@@ -29,9 +31,11 @@ const period = ref<Period>('daily')
 <template>
   <UDashboardPage>
     <UDashboardPanel grow>
-      <UDashboardNavbar title="Home">
+      <UDashboardNavbar :title="t('dashboard.title')">
         <template #right>
-          <UTooltip text="Notifications" :shortcuts="['N']">
+          <ToggleLocation size="sm" />
+          <UColorModeButton size="sm" />
+          <UTooltip :text="t('dashboard.notification')" :shortcuts="['N']">
             <UButton color="gray" variant="ghost" square @click="isNotificationsSlideoverOpen = true">
               <UChip color="red" inset>
                 <UIcon name="i-heroicons-bell" class="w-5 h-5" />
@@ -64,7 +68,7 @@ const period = ref<Period>('daily')
           <!-- ~/components/home/HomeSales.vue -->
           <HomeSales />
           <!-- ~/components/home/HomeCountries.vue -->
-          <HomeCountries />
+          <HomeServices />
         </div>
       </UDashboardPanelContent>
     </UDashboardPanel>

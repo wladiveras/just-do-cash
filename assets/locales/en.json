@@ -23,5 +23,49 @@
   },
   "confirm": {
     "waiting_response": "Waiting for response..."
+  },
+  "dashboard": {
+    "layout": {
+      "links": {
+        "home": "Start",
+        "inbox": "Inbox",
+        "users": "Team",
+        "settings": "settings",
+        "members": "Customers",
+        "notifications": "Notifications",
+        "general": "General",
+        "footer": {
+          "invite": "Invite people",
+          "support": "Help & Support",
+          "goto": "Go to",
+          "signed_by": "Signed in as"
+        },
+        "commands": "Commands",
+        "sales": "Orders",
+        "leads": "Leads",
+        "panel": "Panel",
+        "services": "services",
+        "subscriptions": "Subscriptions"
+      },
+      "periods": {
+        "weekly": "weekly",
+        "monthly": "Monthly",
+        "daily": "Daily"
+      }
+    },
+    "search": "Search for ...",
+    "sales": {
+      "recent": {
+        "title": "Recent sales",
+        "description": "You made {total} sales this month."
+      }
+    },
+    "revenue": "Revenue",
+    "services": {
+      "description": "You currently have {subscriptions} active subscriptions and have sold {services} services in total.",
+      "title": "Best-selling Subscriptions and Services"
+    },
+    "title": "Dashboard",
+    "notification": "Notifications"
   }
 }

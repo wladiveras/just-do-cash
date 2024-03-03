@@ -8,16 +8,22 @@ export default defineNuxtConfig({
     '@nuxtjs/google-fonts',
     '@nuxtjs/supabase',
     '@vueuse/nuxt',
-    '@nuxtjs/i18n'
+    '@nuxtjs/i18n',
+    '@pinia/nuxt'
   ],
   ssr: true,
   
   ui: {
-    icons: ['heroicons', 'simple-icons']
+    icons: ['heroicons', 'simple-icons'],
   }, 
+  app: {
+    layoutTransition: { name: 'layout', mode: 'out-in' }
+  },
   runtimeConfig: {
     public: {
+      name: process.env.APP_NAME || 'Only do Cash',
       baseUrl: process.env.BASE_URL || 'http://localhost:3000'
+
     }
   },
   components: [{

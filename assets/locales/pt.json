@@ -23,5 +23,49 @@
   },
   "confirm": {
     "waiting_response": "Aguardando resposta..."
+  },
+  "dashboard": {
+    "layout": {
+      "links": {
+        "home": "Inicio",
+        "inbox": "Inbox",
+        "users": "Equipe",
+        "settings": "Configurações",
+        "general": "Geral",
+        "notifications": "Notificações",
+        "members": "Clientes",
+        "footer": {
+          "invite": "Convide alguém",
+          "support": "Ajuda & Suporte",
+          "goto": "Vá para",
+          "signed_by": "Conectado como"
+        },
+        "commands": "Comandos",
+        "sales": "Pedidos",
+        "leads": "Leads",
+        "subscriptions": "Assinaturas",
+        "services": "Serviços",
+        "panel": "Painel"
+      },
+      "periods": {
+        "weekly": "Semanal",
+        "monthly": "Mensal",
+        "daily": "Diário"
+      }
+    },
+    "search": "Pesquisar algo...",
+    "sales": {
+      "recent": {
+        "title": "Vendas recentes",
+        "description": "Você vendeu {total} esse mês."
+      }
+    },
+    "revenue": "Receita",
+    "services": {
+      "title": "Assinaturas e Serviços mais vendidos",
+      "description": "Você tem atualmente {subscriptions} assinaturas ativas e vendeu {services} serviços no total."
+    },
+    "title": "Dashboard",
+    "notification": "Notificações"
   }
 }

@@ -1,18 +1,13 @@
 <script setup lang="ts">
-const { $storage } = useNuxtApp()
 
-onMounted(() => {
-  $storage.setItem('pessoa', 'wladi')
-})
-
-const name = useRuntimeConfig().public.name
+const name = ref('Beleza Natural')
 
 const page = reactive({
   title: 'Descubra a Beleza em Cada Caixa: Assinaturas Personalizadas para Você',
   description: 'Transforme Sua Rotina de Beleza com Nossas Caixas de Assinatura Exclusivas.',
   hero: {
     title: "Transforme Sua Rotina de Beleza com Nossas Caixas de Assinatura Exclusivas",
-    description: `Você está pronto para elevar sua rotina de beleza a um novo patamar? Na ${name}, oferecemos uma experiência única e personalizada que vai revolucionar sua maneira de cuidar de si mesmo.`,
+    description: `Você está pronto para elevar sua rotina de beleza a um novo patamar? Na ${name.value}, oferecemos uma experiência única e personalizada que vai revolucionar sua maneira de cuidar de si mesmo.`,
 
     links: [
       {
@@ -37,7 +32,7 @@ const page = reactive({
 
   features: {
     title: 'Por Que Escolher Nossos Serviços?',
-    description: `Opte pela excelência. Na ${name}, oferecemos serviços de qualidade superior, com uma equipe experiente e uma abordagem personalizada. Confie em nós para cuidar de você da melhor maneira possível.`,
+    description: `Opte pela excelência. Na ${name.value}, oferecemos serviços de qualidade superior, com uma equipe experiente e uma abordagem personalizada. Confie em nós para cuidar de você da melhor maneira possível.`,
     headline: 'Serviços',
     items: [
       {
@@ -139,7 +134,7 @@ const page = reactive({
     description: 'Veja o que nossos clientes têm a dizer sobre nós. Suas palavras refletem nossa dedicação em fornecer serviços excepcionais e resultados impressionantes. Confira abaixo e descubra por que somos a escolha confiável para suas necessidades de beleza e bem-estar.',
     items: [
       {
-        quote: `Estou extremamente satisfeita com os serviços da ${name}. A equipe foi incrivelmente profissional e atenciosa em cada etapa do processo. Recomendo sem hesitação!`,
+        quote: `Estou extremamente satisfeita com os serviços da ${name.value}. A equipe foi incrivelmente profissional e atenciosa em cada etapa do processo. Recomendo sem hesitação!`,
         author: {
           name: 'Ana Silva',
           description: 'Empresária',
@@ -150,7 +145,7 @@ const page = reactive({
         }
       },
       {
-        quote: `Minha experiência com a ${name} foi excepcional. Eles superaram todas as minhas expectativas, e os resultados foram simplesmente incríveis. Definitivamente voltarei!`,
+        quote: `Minha experiência com a ${name.value} foi excepcional. Eles superaram todas as minhas expectativas, e os resultados foram simplesmente incríveis. Definitivamente voltarei!`,
         author: {
           name: 'Pedro Santos',
           description: 'Estudante Universitário',
@@ -161,7 +156,7 @@ const page = reactive({
         }
       },
       {
-        quote: `A ${name} me proporcionou uma experiência única e transformadora. Sua abordagem personalizada realmente fez a diferença para mim. Estou muito grato por sua dedicação e comprometimento.`,
+        quote: `A ${name.value} me proporcionou uma experiência única e transformadora. Sua abordagem personalizada realmente fez a diferença para mim. Estou muito grato por sua dedicação e comprometimento.`,
         author: {
           name: 'Ricardo Costa',
           description: 'Músico Profissional',
@@ -172,7 +167,7 @@ const page = reactive({
         }
       },
       {
-        quote: `Recebi tratamento da ${name} recentemente e estou muito impressionada com os resultados. A equipe foi gentil, profissional e eficiente em todos os aspectos. Recomendo totalmente!`,
+        quote: `Recebi tratamento da ${name.value} recentemente e estou muito impressionada com os resultados. A equipe foi gentil, profissional e eficiente em todos os aspectos. Recomendo totalmente!`,
         author: {
           name: 'Sandra Lima',
           description: 'Professora',
@@ -311,7 +306,14 @@ const user = useSupabaseUser()
 
     <ULandingSection class="bg-primary-50 dark:bg-primary-400 dark:bg-opacity-10">
 
-      <ULandingCTA v-bind="page.cta" align="center" :card="false">
+      <ULandingCTA align="center" :card="false">
+
+        <template #links>
+          <template v-for="link in page.cta.links">
+            <ULandingButton v-bind="link" />
+          </template>
+        </template>
+
         <img src="https://locaria.com/wp-content/uploads/2019/05/AdobeStock_249865970-1024x683.jpeg"
           class="w-full rounded-md shadow-xl ring-1 ring-gray-300 dark:ring-gray-700" />
       </ULandingCTA>

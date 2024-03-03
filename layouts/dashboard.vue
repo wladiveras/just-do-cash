@@ -2,83 +2,133 @@
 const route = useRoute()
 const appConfig = useAppConfig()
 const { isHelpSlideoverOpen } = useDashboard()
+const { t } = useI18n()
 
-const links = [{
-  id: 'home',
-  label: 'Home',
-  icon: 'i-heroicons-home',
-  to: '/',
-  tooltip: {
-    text: 'Home',
-    shortcuts: ['G', 'H']
-  }
-}, {
-  id: 'inbox',
-  label: 'Inbox',
-  icon: 'i-heroicons-inbox',
-  to: '/inbox',
-  badge: '4',
-  tooltip: {
-    text: 'Inbox',
-    shortcuts: ['G', 'I']
-  }
-}, {
-  id: 'users',
-  label: 'Users',
-  icon: 'i-heroicons-user-group',
-  to: '/users',
-  tooltip: {
-    text: 'Users',
-    shortcuts: ['G', 'U']
-  }
-}, {
-  id: 'settings',
-  label: 'Settings',
-  to: '/settings',
-  icon: 'i-heroicons-cog-8-tooth',
-  children: [{
-    label: 'General',
-    to: '/settings',
-    exact: true
-  }, {
-    label: 'Members',
-    to: '/settings/members'
-  }, {
-    label: 'Notifications',
-    to: '/settings/notifications'
-  }],
-  tooltip: {
-    text: 'Settings',
-    shortcuts: ['G', 'S']
-  }
-}]
-
-const footerLinks = [{
-  label: 'Invite people',
-  icon: 'i-heroicons-plus',
-  to: '/settings/members'
-}, {
-  label: 'Help & Support',
-  icon: 'i-heroicons-question-mark-circle',
-  click: () => isHelpSlideoverOpen.value = true
-}]
-
-const groups = [{
-  key: 'links',
-  label: 'Go to',
-  commands: links.map(link => ({ ...link, shortcuts: link.tooltip?.shortcuts }))
-}, {
-  key: 'code',
-  label: 'Code',
-  commands: [{
-    id: 'source',
-    label: 'View page source',
-    icon: 'i-simple-icons-github',
-    click: () => {
-      window.open(`https://github.com/nuxt-ui-pro/dashboard/blob/main/pages${route.path === '/' ? '/index' : route.path}.vue`, '_blank')
+const links = [
+  {
+    id: 'home',
+    label: t('dashboard.layout.links.home'),
+    icon: 'i-heroicons-home',
+    to: '/dashboard',
+    tooltip: {
+      text: t('dashboard.layout.links.home'),
+      shortcuts: ['G', 'H']
     }
-  }]
-}]
+  },
+  {
+    id: 'inbox',
+    label: t('dashboard.layout.links.inbox'),
+    icon: 'i-heroicons-inbox',
+    to: '/dashboard/inbox',
+    badge: '4',
+    tooltip: {
+      text: t('dashboard.layout.links.inbox'),
+      shortcuts: ['G', 'I']
+    }
+  },
+  {
+    id: 'orders',
+    label: t('dashboard.layout.links.sales'),
+    icon: 'iconoir:home-sale',
+    to: '/dashboard/orders',
+    tooltip: {
+      text: t('dashboard.layout.links.users'),
+      shortcuts: ['G', 'O']
+    }
+  },
+  {
+    id: 'users',
+    label: t('dashboard.layout.links.members'),
+    icon: 'i-heroicons-user-group',
+    to: '/dashboard/users',
+    tooltip: {
+      text: t('dashboard.layout.links.users'),
+      shortcuts: ['G', 'U']
+    },
+    children: [{
+      label: t('dashboard.layout.links.general'),
+      to: '/dashboard/users',
+      exact: true
+    },
+    {
+      label: t('dashboard.layout.links.leads'),
+      to: '/dashboard/users/leads',
+    },
+    ],
+  },
+  {
+    id: 'settings',
+    label: t('dashboard.layout.links.settings'),
+    to: '/dashboard/settings',
+    icon: 'i-heroicons-cog-8-tooth',
+    tooltip: {
+      text: t('dashboard.layout.links.settings'),
+      shortcuts: ['G', 'S']
+    },
+    children: [
+      {
+        label: t('dashboard.layout.links.general'),
+        to: '/dashboard/settings',
+        exact: true
+      },
+      {
+        label: t('dashboard.layout.links.panel'),
+        to: '/dashboard/settings/panel'
+      },
+      {
+        label: t('dashboard.layout.links.services'),
+        to: '/dashboard/settings/services'
+      },
+      {
+        label: t('dashboard.layout.links.subscriptions'),
+        to: '/dashboard/settings/subscriptions'
+      },
+      {
+        label: t('dashboard.layout.links.users'),
+        to: '/dashboard/settings/members'
+      },
+      {
+        label: t('dashboard.layout.links.notifications'),
+        to: '/dashboard/settings/notifications'
+      }
+    ],
+  }
+]
+
+const footerLinks = [
+  {
+    label: t('dashboard.layout.links.footer.invite'),
+    icon: 'i-heroicons-plus',
+    to: '/dashboard/settings/members'
+  },
+  {
+    label: t('dashboard.layout.links.footer.support'),
+    icon: 'i-heroicons-question-mark-circle',
+    click: () => isHelpSlideoverOpen.value = true
+  }
+]
+
+const groups = [
+  {
+    key: 'links',
+    label: t('dashboard.layout.links.footer.goto'),
+    commands: links.map(link => ({ ...link, shortcuts: link.tooltip?.shortcuts }))
+  },
+  {
+    key: 'support',
+    label: t('dashboard.layout.links.footer.support'),
+    commands: [
+      {
+        id: 'support',
+        label: t('dashboard.layout.links.footer.support'),
+        icon: 'i-heroicons-question-mark-circle',
+        click: () => {
+          window.open(`#`, '_blank')
+        }
+      }
+    ]
+  }
+]
 
 const defaultColors = ref(['green', 'teal', 'cyan', 'sky', 'blue', 'indigo', 'violet'].map(color => ({ label: color, chip: color, click: () => appConfig.ui.primary = color })))
 const colors = computed(() => defaultColors.value.map(color => ({ ...color, active: appConfig.ui.primary === color.label })))
@@ -89,20 +139,22 @@ const colors = computed(() => defaultColors.value.map(color => ({ ...color, acti
     <UDashboardPanel :width="250" :resizable="{ min: 200, max: 300 }" collapsible>
       <UDashboardNavbar class="!border-transparent" :ui="{ left: 'flex-1' }">
         <template #left>
-          <TeamsDropdown />
+          <PanelsDropdown />
         </template>
       </UDashboardNavbar>
 
       <UDashboardSidebar>
+
         <template #header>
-          <UDashboardSearchButton />
+          <UDashboardSearchButton :label="t('dashboard.search')" />
         </template>
 
         <UDashboardSidebarLinks :links="links" />
 
         <UDivider />
 
-        <UDashboardSidebarLinks :links="[{ label: 'Colors', draggable: true, children: colors }]" @update:links="colors => defaultColors = colors" />
+        <UDashboardSidebarLinks :links="[{ label: 'Colors', draggable: true, children: colors }]"
+          @update:links="colors => defaultColors = colors" />
 
         <div class="flex-1" />
 
