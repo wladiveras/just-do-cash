@@ -56,7 +56,7 @@
     "search": "Busca algo...",
     "sales": {
       "recent": {
-        "title": "",
+        "title": "Ventas recientes",
         "description": "Hiciste {total} ventas este mes."
       }
     },

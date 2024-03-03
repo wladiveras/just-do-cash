@@ -4,7 +4,7 @@ const appConfig = useAppConfig()
 const { isHelpSlideoverOpen } = useDashboard()
 const { t } = useI18n()
 
-const links = [
+const links = reactive([
   {
     id: 'home',
     label: t('dashboard.layout.links.home'),
@@ -93,7 +93,7 @@ const links = [
       }
     ],
   }
-]
+])
 
 const footerLinks = [
   {
