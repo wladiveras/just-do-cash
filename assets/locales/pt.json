@@ -9,5 +9,19 @@
     "signout_loading": "Saindo ...",
     "sigin_loading": "Entrando...",
     "sigin": "Entrar"
+  },
+  "login": {
+    "welcome": "Seja bem vindo(a).",
+    "starts_with_email": "Vamos começar com seu email",
+    "terms": "Ao fazer login, você concorda com nossos <a to=\"/\" class=\"text-primary font-medium\">Termos de Serviço</a>.",
+    "email": {
+      "label": "Email",
+      "placeholder": "Informe seu email",
+      "error": "Informe um email válido."
+    },
+    "signin_with_google": "Continue com Google"
+  },
+  "confirm": {
+    "waiting_response": "Aguardando resposta..."
   }
 }

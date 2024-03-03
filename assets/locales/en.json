@@ -9,5 +9,19 @@
     "sigin": "Sign in",
     "signout_loading": "Leaving ...",
     "signout": "Sign out"
+  },
+  "login": {
+    "welcome": "Welcome.",
+    "starts_with_email": "Let's start with your email",
+    "terms": "By logging in, you agree to our <a to=\"/\" class=\"text-primary font-medium\">Terms of Service</a>.",
+    "email": {
+      "error": "Enter a valid email.",
+      "placeholder": "Enter your email",
+      "label": "Email"
+    },
+    "signin_with_google": "Continue with Google"
+  },
+  "confirm": {
+    "waiting_response": "Waiting for response..."
   }
 }

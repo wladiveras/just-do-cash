@@ -1,14 +1,22 @@
 <script setup lang="ts">
+
+const { t } = useI18n()
+
+definePageMeta({
+    layout: 'auth'
+})
+
 const user = useSupabaseUser()
 
 watch(user, () => {
     if (user.value) {
-        // Redirect to protected page
-        return navigateTo('/dashboard')
+        return navigateTo('/welcome')
     }
 }, { immediate: true })
 </script>
 
 <template>
-    <div>Waiting for login...</div>
+    <div>
+        <h1>{{ t('confirm.waiting_response') }}</h1>
+    </div>
 </template>
