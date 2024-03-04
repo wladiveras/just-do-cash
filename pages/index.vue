@@ -254,15 +254,11 @@ const page = reactive({
   }
 })
 
-const user = useSupabaseUser()
-
 </script>
 
 <template>
   <div>
-    <h1>
-      <pre><code>{{ JSON.stringify(user, null, 2) }}</code></pre>
-    </h1>
+
     <ULandingHero :title="page.title" :description="page.hero.description">
       <template #headline>
         <!-- todo: add a new feature can be show above title-->
@@ -320,13 +316,13 @@ const user = useSupabaseUser()
     <ULandingSection id="faq" :title="page.faq.title" :description="page.faq.description"
       class="scroll-mt-[var(--header-height)]">
       <ULandingFAQ multiple :items="page.faq.items" :ui="{
-        button: {
-          label: 'font-semibold',
-          trailingIcon: {
-            base: 'w-6 h-6'
-          }
+      button: {
+        label: 'font-semibold',
+        trailingIcon: {
+          base: 'w-6 h-6'
         }
-      }" class="max-w-4xl mx-auto" />
+      }
+    }" class="max-w-4xl mx-auto" />
     </ULandingSection>
   </div>
 </template>
