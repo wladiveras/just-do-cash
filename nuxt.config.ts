@@ -9,12 +9,11 @@ export default defineNuxtConfig({
     '@vueuse/nuxt',
     '@nuxtjs/i18n',
     '@pinia/nuxt',
-    'nuxt-security'
   ],
   ssr: true,
-  security: {
-    corsHandler: {
-        origin: '*'
+  nitro: {
+    prerender: {
+      autoSubfolderIndex: false
     }
   },
   ui: {
