@@ -1,6 +1,7 @@
 <script setup lang="ts">
-const colorMode = useColorMode()
+import { SpeedInsights } from "@vercel/speed-insights/nuxt"
 
+const colorMode = useColorMode()
 const color = computed(() => colorMode.value === 'dark' ? '#111827' : 'white')
 
 useHead({
@@ -27,8 +28,9 @@ useHead({
       <NuxtPage />
     </NuxtLayout>
 
-    <UNotifications />
     <UModals />
+    <UNotifications />
+    <SpeedInsights />
   </UMain>
 </template>
 

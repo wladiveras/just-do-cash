@@ -9,10 +9,15 @@ export default defineNuxtConfig({
     '@nuxtjs/supabase',
     '@vueuse/nuxt',
     '@nuxtjs/i18n',
-    '@pinia/nuxt'
+    '@pinia/nuxt',
+    'nuxt-security'
   ],
   ssr: true,
-  
+  security: {
+    corsHandler: {
+        origin: '*'
+    }
+  },
   ui: {
     icons: ['heroicons', 'simple-icons'],
   }, 
