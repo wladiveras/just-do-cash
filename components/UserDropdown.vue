@@ -4,7 +4,13 @@ const { isDashboardSearchModalOpen } = useUIState()
 const { metaSymbol } = useShortcuts()
 const { t } = useI18n()
 
-const user = useSupabaseUser()
+const user = {
+  email: 'wladi.com.br',
+  user_metadata: {
+    full_name: 'Wladi',
+    avatar_url: 'https://avatars.githubusercontent.com/u/1013389?v=4'
+  }
+}
 
 const items = computed(() => [
   [

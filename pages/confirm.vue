@@ -6,7 +6,7 @@ definePageMeta({
     layout: 'auth'
 })
 
-const user = useSupabaseUser()
+const user = ref(false)
 
 watch(user, () => {
     if (user.value) {

@@ -6,7 +6,6 @@ export default defineNuxtConfig({
     '@nuxt/ui',
     '@nuxtjs/fontaine',
     '@nuxtjs/google-fonts',
-    '@nuxtjs/supabase',
     '@vueuse/nuxt',
     '@nuxtjs/i18n',
     '@pinia/nuxt',
@@ -37,27 +36,6 @@ export default defineNuxtConfig({
     path: '~/components/common',
     pathPrefix: false
   }],
-  supabase: {
-    redirectOptions: {
-      login: '/login',
-      callback: '/confirm',
-      exclude: ['/'],
-      cookieRedirect: true,
-    },
-    cookieOptions: {
-      maxAge: 60 * 60 * 8,
-      sameSite: 'lax',
-      secure: true
-    },
-    clientOptions: {
-      auth: {
-        flowType: 'pkce',
-        detectSessionInUrl: true,
-        persistSession: true,
-        autoRefreshToken: true
-      },
-    }
-  },
   colorMode: {
     preference: 'light',
     fallback: 'light',
