@@ -29,11 +29,11 @@ jobs:
           node-version: 20
 
       - name: Build step
-        run: "pnpm install && NITRO_PRESET=deno-deploy pnpm run build" # 📝 Update the build command(s) if necessary
+        run: "npm i -g pnpm && pnpm i && NITRO_PRESET=deno-deploy pnpm build" # 📝 Update the build command(s) if necessary
 
       - name: Upload to Deno Deploy
         uses: denoland/deployctl@v1
         with:
           project: "just-do-cash"
-          entrypoint: "server/index.ts" # 📝 Update the entrypoint if necessary
+          entrypoint: "server/index.mjs" # 📝 Update the entrypoint if necessary
           root: ".output" # 📝 Update the root if necessary
