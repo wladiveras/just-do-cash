@@ -9,10 +9,35 @@ export default defineNuxtConfig({
     '@nuxtjs/supabase',
     '@vueuse/nuxt',
     '@nuxtjs/i18n',
-    '@pinia/nuxt'
+    '@pinia/nuxt',
+    '@formkit/auto-animate',
+    '@nuxtjs/sitemap',
+    '@vueuse/motion/nuxt'
   ],
   ssr: true,
-  
+  i18n: {
+    langDir: 'assets/locales/',
+    locales: [
+      {
+        code: 'en',
+        iso: 'en-US',
+        file: 'en.json',
+      },
+      {
+        code: 'es',
+        iso: 'es',
+        file: 'es.json',
+      },
+      {
+        code: 'pt',
+        iso: 'pt-BR',
+        file: 'pt.json',
+      },
+    ],
+    strategy: 'prefix_except_default',
+    detectBrowserLanguage: false,
+    defaultLocale: 'pt',
+  },
   ui: {
     icons: ['heroicons', 'simple-icons'],
   }, 
@@ -22,8 +47,23 @@ export default defineNuxtConfig({
   runtimeConfig: {
     public: {
       name: process.env.APP_NAME || 'Only do Cash',
-      baseUrl: process.env.BASE_URL || 'http://localhost:3000'
-
+      baseUrl: process.env.BASE_URL || 'http://localhost:3000',
+      motion: {
+        directives: {
+          'pop-bottom': {
+            initial: {
+              scale: 0,
+              opacity: 0,
+              y: 100,
+            },
+            visible: {
+              scale: 1,
+              opacity: 1,
+              y: 0,
+            }
+          }
+        }
+      }
     }
   },
   components: [{
@@ -36,7 +76,7 @@ export default defineNuxtConfig({
     redirectOptions: {
       login: '/login',
       callback: '/confirm',
-      exclude: ['/'],
+      exclude: ['/', '/confirm', '/login'],
       cookieRedirect: true,
     },
     cookieOptions: {

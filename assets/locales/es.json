@@ -13,7 +13,10 @@
   "login": {
     "welcome": "Bienvenido.",
     "starts_with_email": "Empecemos con tu correo electrónico.",
-    "terms": "Al iniciar sesión, acepta nuestros <a to=\"/\" class=\"text-primary font-medium\">Términos de servicio</a>.",
+    "terms": {
+      "text_1": "Ao fazer login, você concorda com nossos",
+      "text_2": "Termos de Serviço"
+    },
     "email": {
       "error": "Introduzca un correo electrónico válido.",
       "placeholder": "Introduce tu correo electrónico",

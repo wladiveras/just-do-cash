@@ -13,19 +13,22 @@
         </template>
 
         <template #footer>
-          <span v-html="t('login.terms')"></span>
+          <span>
+            {{ t('login.terms.text_1') }} <a to="" class="text-primary font-medium"> {{ t('login.terms.text_2') }}
+            </a>.</span>
         </template>
       </UAuthForm>
+
+
     </UCard>
   </div>
 </template>
 
 <script lang="ts" setup>
-
-const { t } = useI18n()
-
 const supabase = useSupabaseClient()
 const user = useSupabaseUser()
+const toast = useToast()
+const { t } = useI18n()
 
 watch(user, () => {
   if (user.value) {
@@ -67,7 +70,9 @@ const providers = [{
 }]
 
 async function onSubmit(data: any) {
-  console.log(redirectTo)
+
+  toast.add({ icon: 'i-heroicons-check-badge', color: 'primary', title: 'Link mágico enviado', description: 'Verifique seu endereço de email para continuar.', timeout: 60000 })
+
   const { error } = await supabase.auth.signInWithOtp({
     email: data.email,
     options: {

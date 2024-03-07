@@ -10,7 +10,7 @@ const user = useSupabaseUser()
 
 watch(user, () => {
     if (user.value) {
-        return navigateTo('/welcome')
+        return navigateTo('/')
     }
 }, { immediate: true })
 </script>

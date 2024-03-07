@@ -13,7 +13,10 @@
   "login": {
     "welcome": "Seja bem vindo(a).",
     "starts_with_email": "Vamos começar com seu email",
-    "terms": "Ao fazer login, você concorda com nossos <a to=\"/\" class=\"text-primary font-medium\">Termos de Serviço</a>.",
+    "terms": {
+      "text_1": "Ao fazer login, você concorda com nossos",
+      "text_2": "Termos de Serviço"
+    },
     "email": {
       "label": "Email",
       "placeholder": "Informe seu email",
