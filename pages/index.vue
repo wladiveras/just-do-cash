@@ -19,7 +19,7 @@ const page = reactive({
         label: 'Entrar',
         icon: 'i-heroicons-arrow-right-20-solid',
         trailing: true,
-        to: '#features',
+        to: '/login',
         size: 'xl'
       }
     ]
@@ -43,32 +43,38 @@ const page = reactive({
       {
         title: 'Consultoria de Skincare Personalizada',
         description: 'Obtenha uma pele radiante com nossa consultoria de skincare personalizada. Nossos especialistas analisam seu tipo de pele, preocupações específicas e estilo de vida para criar um plano único com recomendações de produtos e rotinas ideais.',
-        icon: 'line-md:confirm'
+        icon: 'line-md:confirm',
+        to: '/order'
       },
       {
         title: 'Maquiagem Profissional para Eventos Especiais',
         description: 'Destaque-se em seu próximo evento com nossa maquiagem profissional. Nossos artistas de maquiagem colaboram com você para criar um visual perfeito que realça sua beleza natural e combina com seu estilo pessoal.',
-        icon: 'line-md:confirm'
+        icon: 'line-md:confirm',
+        to: '/order'
       },
       {
         title: 'Tratamento Capilar de Luxo',
         description: 'Mime seus cabelos com nosso tratamento capilar de luxo. Usando produtos premium e técnicas avançadas, restauramos a saúde e a vitalidade dos seus fios, deixando-os macios, brilhantes e irresistíveis.',
-        icon: 'line-md:confirm'
+        icon: 'line-md:confirm',
+        to: '/order'
       },
       {
         title: 'Massagem Relaxante e Terapêutica',
         description: 'Relaxe completamente com nossa massagem relaxante e terapêutica. Nossos terapeutas especializados aliviam a tensão muscular, reduzem o estresse e promovem o bem-estar físico e mental.',
-        icon: 'line-md:confirm'
+        icon: 'line-md:confirm',
+        to: '/order'
       },
       {
         title: 'Tratamento Facial Anti-idade Avançado',
         description: 'Desafie os sinais do envelhecimento com nosso tratamento facial anti-idade. Utilizamos tecnologias inovadoras e ingredientes potentes para rejuvenescer e revitalizar sua pele, proporcionando uma aparência mais jovem e firme.',
-        icon: 'line-md:confirm'
+        icon: 'line-md:confirm',
+        to: '/order'
       },
       {
         title: 'Manicure Deluxe - Unhas Perfeitas e Deslumbrantes',
         description: 'Experimente o luxo da nossa manicure de alta qualidade. Deixe nossos especialistas cuidarem das suas unhas, proporcionando-lhes um tratamento especial desde a modelagem até a aplicação do esmalte. Saia com unhas impecáveis e elegantes, prontas para impressionar em qualquer ocasião.',
-        icon: 'line-md:confirm'
+        icon: 'line-md:confirm',
+        to: '/order'
       },
     ]
   },
@@ -86,7 +92,8 @@ const page = reactive({
         scale: false,
         button: {
           label: 'Assinar',
-          color: 'gray'
+          color: 'gray',
+          to: '/order',
         },
         features: [
           '2 produtos de beleza surpresa',
@@ -103,8 +110,15 @@ const page = reactive({
         scale: true,
         button: {
           label: 'Assinar',
-          color: 'pink'
+          color: 'primary',
+          to: '/order',
         },
+        links: [
+          {
+            label: 'Assine agora mesmo',
+            size: 'xl',
+          }
+        ],
         features: [
           '3 produtos de beleza de marcas premium',
           '2 itens de bem-estar exclusivos',
@@ -121,7 +135,8 @@ const page = reactive({
         scale: false,
         button: {
           label: 'Assinar',
-          color: 'gray'
+          color: 'gray',
+          to: '/order',
         },
         features: [
           '4 a 5 produtos de beleza de luxo',
@@ -193,6 +208,9 @@ const page = reactive({
         label: 'Assine agora mesmo',
         size: 'xl',
         to: "#pricing",
+        click: () => {
+          highlightPremium()
+        }
       }
     ]
   },
@@ -254,6 +272,25 @@ const page = reactive({
   }
 })
 
+const highlightPremium = () => {
+  const plan1 = page.pricing.plans[1]
+  const plan2 = page.pricing.plans[2]
+
+  const setPlanProperties = (plan: any, color: string, scale: boolean, highlight: boolean) => {
+    plan.button.color = color
+    plan.scale = scale
+    plan.highlight = highlight
+  }
+
+  setPlanProperties(plan1, 'gray', false, false)
+  setPlanProperties(plan2, 'primary', true, true)
+
+  setTimeout(() => {
+    setPlanProperties(plan1, 'primary', true, true)
+    setPlanProperties(plan2, 'gray', false, false)
+  }, 15000)
+}
+
 </script>
 
 <template>
@@ -291,8 +328,9 @@ const page = reactive({
 
     <ULandingSection v-motion-slide-visible-bottom :title="page.pricing.title" :description="page.pricing.description"
       :headline="page.pricing.headline">
-      <UPricingGrid id="pricing" compact class="scroll-mt-[calc(var(--header-height)+140px+128px+96px)]">
-        <UPricingCard v-motion-pop-visible v-for="(plan, index) in page.pricing.plans" :key="index" v-bind="plan" />
+      <UPricingGrid id="pricing" v-motion-pop-visible compact
+        class="scroll-mt-[calc(var(--header-height)+140px+128px+96px)]">
+        <UPricingCard v-for="(plan, index) in page.pricing.plans" :key="index" v-bind="plan" />
       </UPricingGrid>
     </ULandingSection>
 
@@ -315,11 +353,8 @@ const page = reactive({
       </ULandingCTA>
     </ULandingSection>
 
-    <ULandingSection v-motion-slide-visible-bottom :enter="{
-      transition: {
-        delay: 5000,
-      },
-    }" id="faq" :title="page.faq.title" :description="page.faq.description" class="scroll-mt-[var(--header-height)]">
+    <ULandingSection v-motion-slide-visible-bottom id="faq" :title="page.faq.title" :description="page.faq.description"
+      class="scroll-mt-[var(--header-height)]">
       <ULandingFAQ multiple v-auto-animate :items="page.faq.items" :ui="{
       button: {
         label: 'font-semibold',
