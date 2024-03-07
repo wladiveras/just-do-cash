@@ -292,15 +292,16 @@ const page = reactive({
     <ULandingSection v-motion-slide-visible-bottom :title="page.pricing.title" :description="page.pricing.description"
       :headline="page.pricing.headline">
       <UPricingGrid id="pricing" compact class="scroll-mt-[calc(var(--header-height)+140px+128px+96px)]">
-        <UPricingCard v-for="(plan, index) in page.pricing.plans" :key="index" v-bind="plan" />
+        <UPricingCard v-motion-pop-visible v-for="(plan, index) in page.pricing.plans" :key="index" v-bind="plan" />
       </UPricingGrid>
     </ULandingSection>
 
-    <ULandingSection v-motion-fade-visible-once :headline="page.testimonials.headline" :title="page.testimonials.title"
+    <ULandingSection :headline="page.testimonials.headline" :title="page.testimonials.title"
       :description="page.testimonials.description">
       <UPageColumns id="testimonials" class="xl:columns-4 scroll-mt-[calc(var(--header-height)+140px+128px+96px)]">
-        <div v-for="(testimonial, index) in page.testimonials.items" :key="index" class="break-inside-avoid">
-          <ULandingTestimonial v-auto-animate v-bind="testimonial" />
+        <div v-motion-roll-visible-left v-for="(testimonial, index) in page.testimonials.items" :key="index"
+          class="break-inside-avoid">
+          <ULandingTestimonial v-bind="testimonial" />
         </div>
       </UPageColumns>
     </ULandingSection>
@@ -308,7 +309,8 @@ const page = reactive({
     <ULandingSection class="bg-primary-50 dark:bg-primary-400 dark:bg-opacity-10">
 
       <ULandingCTA v-motion-pop-visible v-bind="page.cta" align="center" :card="false">
-        <img src="https://locaria.com/wp-content/uploads/2019/05/AdobeStock_249865970-1024x683.jpeg"
+        <img v-motion-roll-visible-top
+          src="https://locaria.com/wp-content/uploads/2019/05/AdobeStock_249865970-1024x683.jpeg"
           class="w-full rounded-md shadow-xl ring-1 ring-gray-300 dark:ring-gray-700" />
       </ULandingCTA>
     </ULandingSection>

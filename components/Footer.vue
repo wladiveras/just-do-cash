@@ -33,7 +33,7 @@ function onSubmit() {
 </script>
 
 <template>
-  <UFooter v-motion-pop-visible>
+  <UFooter v-motion-roll-bottom>
     <template #top>
       <UFooterColumns :links="links">
         <template #right>
