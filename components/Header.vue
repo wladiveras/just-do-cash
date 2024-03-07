@@ -55,8 +55,10 @@ const handleLogout = async () => {
 <template>
   <UHeader :links="links">
     <template #logo>
-      {{ name }}
-      <UBadge label="premium" variant="subtle" class="mb-0.5" />
+      <div v-motion-pop-visible>
+        {{ name }}
+        <UBadge label="premium" variant="subtle" class="mb-0.5" />
+      </div>
     </template>
 
     <template #right>
@@ -80,19 +82,21 @@ const handleLogout = async () => {
     </template>
 
     <template #panel>
-      <UAsideLinks :links="links" />
+      <div v-motion-pop-visible>
+        <UAsideLinks :links="links" />
 
-      <UDivider class="my-6" />
+        <UDivider class="my-6" />
 
-      <UButton @click="handleLogin" v-if="!user" :label="t('header.sigin')" :disabled="loading" color="white" block
-        class="mb-3">
-        {{ loading ? t('header.sigin_loading') : t('header.sigin') }}
-      </UButton>
+        <UButton @click="handleLogin" v-if="!user" :label="t('header.sigin')" :disabled="loading" color="white" block
+          class="mb-3">
+          {{ loading ? t('header.sigin_loading') : t('header.sigin') }}
+        </UButton>
 
-      <UButton @click="handleLogout" v-else :label="t('header.signout')" color="white" :disabled="loading" block
-        class="mb-3">
-        {{ loading ? t('header.signout_loading') : t('header.signout') }}
-      </UButton>
+        <UButton @click="handleLogout" v-else :label="t('header.signout')" color="white" :disabled="loading" block
+          class="mb-3">
+          {{ loading ? t('header.signout_loading') : t('header.signout') }}
+        </UButton>
+      </div>
     </template>
   </UHeader>
 </template>
