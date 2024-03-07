@@ -1,9 +1,12 @@
 <template>
+
   <div>
     <PreLoader v-if="isLoading" />
-    <Header v-show="!isLoading" />
-    <slot />
-    <Footer />
+    <div v-show="!isLoading">
+      <Header />
+      <slot />
+      <Footer />
+    </div>
   </div>
 </template>
 
