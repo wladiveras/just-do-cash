@@ -38,8 +38,8 @@ nuxtApp.hooks.hookOnce('page:finish', () => {
   ])
 })
 
-const supabase = useSupabaseClient()
-const user = useSupabaseUser()
+
+const user = false
 const loading = ref(false)
 
 const handleLogin = () => {
@@ -48,16 +48,7 @@ const handleLogin = () => {
 
 const handleLogout = async () => {
 
-  await supabase.auth.signOut()
-    .catch((error) => {
-      return console.log(error)
-    })
-    .then((data) => {
 
-    })
-    .finally(() => {
-
-    })
 }
 </script>
 

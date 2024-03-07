@@ -254,15 +254,11 @@ const page = reactive({
   }
 })
 
-const user = useSupabaseUser()
-
 </script>
 
 <template>
   <div>
-    <h1>
-      <pre><code>{{ JSON.stringify(user, null, 2) }}</code></pre>
-    </h1>
+
     <ULandingHero :title="page.title" :description="page.hero.description">
       <template #headline>
         <!-- todo: add a new feature can be show above title-->
@@ -300,11 +296,11 @@ const user = useSupabaseUser()
       </UPricingGrid>
     </ULandingSection>
 
-    <ULandingSection v-motion-pop-visible :headline="page.testimonials.headline" :title="page.testimonials.title"
+    <ULandingSection v-motion-fade-visible-once :headline="page.testimonials.headline" :title="page.testimonials.title"
       :description="page.testimonials.description">
       <UPageColumns id="testimonials" class="xl:columns-4 scroll-mt-[calc(var(--header-height)+140px+128px+96px)]">
         <div v-for="(testimonial, index) in page.testimonials.items" :key="index" class="break-inside-avoid">
-          <ULandingTestimonial v-bind="testimonial" />
+          <ULandingTestimonial v-auto-animate v-bind="testimonial" />
         </div>
       </UPageColumns>
     </ULandingSection>
@@ -320,13 +316,13 @@ const user = useSupabaseUser()
     <ULandingSection v-motion-slide-visible-bottom id="faq" :title="page.faq.title" :description="page.faq.description"
       class="scroll-mt-[var(--header-height)]">
       <ULandingFAQ multiple :items="page.faq.items" :ui="{
-        button: {
-          label: 'font-semibold',
-          trailingIcon: {
-            base: 'w-6 h-6'
-          }
+      button: {
+        label: 'font-semibold',
+        trailingIcon: {
+          base: 'w-6 h-6'
         }
-      }" class="max-w-4xl mx-auto" />
+      }
+    }" class="max-w-4xl mx-auto" />
     </ULandingSection>
   </div>
 </template>

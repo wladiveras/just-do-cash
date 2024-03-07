@@ -1,5 +1,4 @@
 import type { User, UserStatus } from '~/types'
-
 const users: User[] = [{
   id: 1,
   name: 'Alex Smith',
@@ -183,6 +182,7 @@ const users: User[] = [{
 }]
 
 export default eventHandler(async (event) => {
+
   const { q, statuses, locations, sort, order } = getQuery(event) as { q?: string, statuses?: UserStatus[], locations?: string[], sort?: 'name' | 'email', order?: 'asc' | 'desc' }
 
   await new Promise(function (resolve) {

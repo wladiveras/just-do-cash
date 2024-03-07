@@ -1,15 +1,15 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
-  extends: [process.env.NUXT_UI_PRO_PATH || '@nuxt/ui-pro'],
+  extends: ['@nuxt/ui-pro'],
   modules: [
     '@nuxt/content',
     '@nuxt/ui',
     '@nuxtjs/fontaine',
     '@nuxtjs/google-fonts',
-    '@nuxtjs/supabase',
     '@vueuse/nuxt',
     '@nuxtjs/i18n',
     '@pinia/nuxt',
+    '@nuxtjs/supabase',
     '@formkit/auto-animate',
     '@nuxtjs/sitemap',
     '@vueuse/motion/nuxt'
@@ -38,9 +38,14 @@ export default defineNuxtConfig({
     detectBrowserLanguage: false,
     defaultLocale: 'pt',
   },
+  nitro: {
+    prerender: {
+      autoSubfolderIndex: false
+    }
+  },
   ui: {
     icons: ['heroicons', 'simple-icons'],
-  }, 
+  },
   app: {
     layoutTransition: { name: 'layout', mode: 'out-in' }
   },
@@ -66,12 +71,15 @@ export default defineNuxtConfig({
       }
     }
   },
-  components: [{
-    path: '~/components'
-  }, {
-    path: '~/components/common',
-    pathPrefix: false
-  }],
+  components: [
+    {
+      path: '~/components'
+    },
+    {
+      path: '~/components/common',
+      pathPrefix: false
+    }
+  ],
   supabase: {
     redirectOptions: {
       login: '/login',
