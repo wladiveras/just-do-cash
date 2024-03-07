@@ -273,23 +273,30 @@ const page = reactive({
 })
 
 const highlightPremium = () => {
-  const plan1 = page.pricing.plans[1]
-  const plan2 = page.pricing.plans[2]
+  let plan1: any, plan2: any
 
-  const setPlanProperties = (plan: any, color: string, scale: boolean, highlight: boolean) => {
-    plan.button.color = color
-    plan.scale = scale
-    plan.highlight = highlight
+  if (page.pricing.plans.length >= 2) {
+    [plan1, plan2] = page.pricing.plans.slice(1, 3)
+  } else if (page.pricing.plans.length >= 1) {
+    [plan1, plan2] = page.pricing.plans.slice(0, 2)
+  } else {
+    return
   }
 
-  setPlanProperties(plan1, 'gray', false, false)
-  setPlanProperties(plan2, 'primary', true, true)
+  const setPlanProperties = (plan: any, color: string, scale: boolean, highlight: boolean) => {
+    plan.button.color = color;
+    plan.scale = scale;
+    plan.highlight = highlight;
+  }
+
+  setPlanProperties(plan1, 'gray', false, false);
+  setPlanProperties(plan2, 'primary', true, true);
 
   setTimeout(() => {
-    setPlanProperties(plan1, 'primary', true, true)
-    setPlanProperties(plan2, 'gray', false, false)
-  }, 15000)
-}
+    setPlanProperties(plan1, 'primary', true, true);
+    setPlanProperties(plan2, 'gray', false, false);
+  }, 15000);
+};
 
 </script>
 
