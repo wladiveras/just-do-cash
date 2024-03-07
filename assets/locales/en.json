@@ -70,5 +70,9 @@
     },
     "title": "Dashboard",
     "notification": "Notifications"
+  },
+  "plans": {
+    "month": "Monthly",
+    "year": "Yearly"
   }
 }
