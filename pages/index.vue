@@ -130,7 +130,7 @@ const page = reactive({
           'Brinde especial mensal',
           'Entrega prioritária com seguro',
         ],
-      }
+      },
     ]
   },
   testimonials: {
@@ -276,36 +276,36 @@ const page = reactive({
         </div>
       </div>
 
-      <ULandingLogos :title="page.logos.title" align="center">
+      <ULandingLogos v-motion-slide-visible-right :title="page.logos.title" align="center">
         <UIcon v-for="icon in page.logos.icons" :key="icon" :name="icon"
           class="w-12 h-12 lg:w-16 lg:h-16 flex-shrink-0 text-gray-900 dark:text-white" />
       </ULandingLogos>
     </ULandingHero>
 
-    <ULandingSection :title="page.features.title" :description="page.features.description"
+    <ULandingSection v-motion-pop-visible :title="page.features.title" :description="page.features.description"
       :headline="page.features.headline">
       <UPageGrid id="features" class="scroll-mt-[calc(var(--header-height)+140px+128px+96px)]">
         <ULandingCard v-for="(item, index) in page.features.items" :key="index" v-bind="item" />
       </UPageGrid>
     </ULandingSection>
 
-    <ULandingSection :title="page.pricing.title" :description="page.pricing.description"
+    <ULandingSection v-motion-slide-visible-bottom :title="page.pricing.title" :description="page.pricing.description"
       :headline="page.pricing.headline">
       <UPricingGrid id="pricing" compact class="scroll-mt-[calc(var(--header-height)+140px+128px+96px)]">
         <UPricingCard v-for="(plan, index) in page.pricing.plans" :key="index" v-bind="plan" />
       </UPricingGrid>
     </ULandingSection>
 
-    <ULandingSection :headline="page.testimonials.headline" :title="page.testimonials.title"
+    <ULandingSection v-motion-fade-visible-once :headline="page.testimonials.headline" :title="page.testimonials.title"
       :description="page.testimonials.description">
       <UPageColumns id="testimonials" class="xl:columns-4 scroll-mt-[calc(var(--header-height)+140px+128px+96px)]">
         <div v-for="(testimonial, index) in page.testimonials.items" :key="index" class="break-inside-avoid">
-          <ULandingTestimonial v-bind="testimonial" />
+          <ULandingTestimonial v-auto-animate v-bind="testimonial" />
         </div>
       </UPageColumns>
     </ULandingSection>
 
-    <ULandingSection class="bg-primary-50 dark:bg-primary-400 dark:bg-opacity-10">
+    <ULandingSection v-motion-pop-visible class="bg-primary-50 dark:bg-primary-400 dark:bg-opacity-10">
 
       <ULandingCTA v-bind="page.cta" align="center" :card="false">
         <img src="https://locaria.com/wp-content/uploads/2019/05/AdobeStock_249865970-1024x683.jpeg"
@@ -313,7 +313,7 @@ const page = reactive({
       </ULandingCTA>
     </ULandingSection>
 
-    <ULandingSection id="faq" :title="page.faq.title" :description="page.faq.description"
+    <ULandingSection v-motion-slide-visible-bottom id="faq" :title="page.faq.title" :description="page.faq.description"
       class="scroll-mt-[var(--header-height)]">
       <ULandingFAQ multiple :items="page.faq.items" :ui="{
       button: {

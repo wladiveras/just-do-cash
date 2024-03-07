@@ -1,6 +1,7 @@
 <script setup lang="ts">
 const { locale } = useI18n()
 
+
 function toggleLocale() {
     const locales = ['en', 'pt', 'es']
     const currentIndex = locales.indexOf(locale.value)
@@ -14,13 +15,15 @@ const localeFlag = computed(() => {
         pt: 'twemoji:flag-brazil',
         es: 'twemoji:flag-spain'
     }
+
     return flags[locale.value]
 })
+
 
 </script>
 
 <template>
     <div>
-        <UButton :icon="localeFlag" color="gray" variant="ghost" @click="toggleLocale" />
+        <UButton :icon="localeFlag" color="gray" variant="ghost" v-auto-animate @click="toggleLocale" />
     </div>
 </template>

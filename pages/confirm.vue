@@ -10,7 +10,7 @@ const user = ref(false)
 
 watch(user, () => {
     if (user.value) {
-        return navigateTo('/welcome')
+        return navigateTo('/')
     }
 }, { immediate: true })
 </script>
