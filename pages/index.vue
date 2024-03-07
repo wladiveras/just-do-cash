@@ -282,10 +282,10 @@ const page = reactive({
       </ULandingLogos>
     </ULandingHero>
 
-    <ULandingSection v-motion-pop-visible :title="page.features.title" :description="page.features.description"
+    <ULandingSection :title="page.features.title" :description="page.features.description"
       :headline="page.features.headline">
       <UPageGrid id="features" class="scroll-mt-[calc(var(--header-height)+140px+128px+96px)]">
-        <ULandingCard v-for="(item, index) in page.features.items" :key="index" v-bind="item" />
+        <ULandingCard v-motion-pop-visible v-for="(item, index) in page.features.items" :key="index" v-bind="item" />
       </UPageGrid>
     </ULandingSection>
 
@@ -305,9 +305,9 @@ const page = reactive({
       </UPageColumns>
     </ULandingSection>
 
-    <ULandingSection v-motion-pop-visible class="bg-primary-50 dark:bg-primary-400 dark:bg-opacity-10">
+    <ULandingSection class="bg-primary-50 dark:bg-primary-400 dark:bg-opacity-10">
 
-      <ULandingCTA v-bind="page.cta" align="center" :card="false">
+      <ULandingCTA v-motion-pop-visible v-bind="page.cta" align="center" :card="false">
         <img src="https://locaria.com/wp-content/uploads/2019/05/AdobeStock_249865970-1024x683.jpeg"
           class="w-full rounded-md shadow-xl ring-1 ring-gray-300 dark:ring-gray-700" />
       </ULandingCTA>
