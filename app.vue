@@ -16,13 +16,11 @@ useHead({
     lang: 'en'
   }
 })
-
 </script>
 
 <template>
   <UMain>
     <NuxtLoadingIndicator />
-
     <NuxtLayout>
       <NuxtPage />
     </NuxtLayout>

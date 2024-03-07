@@ -58,7 +58,7 @@ export default defineNuxtConfig({
             initial: {
               scale: 0,
               opacity: 0,
-              y: 100,
+              y: 0,
             },
             visible: {
               scale: 1,

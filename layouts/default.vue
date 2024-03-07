@@ -1,12 +1,22 @@
 <template>
+
   <div>
-    <Header />
-    <slot />
-    <Footer />
+    <PreLoader v-if="isLoading" />
+    <div v-show="!isLoading">
+      <Header />
+      <slot />
+      <Footer />
+    </div>
   </div>
 </template>
 
 <script lang="ts" setup>
+
+const isLoading = ref(true)
+
+onMounted(() => {
+  isLoading.value = false
+})
 
 const page = reactive({
   title: 'Beleza Natural',

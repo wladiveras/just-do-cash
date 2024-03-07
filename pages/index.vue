@@ -315,9 +315,12 @@ const page = reactive({
       </ULandingCTA>
     </ULandingSection>
 
-    <ULandingSection v-motion-slide-visible-bottom id="faq" :title="page.faq.title" :description="page.faq.description"
-      class="scroll-mt-[var(--header-height)]">
-      <ULandingFAQ multiple :items="page.faq.items" :ui="{
+    <ULandingSection v-motion-slide-visible-bottom :enter="{
+      transition: {
+        delay: 5000,
+      },
+    }" id="faq" :title="page.faq.title" :description="page.faq.description" class="scroll-mt-[var(--header-height)]">
+      <ULandingFAQ multiple v-auto-animate :items="page.faq.items" :ui="{
       button: {
         label: 'font-semibold',
         trailingIcon: {
