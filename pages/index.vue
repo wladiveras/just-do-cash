@@ -317,7 +317,7 @@ const page = reactive({
 
     <ULandingSection v-motion-slide-visible-bottom id="faq" :title="page.faq.title" :description="page.faq.description"
       class="scroll-mt-[var(--header-height)]">
-      <ULandingFAQ multiple :items="page.faq.items" :ui="{
+      <ULandingFAQ multiple v-auto-animate :items="page.faq.items" :ui="{
       button: {
         label: 'font-semibold',
         trailingIcon: {
