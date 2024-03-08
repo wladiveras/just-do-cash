@@ -23,11 +23,14 @@ const props = defineProps({
   }
 })
 
-const cardBrand = ref('Mastercard')
+const card = reactive({
+  brand: 'Mastercard',
+  icon: 'logos:mastercard'
+})
 
 function discoverCardBrand(cardNumber: string) {
 
-  const number = cardNumber.replace(/\D/g, '');
+  const number = cardNumber.replace(/\D/g, '')
 
   const regexes = [
     { pattern: /^(5[1-5][0-9]{14}|2(22[1-9][0-9]{12}|2[3-9][0-9]{13}|[3-6][0-9]{14}|7[0-1][0-9]{13}|720[0-9]{12}))$/, brand: 'Mastercard' },
@@ -37,31 +40,60 @@ function discoverCardBrand(cardNumber: string) {
     { pattern: /^(5018|5020|5038|6304|6759|6761|6762|6763|0604|6390)$/, brand: 'Maestro' },
     { pattern: /^(9792|9795|564182|633110|677136|506699|633383|636297)$/, brand: 'Diners Club' },
     { pattern: /^(30[0-5][0-9]{11}|3095990189[0-9]{10}|3[3,4][0-9]{13}|35\d{14}|3528\d{12}|352900\d{10}|353[0-8]\d{11}|354[0-9]{12}|355[0-9]{12}|356[0-9]{12}|357[0-9]{12}|358[0-9]{12}|359[0-9]{12})$/, brand: 'JCB' },
-  ];
+  ]
 
   for (const { pattern, brand } of regexes) {
     if (pattern.test(number)) {
-      return brand;
+      return brand
     }
   }
 
-  return 'Unknown';
+  return 'Unknown'
 }
 
 watchEffect(() => {
-  const cardBrand = discoverCardBrand(props.cardnumber)
-  console.log(props.cardnumber)
-  console.log(cardBrand)
-});
+  card.brand = discoverCardBrand(props.cardnumber)
+
+  switch (card.brand) {
+    case 'Unknown':
+      card.icon = 'logos:mastercard'
+      break
+    case 'Mastercard':
+      card.icon = 'logos:mastercard'
+      break
+    case 'Visa':
+      card.icon = 'logos:visa'
+      break
+    case 'American Express':
+      card.icon = 'fontisto:american-express'
+      break
+    case 'Discover':
+      card.icon = 'logos:discover'
+      break
+    case 'Maestro':
+      card.icon = 'logos:maestro'
+      break
+    case 'Diners Club':
+      card.icon = 'logos:diners-club'
+      break
+    case 'JCB':
+      card.icon = 'logos:jcb'
+      break
+    default:
+      card.icon = 'logos:mastercard'
+  }
+})
 
 </script>
+
 <template>
   <div
     class="dark:bg-muted-900 border-muted-200 dark:border-muted-800 shadow-muted-400/10 dark:shadow-muted-800/10 relative mx-auto h-[200px] w-full max-w-[315px] rounded-xl border p-6 ">
     <div class="flex h-full flex-col gap-3">
       <div class="flex items-center gap-2">
         <div class="bg-muted-200 dark:bg-muted-700 size-2 rounded-full"></div><span
-          class="text-muted-400 font-sans text-sm"> {{ cardBrand === 'Unknown' ? 'Mastercard' : cardBrand }} </span>
+          class="text-muted-400 font-sans text-sm"> {{ card.brand === 'Unknown' ? 'Mastercard' : card.brand }}
+        </span>
       </div>
       <div class="mt-auto space-y-1"><img class="mb-3 w-11" src="~~/assets/images/card-ship.svg" alt="Card chip"
           width="44" height="31">
@@ -87,8 +119,7 @@ watchEffect(() => {
       </div>
     </div>
     <div class="absolute end-5 top-4 flex">
-      <div class="-me-2 size-9 rounded-full bg-rose-500/60"></div>
-      <div class="relative z-10 -ms-2 size-9 rounded-full bg-yellow-500/60"></div>
+      <UIcon :name="card.icon ?? 'mastercard'" size="3rem" />
     </div>
     <div class="absolute bottom-7 end-5 flex">
       <UIcon name="material-symbols:logo-dev" size="2rem" />
