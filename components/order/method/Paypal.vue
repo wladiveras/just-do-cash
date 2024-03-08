@@ -19,7 +19,11 @@
 
       <div class="space-y-4 flex flex-col justify-center items-center">
         <UCard class="max-w-[20rem]">
-          <UIcon name="logos:paypal" class="text-[10rem]" />
+          <NuxtLink to="https://paypal.com">
+            <UIcon name="logos:paypal"
+              class="text-[10rem] transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-110 duration-300 cursor-pointer" />
+          </NuxtLink>
+
         </UCard>
       </div>
     </div>
