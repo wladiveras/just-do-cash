@@ -3,18 +3,39 @@ import { object, string, type InferType } from 'yup'
 import type { FormSubmitEvent } from '#ui/types'
 
 const schema = object({
-  name: string().email('Invalid email').required('Required'),
-  number: string().email('Invalid email').required('Required'),
-  expire_month: string().email('Invalid email').required('Required'),
-  expire_year: string().email('Invalid email').required('Required'),
-  cvv: string().email('Invalid cvv').required('Required'),
+  cardholder: string().required('Nome do titular do cartão é obrigatório'),
+  cardnumber: string().required('Número do cartão é obrigatório').test('credit-card', 'Número de cartão inválido', (value) => {
+
+    const cardNumber = value.replace(/\D/g, '');
+
+    let sum = 0;
+    let shouldDouble = false;
+    for (let i = cardNumber.length - 1; i >= 0; i--) {
+      let digit = parseInt(cardNumber.charAt(i));
+
+      if (shouldDouble) {
+        digit *= 2;
+        if (digit > 9) {
+          digit -= 9;
+        }
+      }
+
+      sum += digit;
+      shouldDouble = !shouldDouble;
+    }
+
+    return sum % 10 === 0;
+  }),
+  expire_month: string().required('Mês de expiração é obrigatório').matches(/^(0[1-9]|1[0-2])$/, 'Formato de mês inválido'),
+  expire_year: string().required('Ano de expiração é obrigatório').matches(/^(20)\d{2}$/, 'Formato de ano inválido'),
+  cvv: string().required('CVV é obrigatório').length(3, 'CVV deve ter 3 dígitos'),
 })
 
 type Schema = InferType<typeof schema>
 
 const state = reactive({
-  email: undefined,
-  number: undefined,
+  cardholder: undefined,
+  cardnumber: undefined,
   expire_month: undefined,
   expire_year: undefined,
   cvv: undefined,
@@ -81,30 +102,33 @@ async function onSubmit(event: FormSubmitEvent<Schema>) {
       <UForm :schema="schema" :state="state" class="space-y-4 space-y-4 flex flex-col justify-top p-[2rem]"
         @submit="onSubmit" v-auto-animate>
 
-        <UFormGroup label="Nome no Cartão" name="name" v-auto-animate>
-          <UInput v-model="state.email" />
+        <UFormGroup label="Nome no Cartão" name="cardholder" v-auto-animate>
+          <UInput v-model="state.cardholder" />
         </UFormGroup>
 
-        <UFormGroup label="Número do Cartão" name="number" v-auto-animate>
-          <UInput v-model="state.number" />
+        <UFormGroup label="Número do Cartão" name="cardnumber" v-auto-animate>
+          <UInput v-model="state.cardnumber" />
         </UFormGroup>
 
 
         <div class="grid grid-cols-3 gap-4" v-auto-animate>
           <UFormGroup label="Exp. Mês">
-            <USelect icon="quill:snooze-month" size="sm" :options="months" placeholder="Mês..." />
+            <USelect icon="quill:snooze-month" size="sm" :options="months" v-model="state.expire_month"
+              placeholder="Mês..." />
           </UFormGroup>
           <UFormGroup label="Exp. Ano">
-            <USelect icon="quill:snooze-month" size="sm" :options="years" placeholder="Ano..." />
+            <USelect icon="quill:snooze-month" size="sm" :options="years" v-model="state.expire_year"
+              placeholder="Ano..." />
           </UFormGroup>
           <UFormGroup label="CVV">
-            <UInput icon="iconoir:card-lock" size="sm" :trailing="false" placeholder="ex: 123" />
+            <UInput icon="iconoir:card-lock" size="sm" v-model="state.cvv" placeholder="ex: 123" />
           </UFormGroup>
         </div>
       </UForm>
 
       <div class="space-y-4 flex flex-col justify-center items-center flex-wrap">
-        <Card />
+        <Card :cardholder="state.cardholder" :cardnumber="state.cardnumber" :expire_month="state.expire_month"
+          :expire_year="state.expire_year" :cvv="state.cvv" />
       </div>
     </div>
   </div>
