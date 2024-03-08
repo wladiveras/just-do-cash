@@ -3,7 +3,7 @@
     <UCard class="max-w-sm w-full bg-white/75 dark:bg-white/5 backdrop-blur">
       <UAuthForm :fields="fields" :validate="validate" :providers="providers" :title="t('login.welcome')" align="top"
         icon="i-heroicons-lock-closed" :ui="{ base: 'text-center', footer: 'text-center' }"
-        :submit-button="{ trailingIcon: 'i-heroicons-arrow-right-20-solid' }">
+        :submit-button="{ trailingIcon: 'i-heroicons-arrow-right-20-solid' }" @submit="onSubmit">
         <template #description>
           {{ t('login.starts_with_email') }}
         </template>
@@ -30,6 +30,11 @@ const user = useSupabaseUser()
 const toast = useToast()
 const { t } = useI18n()
 
+watch(user, () => {
+  if (user.value) {
+    return navigateTo('/')
+  }
+}, { immediate: true })
 
 const fields = [{
   name: 'email',
@@ -51,7 +56,16 @@ const providers = [{
   icon: 'i-simple-icons-google',
   color: 'white' as const,
   click: async () => {
-
+    const { error } = await supabase.auth.signInWithOAuth({
+      provider: 'google',
+      options: {
+        queryParams: {
+          access_type: 'offline',
+          prompt: 'consent',
+        },
+      },
+    })
+    if (error) console.log(error)
   }
 }]
 

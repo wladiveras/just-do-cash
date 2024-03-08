@@ -34,13 +34,12 @@ const schema = object({
 type Schema = InferType<typeof schema>
 
 const state = reactive({
-  cardholder: undefined,
-  cardnumber: undefined,
-  expire_month: undefined,
-  expire_year: undefined,
-  cvv: undefined,
+  cardholder: '',
+  cardnumber: '',
+  expire_month: '',
+  expire_year: '',
+  cvv: '',
 })
-
 
 const months = [
   { value: '01', label: '01' },
@@ -100,18 +99,18 @@ async function onSubmit(event: FormSubmitEvent<Schema>) {
   <div class="w-full flex flex-col gap-y-4">
     <div class="grid grid-cols-1 md:grid-cols-2">
       <UForm :schema="schema" :state="state" class="space-y-4 space-y-4 flex flex-col justify-top p-[2rem]"
-        @submit="onSubmit" v-auto-animate>
+        @submit="onSubmit">
 
-        <UFormGroup label="Nome no Cartão" name="cardholder" v-auto-animate>
+        <UFormGroup label="Nome no Cartão" name="cardholder">
           <UInput v-model="state.cardholder" />
         </UFormGroup>
 
-        <UFormGroup label="Número do Cartão" name="cardnumber" v-auto-animate>
+        <UFormGroup label="Número do Cartão" name="cardnumber">
           <UInput v-model="state.cardnumber" />
         </UFormGroup>
 
 
-        <div class="grid grid-cols-3 gap-4" v-auto-animate>
+        <div class="grid grid-cols-3 gap-4">
           <UFormGroup label="Exp. Mês">
             <USelect icon="quill:snooze-month" size="sm" :options="months" v-model="state.expire_month"
               placeholder="Mês..." />
@@ -127,7 +126,8 @@ async function onSubmit(event: FormSubmitEvent<Schema>) {
       </UForm>
 
       <div class="space-y-4 flex flex-col justify-center items-center flex-wrap">
-        <Card :cardholder="state.cardholder" :cardnumber="state.cardnumber" :expire_month="state.expire_month"
+        <Card class="transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-110 duration-300"
+          :cardholder="state.cardholder" :cardnumber="state.cardnumber" :expire_month="state.expire_month"
           :expire_year="state.expire_year" :cvv="state.cvv" />
       </div>
     </div>
