@@ -19,8 +19,7 @@ onMounted(() => {
 
     <OrderHeader />
 
-    <div class="h-screen flex w-full items-center justify-center overlay  md:mt-[0rem] mt-[7rem] lg:mt-[-8rem]"
-      v-show="!isLoading">
+    <div class="h-screen flex w-full items-center justify-center overlay mt-[10rem] md:mt-[-8rem] " v-show="!isLoading">
       <slot />
     </div>
 
