@@ -4,12 +4,23 @@ useHead({
     class: 'dark:bg-gray-950'
   }
 })
+
+const isLoading = ref(true)
+
+onMounted(() => {
+  isLoading.value = false
+})
+
 </script>
 
 <template>
-  <div class="h-screen flex items-center justify-center overlay">
-    <div class="gradient" />
-    <slot />
+  <div>
+    <PreLoader v-if="isLoading" />
+
+    <div class="h-screen flex w-full items-center justify-center overlay" v-show="!isLoading">
+      <div class="gradient" />
+      <slot />
+    </div>
   </div>
 </template>
 

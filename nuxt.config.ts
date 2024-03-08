@@ -11,7 +11,7 @@ export default defineNuxtConfig({
     '@pinia/nuxt',
     '@nuxtjs/supabase',
     '@formkit/auto-animate',
-    '@vueuse/motion/nuxt'
+    '@vueuse/motion/nuxt',
   ],
   ssr: true,
   i18n: {

@@ -24,6 +24,6 @@ const localeFlag = computed(() => {
 
 <template>
     <div>
-        <UButton :icon="localeFlag" color="gray" variant="ghost" v-auto-animate @click="toggleLocale" />
+        <UButton :icon="localeFlag" color="gray" variant="ghost" @click="toggleLocale" />
     </div>
 </template>

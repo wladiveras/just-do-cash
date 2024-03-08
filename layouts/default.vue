@@ -1,15 +1,3 @@
-<template>
-
-  <div>
-    <PreLoader v-if="isLoading" />
-    <div v-show="!isLoading">
-      <Header />
-      <slot />
-      <Footer />
-    </div>
-  </div>
-</template>
-
 <script lang="ts" setup>
 
 const isLoading = ref(true)
@@ -30,5 +18,16 @@ useSeoMeta({
   ogDescription: page.description
 })
 </script>
+
+<template>
+  <div>
+    <PreLoader v-if="isLoading" />
+    <div v-show="!isLoading">
+      <Header />
+      <slot />
+      <Footer />
+    </div>
+  </div>
+</template>
 
 <style></style>

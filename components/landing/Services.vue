@@ -53,7 +53,7 @@ const page = reactive({
   <div>
     <ULandingSection :title="page.features.title" :description="page.features.description"
       :headline="page.features.headline">
-      <UPageGrid id="features" class="scroll-mt-[calc(var(--header-height)+140px+128px+96px)]">
+      <UPageGrid id="features" class="duration-1000 scroll-mt-[calc(var(--header-height)+140px+128px+96px)]">
         <ULandingCard v-motion-pop-visible v-for="(item, index) in page.features.items" :key="index" v-bind="item" />
       </UPageGrid>
     </ULandingSection>
