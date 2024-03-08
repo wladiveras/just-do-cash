@@ -126,7 +126,8 @@ async function onSubmit(event: FormSubmitEvent<Schema>) {
       </UForm>
 
       <div class="space-y-4 flex flex-col justify-center items-center flex-wrap">
-        <Card class="transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-110 duration-300"
+        <Card v-motion-roll-visible-right
+          class="transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-110 duration-300"
           :cardholder="state.cardholder" :cardnumber="state.cardnumber" :expire_month="state.expire_month"
           :expire_year="state.expire_year" :cvv="state.cvv" />
       </div>

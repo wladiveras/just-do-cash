@@ -61,7 +61,7 @@ const changeSelectedMethod = (method: any) => {
                     <span>{{ method.label }}</span>
                   </h2>
                 </div>
-                <component v-if="method.active" :is="method.component" />
+                <component v-motion-roll-visible-bottom v-if="method.active" :is="method.component" />
               </div>
             </div>
           </UCard>
