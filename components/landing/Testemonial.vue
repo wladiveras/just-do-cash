@@ -59,7 +59,8 @@ const page = reactive({
   <div>
     <ULandingSection :headline="page.testimonials.headline" :title="page.testimonials.title"
       :description="page.testimonials.description">
-      <UPageColumns id="testimonials" class="xl:columns-4 scroll-mt-[calc(var(--header-height)+140px+128px+96px)]">
+      <UPageColumns id="testimonials"
+        class="duration-1000 xl:columns-4 scroll-mt-[calc(var(--header-height)+140px+128px+96px)]">
         <div v-motion-roll-visible-left v-for="(testimonial, index) in page.testimonials.items" :key="index"
           class="break-inside-avoid">
           <ULandingTestimonial v-bind="testimonial" />

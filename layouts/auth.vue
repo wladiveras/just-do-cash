@@ -4,15 +4,26 @@ useHead({
     class: 'dark:bg-gray-950'
   }
 })
+
+const isLoading = ref(true)
+
+onMounted(() => {
+  isLoading.value = false
+})
+
 </script>
 
 <template>
-  <div class="h-screen flex items-center justify-center overlay">
-    <div class="gradient" />
+  <div>
+    <PreLoader v-if="isLoading" />
 
-    <UButton icon="i-heroicons-home" label="Home" to="/" color="black" class="absolute top-4" />
+    <div class="h-screen flex items-center justify-center overlay" v-show="!isLoading">
+      <div class="gradient" />
 
-    <slot />
+      <UButton icon="i-heroicons-home" label="Home" to="/" color="black" class="absolute top-4" />
+
+      <slot />
+    </div>
   </div>
 </template>
 

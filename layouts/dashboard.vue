@@ -1,8 +1,13 @@
 <script setup lang="ts">
-const route = useRoute()
 const appConfig = useAppConfig()
 const { isHelpSlideoverOpen } = useDashboard()
 const { t } = useI18n()
+
+const isLoading = ref(true)
+
+onMounted(() => {
+  isLoading.value = false
+})
 
 const links = reactive([
   {
@@ -135,49 +140,52 @@ const colors = computed(() => defaultColors.value.map(color => ({ ...color, acti
 </script>
 
 <template>
-  <UDashboardLayout>
-    <UDashboardPanel :width="250" :resizable="{ min: 200, max: 300 }" collapsible>
-      <UDashboardNavbar class="!border-transparent" :ui="{ left: 'flex-1' }">
-        <template #left>
-          <PanelsDropdown />
-        </template>
-      </UDashboardNavbar>
+  <div>
+    <PreLoader v-if="isLoading" />
+    <UDashboardLayout v-show="!isLoading">
+      <UDashboardPanel :width="250" :resizable="{ min: 200, max: 300 }" collapsible>
+        <UDashboardNavbar class="!border-transparent" :ui="{ left: 'flex-1' }">
+          <template #left>
+            <PanelsDropdown />
+          </template>
+        </UDashboardNavbar>
 
-      <UDashboardSidebar>
+        <UDashboardSidebar>
 
-        <template #header>
-          <UDashboardSearchButton :label="t('dashboard.search')" />
-        </template>
+          <template #header>
+            <UDashboardSearchButton :label="t('dashboard.search')" />
+          </template>
 
-        <UDashboardSidebarLinks :links="links" />
+          <UDashboardSidebarLinks :links="links" />
 
-        <UDivider />
+          <UDivider />
 
-        <UDashboardSidebarLinks :links="[{ label: 'Colors', draggable: true, children: colors }]"
-          @update:links="colors => defaultColors = colors" />
+          <UDashboardSidebarLinks :links="[{ label: 'Colors', draggable: true, children: colors }]"
+            @update:links="colors => defaultColors = colors" />
 
-        <div class="flex-1" />
+          <div class="flex-1" />
 
-        <UDashboardSidebarLinks :links="footerLinks" />
+          <UDashboardSidebarLinks :links="footerLinks" />
 
-        <UDivider class="sticky bottom-0" />
+          <UDivider class="sticky bottom-0" />
 
-        <template #footer>
-          <!-- ~/components/UserDropdown.vue -->
-          <UserDropdown />
-        </template>
-      </UDashboardSidebar>
-    </UDashboardPanel>
+          <template #footer>
+            <!-- ~/components/UserDropdown.vue -->
+            <UserDropdown />
+          </template>
+        </UDashboardSidebar>
+      </UDashboardPanel>
 
-    <slot />
+      <slot />
 
-    <!-- ~/components/HelpSlideover.vue -->
-    <HelpSlideover />
-    <!-- ~/components/NotificationsSlideover.vue -->
-    <NotificationsSlideover />
+      <!-- ~/components/HelpSlideover.vue -->
+      <HelpSlideover />
+      <!-- ~/components/NotificationsSlideover.vue -->
+      <NotificationsSlideover />
 
-    <ClientOnly>
-      <LazyUDashboardSearch :groups="groups" />
-    </ClientOnly>
-  </UDashboardLayout>
+      <ClientOnly>
+        <LazyUDashboardSearch :groups="groups" />
+      </ClientOnly>
+    </UDashboardLayout>
+  </div>
 </template>
