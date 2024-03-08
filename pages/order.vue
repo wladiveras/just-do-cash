@@ -37,7 +37,7 @@ const changeSelectedMethod = (method: any) => {
 
     <ULandingSection class="w-full flex flex-col gap-y-4">
       <div class="flex flex-col md:flex-row">
-        <ULandingSection class=" space-y-4 flex flex-col justify-top">
+        <ULandingSection class="space-y-4 flex flex-col justify-top">
           <UCard>
             <template #header>
               <div class="flex items-center justify-between">
@@ -54,19 +54,15 @@ const changeSelectedMethod = (method: any) => {
               </div>
             </template>
             <div>
-
               <div class="payment-method border-b pt-5 pb-5" v-for="method in paymentMethods" v-auto-animate>
-                <div class="w-full flex" @click="changeSelectedMethod(method)">
-
+                <div class="w-full flex flex-wrap sm:flex-nowrap" @click="changeSelectedMethod(method)">
                   <h2 class="font-bold text-xl flex items-center">
                     <UIcon :name="method.icon" class="mr-2 text-xl" />
                     <span>{{ method.label }}</span>
                   </h2>
                 </div>
-
                 <component v-if="method.active" :is="method.component" />
               </div>
-
             </div>
           </UCard>
         </ULandingSection>

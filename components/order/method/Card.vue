@@ -77,7 +77,7 @@ async function onSubmit(event: FormSubmitEvent<Schema>) {
 
 <template>
   <div class="w-full flex flex-col gap-y-4">
-    <div class="grid grid-cols-2">
+    <div class="grid grid-cols-1 md:grid-cols-2">
       <UForm :schema="schema" :state="state" class="space-y-4 space-y-4 flex flex-col justify-top p-[2rem]"
         @submit="onSubmit" v-auto-animate>
 
@@ -103,7 +103,7 @@ async function onSubmit(event: FormSubmitEvent<Schema>) {
         </div>
       </UForm>
 
-      <div class="space-y-4 flex flex-col justify-center items-center">
+      <div class="space-y-4 flex flex-col justify-center items-center flex-wrap">
         <Card />
       </div>
     </div>

@@ -4,7 +4,7 @@
 
 <template>
   <div class="w-full flex flex-col gap-y-4">
-    <div class="grid grid-cols-2">
+    <div class="grid grid-cols-1 md:grid-cols-2">
 
       <div class="space-y-4 flex flex-col justify-top p-[2rem]">
         <h2 class="text-lg font-semibold">
