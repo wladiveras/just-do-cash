@@ -5,13 +5,15 @@ onMounted(() => {
   $storage.setItem('pessoa', 'wladi')
 })
 
-const name = useRuntimeConfig().public.name
 
 
 </script>
 
 <template>
   <div>
+
+
+
     <LandingHeader />
     <LandingServices />
     <LandingPlans />

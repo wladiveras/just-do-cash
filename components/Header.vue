@@ -38,8 +38,9 @@ nuxtApp.hooks.hookOnce('page:finish', () => {
   ])
 })
 
+const supabase = useSupabaseClient()
+const user = useSupabaseUser()
 
-const user = false
 const loading = ref(false)
 
 const handleLogin = () => {
@@ -47,7 +48,16 @@ const handleLogin = () => {
 }
 
 const handleLogout = async () => {
+  await supabase.auth.signOut()
+    .catch((error) => {
+      return console.log(error)
+    })
+    .then((data) => {
 
+    })
+    .finally(() => {
+
+    })
 
 }
 </script>
@@ -62,21 +72,28 @@ const handleLogout = async () => {
     </template>
 
     <template #right>
-      <ToggleLocation size="sm" />
-      <UColorModeButton size="sm" />
-
+      <UTooltip text="Trocar Idioma" :popper="{ placement: 'bottom', arrow: true }">
+        <ToggleLocation size="sm" />
+      </UTooltip>
+      <UTooltip text="Trocar de tema" :popper="{ placement: 'bottom', arrow: true }">
+        <UColorModeButton size="sm" />
+      </UTooltip>
       <div v-if="!user">
         <UButton @click="handleLogin" :label="loading ? $t('header.sigin_loading') : $t('header.sigin')" color="white"
           :disabled="loading" variant="ghost" trailing-icon="i-heroicons-arrow-right-20-solid" class="hidden lg:flex" />
       </div>
 
       <div v-else class="flex">
-        <UButton to="dashboard" color="white" :disabled="loading" variant="ghost"
-          trailing-icon="mdi:view-dashboard-edit" class="hidden lg:flex" />
+        <UTooltip text="Painel de Controle" :popper="{ placement: 'bottom', arrow: true }">
+          <UButton to="dashboard" color="white" :disabled="loading" variant="ghost"
+            trailing-icon="mdi:view-dashboard-edit" class="hidden lg:flex" />
+        </UTooltip>
 
-        <UButton @click="handleLogout" :label="loading ? $t('header.signout_loading') : $t('header.signout')"
-          color="white" :disabled="loading" variant="ghost" trailing-icon="i-heroicons-arrow-left-20-solid"
-          class="hidden lg:flex" />
+        <UTooltip text="Sair da sua conta" :popper="{ placement: 'bottom', arrow: true, open: true }">
+          <UButton @click="handleLogout" :label="loading ? $t('header.signout_loading') : $t('header.signout')"
+            color="white" :disabled="loading" variant="ghost" trailing-icon="i-heroicons-arrow-left-20-solid"
+            class="hidden lg:flex" />
+        </UTooltip>
       </div>
 
     </template>
