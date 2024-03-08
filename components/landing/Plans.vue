@@ -72,7 +72,10 @@ const isYearly = ref(false)
     <ULandingSection v-motion-slide-visible-bottom title="Box Surpresa Mensal"
       description="Descubra uma jornada mensal de surpresas e encantos com nossa Box Mensal exclusiva. Receba uma seleção cuidadosamente escolhida de produtos de beleza e bem-estar diretamente em sua porta, oferecendo uma experiência de autocuidado excepcional a cada entrega. Mime-se ou presenteie alguém especial com uma assinatura hoje e embarque em uma jornada de descoberta e autocompaixão."
       headline="Planos">
-      <UPricingToggle v-model="isYearly" :left="t('plans.month')" :right="t('plans.year')" class="m-auto w-[30rem]" />
+      <UPricingToggle v-model="isYearly" :left="t('plans.month')" :right="t('plans.year')"
+        class="m-auto md:w-[30rem] w-full" />
+
+
       <UPricingGrid id="pricing" v-motion-pop-visible compact
         class="scroll-mt-[calc(var(--header-height)+140px+128px+96px)]">
         <UPricingCard v-for="( plan, index ) in   page.plans" :key="index" align="top" :title="plan.title"
