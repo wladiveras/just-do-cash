@@ -33,11 +33,11 @@ const changeSelectedMethod = (method: any) => {
 </script>
 
 <template>
-  <div class="w-full bg-white/75 dark:bg-white/5 backdrop-blur">
+  <div>
 
-    <ULandingSection class="w-full flex flex-col gap-y-4">
+    <ULandingSection>
       <div class="flex flex-col md:flex-row">
-        <ULandingSection class="space-y-4 flex flex-col justify-top">
+        <ULandingSection>
           <UCard>
             <template #header>
               <div class="flex items-center justify-between">
@@ -67,7 +67,7 @@ const changeSelectedMethod = (method: any) => {
           </UCard>
         </ULandingSection>
 
-        <ULandingSection class="space-y-4 flex flex-col justify-top items-center">
+        <ULandingSection v-motion-roll-visible-top>
           <UCard>
             <p>Um texto apresentavel do produto e todos os passos concluidos</p>
             <UButton class="m-auto" color="primary" variant="solid" to="purchase">
