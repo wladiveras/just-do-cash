@@ -1,22 +1,25 @@
 <script setup lang="ts">
-
-const { t } = useI18n()
+const { t } = useI18n();
 
 definePageMeta({
-    layout: 'auth'
-})
+  layout: "auth",
+});
 
-const user = ref(false)
+const user = ref(false);
 
-watch(user, () => {
+watch(
+  user,
+  () => {
     if (user.value) {
-        return navigateTo('/')
+      return navigateTo("/");
     }
-}, { immediate: true })
+  },
+  { immediate: true },
+);
 </script>
 
 <template>
-    <div>
-        <h1>{{ t('confirm.waiting_response') }}</h1>
-    </div>
+  <div>
+    <h1>{{ t("confirm.waiting_response") }}</h1>
+  </div>
 </template>

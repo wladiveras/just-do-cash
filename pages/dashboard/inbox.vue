@@ -1,65 +1,79 @@
 <script setup lang="ts">
-import type { Mail } from '~/types'
+import type { Mail } from "~/types";
 
 definePageMeta({
-  layout: 'dashboard'
-})
+  layout: "dashboard",
+});
 
 useSeoMeta({
-  title: 'Dashboard'
-})
+  title: "Dashboard",
+});
 
-const tabItems = [{
-  label: 'All'
-}, {
-  label: 'Unread'
-}]
-const selectedTab = ref(0)
+const tabItems = [
+  {
+    label: "All",
+  },
+  {
+    label: "Unread",
+  },
+];
+const selectedTab = ref(0);
 
-const dropdownItems = [[{
-  label: 'Mark as unread',
-  icon: 'i-heroicons-check-circle'
-}, {
-  label: 'Mark as important',
-  icon: 'i-heroicons-exclamation-circle'
-}], [{
-  label: 'Star thread',
-  icon: 'i-heroicons-star'
-}, {
-  label: 'Mute thread',
-  icon: 'i-heroicons-pause-circle'
-}]]
+const dropdownItems = [
+  [
+    {
+      label: "Mark as unread",
+      icon: "i-heroicons-check-circle",
+    },
+    {
+      label: "Mark as important",
+      icon: "i-heroicons-exclamation-circle",
+    },
+  ],
+  [
+    {
+      label: "Star thread",
+      icon: "i-heroicons-star",
+    },
+    {
+      label: "Mute thread",
+      icon: "i-heroicons-pause-circle",
+    },
+  ],
+];
 
-const { data: mails } = await useFetch<Mail[]>('/api/mails', { default: () => [] })
+const { data: mails } = await useFetch<Mail[]>("/api/mails", {
+  default: () => [],
+});
 
 // Filter mails based on the selected tab
 const filteredMails = computed(() => {
   if (selectedTab.value === 1) {
-    return mails.value.filter(mail => !!mail.unread)
+    return mails.value.filter((mail) => !!mail.unread);
   }
 
-  return mails.value
+  return mails.value;
 })
 
-const selectedMail = ref<Mail | null>()
+const selectedMail = ref<Mail | null>();
 
 const isMailPanelOpen = computed({
   get() {
-    return !!selectedMail.value
+    return !!selectedMail.value;
   },
   set(value: boolean) {
     if (!value) {
-      selectedMail.value = null
+      selectedMail.value = null;
     }
-  }
-})
+  },
+});
 
 // Reset selected mail if it's not in the filtered mails
 watch(filteredMails, () => {
-  if (!filteredMails.value.find(mail => mail.id === selectedMail.value?.id)) {
-    selectedMail.value = null
+  if (!filteredMails.value.find((mail) => mail.id === selectedMail.value?.id)) {
+    selectedMail.value = null;
   }
-})
+});
 </script>
 
 <template>
@@ -67,8 +81,13 @@ watch(filteredMails, () => {
     <UDashboardPanel id="inbox" :width="400" :resizable="{ min: 300, max: 500 }">
       <UDashboardNavbar title="Inbox" :badge="filteredMails.length">
         <template #right>
-          <UTabs v-model="selectedTab" :items="tabItems"
-            :ui="{ wrapper: '', list: { height: 'h-9', tab: { height: 'h-7', size: 'text-[13px]' } } }" />
+          <UTabs v-model="selectedTab" :items="tabItems" :ui="{
+      wrapper: '',
+      list: {
+        height: 'h-9',
+        tab: { height: 'h-7', size: 'text-[13px]' },
+      },
+    }" />
         </template>
       </UDashboardNavbar>
 
@@ -77,7 +96,6 @@ watch(filteredMails, () => {
     </UDashboardPanel>
 
     <UDashboardPanel v-model="isMailPanelOpen" collapsible grow side="right">
-
       <template v-if="selectedMail">
         <UDashboardNavbar>
           <template #toggle>

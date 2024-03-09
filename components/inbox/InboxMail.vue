@@ -1,17 +1,17 @@
 <script setup lang="ts">
-import { format, isToday } from 'date-fns'
-import type { Mail } from '~/types'
+import { format, isToday } from "date-fns";
+import type { Mail } from "~/types";
 
 defineProps({
   mail: {
     type: Object as PropType<Mail>,
-    required: true
+    required: true,
   },
   selected: {
     type: Boolean,
-    default: false
-  }
-})
+    default: false,
+  },
+});
 </script>
 
 <template>
@@ -31,7 +31,11 @@ defineProps({
       </div>
 
       <p class="font-medium text-gray-900 dark:text-white">
-        {{ isToday(new Date(mail.date)) ? format(new Date(mail.date), 'HH:mm') : format(new Date(mail.date), 'dd MMM') }}
+        {{
+          isToday(new Date(mail.date))
+            ? format(new Date(mail.date), "HH:mm")
+            : format(new Date(mail.date), "dd MMM")
+        }}
       </p>
     </div>
 
@@ -46,8 +50,20 @@ defineProps({
     <UDivider class="my-5" />
 
     <form @submit.prevent>
-      <UTextarea color="gray" required size="xl" :rows="5" :placeholder="`Reply to ${mail.from.name}`">
-        <UButton type="submit" color="black" label="Send" icon="i-heroicons-paper-airplane" class="absolute bottom-2.5 right-3.5" />
+      <UTextarea
+        color="gray"
+        required
+        size="xl"
+        :rows="5"
+        :placeholder="`Reply to ${mail.from.name}`"
+      >
+        <UButton
+          type="submit"
+          color="black"
+          label="Send"
+          icon="i-heroicons-paper-airplane"
+          class="absolute bottom-2.5 right-3.5"
+        />
       </UTextarea>
     </form>
   </UDashboardPanelContent>

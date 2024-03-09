@@ -1,60 +1,61 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
-  extends: ['@nuxt/ui-pro'],
+  extends: ["@nuxt/ui-pro"],
   modules: [
-    '@nuxt/content',
-    '@nuxt/ui',
-    '@nuxtjs/fontaine',
-    '@nuxtjs/google-fonts',
-    '@vueuse/nuxt',
-    '@nuxtjs/i18n',
-    '@pinia/nuxt',
-    '@nuxtjs/supabase',
-    '@formkit/auto-animate',
-    '@vueuse/motion/nuxt',
+    "@nuxt/content",
+    "@nuxt/ui",
+    "@nuxtjs/fontaine",
+    "@nuxtjs/google-fonts",
+    "@vueuse/nuxt",
+    "@nuxtjs/i18n",
+    "@pinia/nuxt",
+    "@nuxtjs/supabase",
+    "@formkit/auto-animate",
+    "@vueuse/motion/nuxt",
   ],
   ssr: true,
   i18n: {
-    langDir: 'assets/locales/',
+    langDir: "assets/locales/",
     locales: [
       {
-        code: 'en',
-        iso: 'en-US',
-        file: 'en.json',
+        code: "en",
+        iso: "en-US",
+        file: "en.json",
       },
       {
-        code: 'es',
-        iso: 'es',
-        file: 'es.json',
+        code: "es",
+        iso: "es",
+        file: "es.json",
       },
       {
-        code: 'pt',
-        iso: 'pt-BR',
-        file: 'pt.json',
+        code: "pt",
+        iso: "pt-BR",
+        file: "pt.json",
       },
     ],
-    strategy: 'prefix_except_default',
+    strategy: "prefix_except_default",
     detectBrowserLanguage: false,
-    defaultLocale: 'pt',
+    defaultLocale: "pt",
   },
   nitro: {
     prerender: {
-      autoSubfolderIndex: false
-    }
+      autoSubfolderIndex: false,
+    },
   },
   ui: {
-    icons: ['heroicons', 'simple-icons'],
+    icons: ["heroicons", "simple-icons"],
   },
   app: {
-    layoutTransition: { name: 'layout', mode: 'out-in' }
+    pageTransition: { name: "page", mode: "out-in" },
+    layoutTransition: { name: "layout", mode: "out-in" },
   },
   runtimeConfig: {
     public: {
-      name: process.env.APP_NAME || 'Only do Cash',
-      baseUrl: process.env.BASE_URL || 'http://localhost:3000',
+      name: process.env.APP_NAME || "Only do Cash",
+      baseUrl: process.env.BASE_URL || "http://localhost:3000",
       motion: {
         directives: {
-          'pop-bottom': {
+          "pop-bottom": {
             initial: {
               scale: 0,
               opacity: 0,
@@ -64,70 +65,70 @@ export default defineNuxtConfig({
               scale: 1,
               opacity: 1,
               y: 0,
-            }
-          }
-        }
-      }
-    }
+            },
+          },
+        },
+      },
+    },
   },
   components: [
     {
-      path: '~/components'
+      path: "~/components",
     },
     {
-      path: '~/components/common',
-      pathPrefix: false
-    }
+      path: "~/components/common",
+      pathPrefix: false,
+    },
   ],
   supabase: {
     redirectOptions: {
-      login: '/login',
-      callback: '/confirm',
-      exclude: ['/', '/confirm', '/login', '/purchase', '/order'],
+      login: "/login",
+      callback: "/confirm",
+      exclude: ["/", "/confirm", "/login", "/purchase", "/order"],
       cookieRedirect: true,
     },
     cookieOptions: {
       maxAge: 60 * 60 * 8,
-      sameSite: 'lax',
-      secure: true
+      sameSite: "lax",
+      secure: true,
     },
     clientOptions: {
       auth: {
-        flowType: 'pkce',
+        flowType: "pkce",
         detectSessionInUrl: true,
         persistSession: true,
-        autoRefreshToken: true
+        autoRefreshToken: true,
       },
-    }
+    },
   },
   colorMode: {
-    preference: 'light',
-    fallback: 'light',
-    hid: 'nuxt-color-mode-script',
-    globalName: '__NUXT_COLOR_MODE__',
-    componentName: 'ColorScheme',
-    classPrefix: '',
-    classSuffix: '-mode',
-    storageKey: 'nuxt-color-mode'
+    preference: "light",
+    fallback: "light",
+    hid: "nuxt-color-mode-script",
+    globalName: "__NUXT_COLOR_MODE__",
+    componentName: "ColorScheme",
+    classPrefix: "",
+    classSuffix: "-mode",
+    storageKey: "nuxt-color-mode",
   },
   // Fonts
   fontMetrics: {
-    fonts: ['DM Sans']
+    fonts: ["DM Sans"],
   },
   googleFonts: {
-    display: 'swap',
+    display: "swap",
     download: true,
     families: {
-      'DM+Sans': [400, 500, 600, 700]
-    }
+      "DM+Sans": [400, 500, 600, 700],
+    },
   },
   devtools: {
     enabled: true,
     timeline: {
-      enabled: true
-    }
+      enabled: true,
+    },
   },
   typescript: {
-    strict: false
-  }
-})
+    strict: true,
+  },
+});

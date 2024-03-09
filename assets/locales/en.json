@@ -8,7 +8,8 @@
     "sigin_loading": "Entering...",
     "sigin": "Sign in",
     "signout_loading": "Leaving ...",
-    "signout": "Sign out"
+    "signout": "Sign out",
+    "promotion": "Promotion"
   },
   "login": {
     "welcome": "Welcome.",
