@@ -11,7 +11,7 @@
     "lint": "eslint .",
     "lint:fix": "eslint . --fix",
     "lint:prettier": "prettier --check .",
-    "lint:prettier:fix": "prettier --write --list-different . && pnpm lint:fix --fix",
+    "fix": "prettier --write --list-different . && pnpm lint:fix --fix",
     "typecheck": "nuxt typecheck",
     "tsc": "npx tsc"
   },

@@ -14,7 +14,8 @@ const page = reactive({
       button: {
         label: "Assinar",
         color: "gray",
-        to: "/order",
+        to: "/order/checkout",
+        click: undefined,
       },
       features: [
         "2 produtos de beleza surpresa",
@@ -33,7 +34,8 @@ const page = reactive({
       button: {
         label: "Assinar",
         color: "primary",
-        to: "/order",
+        to: "/order/checkout",
+        click: undefined,
       },
       features: [
         "3 produtos de beleza de marcas premium",
@@ -53,7 +55,8 @@ const page = reactive({
       button: {
         label: "Assinar",
         color: "gray",
-        to: "/order",
+        to: "/order/checkout",
+        click: undefined,
       },
       features: [
         "4 a 5 produtos de beleza de luxo",
@@ -65,8 +68,6 @@ const page = reactive({
     },
   ],
 });
-
-const isYearly = ref(false);
 </script>
 
 <template>
@@ -76,14 +77,6 @@ const isYearly = ref(false);
       description="Descubra uma jornada mensal de surpresas e encantos com nossa Box Mensal exclusiva. Receba uma seleção cuidadosamente escolhida de produtos de beleza e bem-estar diretamente em sua porta, oferecendo uma experiência de autocuidado excepcional a cada entrega. Mime-se ou presenteie alguém especial com uma assinatura hoje e embarque em uma jornada de descoberta e autocompaixão."
       headline="Planos"
     >
-      <UPricingToggle
-        v-model="isYearly"
-        v-motion-slide-visible-bottom
-        :left="t('plans.month')"
-        :right="t('plans.year')"
-        class="m-auto md:w-[30rem] w-full"
-      />
-
       <UPricingGrid
         id="pricing"
         v-motion-pop-visible

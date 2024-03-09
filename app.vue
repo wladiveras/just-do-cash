@@ -23,7 +23,6 @@ useHead({
     <NuxtLayout>
       <NuxtPage />
     </NuxtLayout>
-
     <UModals />
     <UNotifications />
   </UMain>

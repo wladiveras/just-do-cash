@@ -1,6 +1,6 @@
 <script lang="ts" setup>
 definePageMeta({
-  layout: "purchase",
+  layout: "order",
 });
 </script>
 

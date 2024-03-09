@@ -13,42 +13,42 @@ const page = reactive({
         description:
           "Obtenha uma pele radiante com nossa consultoria de skincare personalizada. Nossos especialistas analisam seu tipo de pele, preocupações específicas e estilo de vida para criar um plano único com recomendações de produtos e rotinas ideais.",
         icon: "line-md:confirm",
-        to: "/order",
+        to: "/order/checkout",
       },
       {
         title: "Maquiagem Profissional para Eventos Especiais",
         description:
           "Destaque-se em seu próximo evento com nossa maquiagem profissional. Nossos artistas de maquiagem colaboram com você para criar um visual perfeito que realça sua beleza natural e combina com seu estilo pessoal.",
         icon: "line-md:confirm",
-        to: "/order",
+        to: "/order/checkout",
       },
       {
         title: "Tratamento Capilar de Luxo",
         description:
           "Mime seus cabelos com nosso tratamento capilar de luxo. Usando produtos premium e técnicas avançadas, restauramos a saúde e a vitalidade dos seus fios, deixando-os macios, brilhantes e irresistíveis.",
         icon: "line-md:confirm",
-        to: "/order",
+        to: "/order/checkout",
       },
       {
         title: "Massagem Relaxante e Terapêutica",
         description:
           "Relaxe completamente com nossa massagem relaxante e terapêutica. Nossos terapeutas especializados aliviam a tensão muscular, reduzem o estresse e promovem o bem-estar físico e mental.",
         icon: "line-md:confirm",
-        to: "/order",
+        to: "/order/checkout",
       },
       {
         title: "Tratamento Facial Anti-idade Avançado",
         description:
           "Desafie os sinais do envelhecimento com nosso tratamento facial anti-idade. Utilizamos tecnologias inovadoras e ingredientes potentes para rejuvenescer e revitalizar sua pele, proporcionando uma aparência mais jovem e firme.",
         icon: "line-md:confirm",
-        to: "/order",
+        to: "/order/checkout",
       },
       {
         title: "Manicure Deluxe - Unhas Perfeitas e Deslumbrantes",
         description:
           "Experimente o luxo da nossa manicure de alta qualidade. Deixe nossos especialistas cuidarem das suas unhas, proporcionando-lhes um tratamento especial desde a modelagem até a aplicação do esmalte. Saia com unhas impecáveis e elegantes, prontas para impressionar em qualquer ocasião.",
         icon: "line-md:confirm",
-        to: "/order",
+        to: "/order/checkout",
       },
     ],
   },

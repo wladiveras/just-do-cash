@@ -22,9 +22,13 @@ useSeoMeta({
   <div>
     <PreLoader v-if="isLoading" />
     <div v-show="!isLoading">
-      <Header />
-      <slot />
-      <Footer />
+      <UPage>
+        <Header />
+        <UPageBody>
+          <slot />
+        </UPageBody>
+        <Footer />
+      </UPage>
     </div>
   </div>
 </template>

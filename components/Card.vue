@@ -103,7 +103,7 @@ watchEffect(() => {
 
 <template>
   <div
-    class="dark:bg-muted-900 border-muted-200 dark:border-muted-800 shadow-muted-400/10 dark:shadow-muted-800/10 relative mx-auto h-[200px] w-full max-w-[315px] rounded-xl border p-6"
+    class="dark:bg-muted-900 border-muted-200 dark:border-muted-800 shadow-muted-400/10 dark:shadow-muted-800/10 relative mx-auto h-[200px] w-full max-w-[315px] rounded-xl border dark:border-gray-800 p-6"
   >
     <div class="flex h-full flex-col gap-3">
       <div class="flex items-center gap-2">

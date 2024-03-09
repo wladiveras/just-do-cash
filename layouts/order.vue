@@ -15,14 +15,13 @@ onMounted(() => {
 <template>
   <div>
     <PreLoader v-if="isLoading" />
-
-    <OrderHeader />
-
-    <div
-      v-show="!isLoading"
-      class="h-screen flex w-full items-center justify-center overlay mt-[10rem] md:mt-[-8rem]"
-    >
-      <slot />
+    <div v-show="!isLoading" class="h-screen w-full">
+      <UPage>
+        <OrderHeader />
+        <UPageBody>
+          <slot />
+        </UPageBody>
+      </UPage>
     </div>
   </div>
 </template>

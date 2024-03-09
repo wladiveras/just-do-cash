@@ -175,9 +175,9 @@ defineShortcuts({
           <div class="flex items-center gap-3">
             <UAvatar v-bind="row.avatar" :alt="row.name" size="xs" />
 
-            <span class="text-gray-900 dark:text-white font-medium">{{
-              row.name
-            }}</span>
+            <span class="text-gray-900 dark:text-white font-medium">
+              {{ row.name }}
+            </span>
           </div>
         </template>
 
