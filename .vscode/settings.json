@@ -8,11 +8,9 @@
     "amplify/backend/amplify-meta.json": true,
     "amplify/backend/awscloudformation": true
   },
-  "[typescript]": {
-    "editor.defaultFormatter": "vscode.typescript-language-features"
-  },
-  "i18n-ally.localesPaths": [
-    "assets/locales"
-  ],
-  "i18n-ally.keystyle": "nested"
+  "i18n-ally.localesPaths": ["assets/locales"],
+  "i18n-ally.keystyle": "nested",
+  "editor.codeActionsOnSave": {
+    "source.fixAll.eslint": "explicit"
+  }
 }

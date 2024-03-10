@@ -1,25 +1,18 @@
 <script setup lang="ts">
-const { $storage } = useNuxtApp()
+const { $storage } = useNuxtApp();
 
 onMounted(() => {
-  $storage.setItem('pessoa', 'wladi')
-})
-
-
-
+  $storage.setItem("pessoa", "wladi");
+});
 </script>
 
 <template>
   <div>
-
-
-
     <LandingHeader />
     <LandingServices />
     <LandingPlans />
     <LandingTestemonial />
     <LandingPromotion />
     <LandingFaq />
-
   </div>
 </template>

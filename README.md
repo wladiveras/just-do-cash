@@ -16,7 +16,7 @@ Install NVM by downloading the install script from their GitHub page. You can us
 ```
 curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.1/install.sh | bash
 
-#or 
+#or
 
 wget -qO- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.1/install.sh | bash
 ```

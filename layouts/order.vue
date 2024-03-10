@@ -15,22 +15,13 @@ onMounted(() => {
 <template>
   <div>
     <PreLoader v-if="isLoading" />
-
-    <div
-      v-show="!isLoading"
-      class="h-screen flex items-center justify-center overlay"
-    >
-      <div class="gradient" />
-
-      <UButton
-        icon="i-heroicons-home"
-        label="Home"
-        to="/"
-        color="black"
-        class="absolute top-4"
-      />
-
-      <slot />
+    <div v-show="!isLoading" class="h-screen w-full">
+      <UPage>
+        <OrderHeader />
+        <UPageBody>
+          <slot />
+        </UPageBody>
+      </UPage>
     </div>
   </div>
 </template>

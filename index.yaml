@@ -1,7 +1,7 @@
-openapi: '3.0.0'
+openapi: "3.0.0"
 info:
-  version: '1.0.0'
-  title: 'Sample API'
+  version: "1.0.0"
+  title: "Sample API"
   description: Buy or rent spacecrafts
 
 paths:
@@ -12,28 +12,28 @@ paths:
         in: path
         required: true
         schema:
-          $ref: '#/components/schemas/SpacecraftId'
+          $ref: "#/components/schemas/SpacecraftId"
     get:
       summary: Read a spacecraft
       responses:
-        '200':
+        "200":
           description: The spacecraft corresponding to the provided `spacecraftId`
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Spacecraft'
+                $ref: "#/components/schemas/Spacecraft"
         404:
           description: No spacecraft found for the provided `spacecraftId`
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Error'
+                $ref: "#/components/schemas/Error"
         500:
           description: Unexpected error
           content:
             application/json:
               schema:
-                $ref: '#/components/schemas/Error'
+                $ref: "#/components/schemas/Error"
 components:
   schemas:
     SpacecraftId:
@@ -47,7 +47,7 @@ components:
         - type
       properties:
         id:
-          $ref: '#/components/schemas/SpacecraftId'
+          $ref: "#/components/schemas/SpacecraftId"
         name:
           type: string
         type:

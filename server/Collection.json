@@ -1,37 +1,37 @@
 {
-	"info": {
-		"_postman_id": "19e44a70-80d7-4f04-b786-ec115492b96c",
-		"name": "Collection",
-		"description": "Buy or rent spacecrafts",
-		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
-		"_uid": "10368732-19e44a70-80d7-4f04-b786-ec115492b96c"
-	},
-	"item": [],
-	"auth": {
-		"type": "apikey",
-		"apikey": [
-			{
-				"key": "key",
-				"value": "X-Api-Key",
-				"type": "string"
-			},
-			{
-				"key": "value",
-				"value": "{{apiKey}}",
-				"type": "string"
-			},
-			{
-				"key": "in",
-				"value": "header",
-				"type": "string"
-			}
-		]
-	},
-	"variable": [
-		{
-			"id": "d095c06d-b47d-4187-ab77-2ff7c133d1e8",
-			"key": "baseUrl",
-			"value": "/"
-		}
-	]
+  "info": {
+    "_postman_id": "19e44a70-80d7-4f04-b786-ec115492b96c",
+    "name": "Collection",
+    "description": "Buy or rent spacecrafts",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "_uid": "10368732-19e44a70-80d7-4f04-b786-ec115492b96c"
+  },
+  "item": [],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "X-Api-Key",
+        "type": "string"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}",
+        "type": "string"
+      },
+      {
+        "key": "in",
+        "value": "header",
+        "type": "string"
+      }
+    ]
+  },
+  "variable": [
+    {
+      "id": "d095c06d-b47d-4187-ab77-2ff7c133d1e8",
+      "key": "baseUrl",
+      "value": "/"
+    }
+  ]
 }

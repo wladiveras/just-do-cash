@@ -1,48 +1,63 @@
 <script setup lang="ts">
-
-const name = ref('Beleza Natural')
+const name = ref("Beleza Natural");
 
 const links = [
   {
-    label: 'Empresa',
+    label: "Empresa",
     children: [
       {
-        label: 'Sobre Nós'
-      }
-    ]
-  }
-]
+        label: "Sobre Nós",
+      },
+    ],
+  },
+];
 
-const toast = useToast()
+const toast = useToast();
 
-const email = ref('')
-const loading = ref(false)
+const email = ref("");
+const loading = ref(false);
 
 function onSubmit() {
-  loading.value = true
+  loading.value = true;
 
   setTimeout(() => {
     toast.add({
-      title: 'Assinado!',
-      description: 'Você se inscrever na nossa newsletter.'
-    })
+      title: "Assinado!",
+      description: "Você se inscrever na nossa newsletter.",
+    });
 
-    loading.value = false
-  }, 1000)
+    loading.value = false;
+  }, 1000);
 }
 </script>
 
 <template>
-  <UFooter v-motion-roll-bottom>
+  <UFooter>
     <template #top>
       <UFooterColumns :links="links">
         <template #right>
           <form @submit.prevent="onSubmit">
-            <UFormGroup label="Se inscreve na nossa newsletter" :ui="{ container: 'mt-3' }">
-              <UInput v-model="email" type="email" placeholder="Informe seu email"
-                :ui="{ icon: { trailing: { pointer: '' } } }" required size="xl" autocomplete="off" class="max-w-sm">
+            <UFormGroup
+              label="Se inscreve na nossa newsletter"
+              :ui="{ container: 'mt-3' }"
+            >
+              <UInput
+                v-model="email"
+                type="email"
+                placeholder="Informe seu email"
+                :ui="{ icon: { trailing: { pointer: '' } } }"
+                required
+                size="xl"
+                autocomplete="off"
+                class="max-w-sm"
+              >
                 <template #trailing>
-                  <UButton type="submit" size="xs" :label="loading ? 'Quase la..' : 'Inscrever'" :loading="loading" />
+                  <UButton
+                    type="submit"
+                    size="xs"
+                    :label="loading ? 'Quase la..' : 'Inscrever'"
+                    :loading="loading"
+                  />
                 </template>
               </UInput>
             </UFormGroup>
@@ -53,13 +68,13 @@ function onSubmit() {
 
     <template #left>
       <p class="text-gray-500 dark:text-gray-400 text-sm">
-        Copyright © {{ new Date().getFullYear() }}. {{ name }} Todos os direitos reservados.
+        Copyright © {{ new Date().getFullYear() }}. {{ name }} Todos os
+        direitos reservados.
       </p>
     </template>
 
     <template #right>
       <UColorModeButton size="sm" />
-
     </template>
   </UFooter>
 </template>
