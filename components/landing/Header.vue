@@ -42,7 +42,9 @@ const page = reactive({
     </template>
 
     <template #description>
-      <span>{{ page.hero.description }}</span>
+      <div class="animate__animated animate__jello">
+        <span>{{ page.hero.description }}</span>
+      </div>
     </template>
 
     <template #headline>
