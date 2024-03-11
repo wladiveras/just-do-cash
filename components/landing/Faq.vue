@@ -81,19 +81,7 @@ const page = reactive({
       :description="page.faq.description"
       class="scroll-mt-[var(--header-height)]"
     >
-      <ULandingFAQ
-        multiple
-        :items="page.faq.items"
-        :ui="{
-          button: {
-            label: 'font-semibold',
-            trailingIcon: {
-              base: 'w-6 h-6',
-            },
-          },
-        }"
-        class="max-w-4xl mx-auto"
-      />
+      <ULandingFAQ multiple :items="page.faq.items" class="max-w-4xl mx-auto" />
     </ULandingSection>
   </div>
 </template>

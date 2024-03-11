@@ -20,11 +20,13 @@ export const useMetaStore = defineStore({
 
       if (!error) {
         for (const k of keys) {
+          // @ts-ignore
           this.updateMeta(k, data.value[k]);
         }
       }
     },
     updateMeta(key: string, newMeta: JSON | string | number | boolean) {
+      // @ts-ignore
       this.metas[key] = newMeta;
     },
   },

@@ -18,15 +18,21 @@ const paymentMethods = reactive([
 const changeSelectedMethod = (method: any) => {
   paymentMethods.forEach((m) => {
     m.active = false;
-  })
+  });
   method.active = true;
-}
+};
 </script>
 
 <template>
   <div>
     <UContainer>
-      <UCard>
+      <UCard
+        :ui="{
+          wrapper:
+            'p-0 m-0 m-0 border-s border-gray-200 dark:border-gray-800 space-y-2',
+          padding: 'p-0 m-0',
+        }"
+      >
         <template #header>
           <div class="flex items-center justify-between">
             <div>
