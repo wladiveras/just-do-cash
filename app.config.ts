@@ -19,14 +19,14 @@ export default defineAppConfig({
       dynamic: true,
     },
     button: {
-      rounded: "rounded-full",
+      rounded: "rounded",
       default: {
         size: "md",
         color: "black",
       },
     },
     input: {
-      rounded: "rounded-full",
+      rounded: "rounded",
     },
     header: {
       wrapper: "lg:!border-transparent bg-gray-50 dark:bg-gray-950",

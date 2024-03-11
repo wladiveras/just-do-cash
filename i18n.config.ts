@@ -5,6 +5,9 @@ import es from "~~/assets/locales/es.json";
 export default defineI18nConfig(() => ({
   legacy: false,
   locale: "pt",
+  strategy: "prefix_except_default",
+  detectBrowserLanguage: false,
+  defaultLocale: "pt",
   messages: {
     pt,
     en,

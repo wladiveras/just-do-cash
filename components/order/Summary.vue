@@ -1,8 +1,8 @@
 <script lang="ts" setup></script>
 <template>
   <div>
-    <UContainer v-motion-roll-visible-top>
-      <UCard>
+    <UContainer>
+      <UCard v-motion-fade-visible>
         <template #header>
           <div class="flex items-center justify-between">
             <div>
@@ -19,16 +19,18 @@
         <p>Um texto apresentavel do produto e todos os passos concluidos</p>
 
         <template #footer>
-          <UButton
-            v-motion-fade-visible
-            class="m-auto mx-auto w-full text-center"
-            color="primary"
-            icon="line-md:confirm"
-            variant="solid"
-            to="purchase"
-            label="finalizar compra"
-            block
-          />
+          <div class="animate__animated animate__zoomInDown">
+            <UButton
+              v-motion-fade-visible
+              class="m-auto mx-auto w-full text-center"
+              color="primary"
+              icon="line-md:confirm"
+              variant="solid"
+              to="purchase"
+              label="Concluir Pedido"
+              block
+            />
+          </div>
         </template>
       </UCard>
     </UContainer>

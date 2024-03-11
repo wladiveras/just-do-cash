@@ -35,12 +35,16 @@ const page = reactive({
 </script>
 <template>
   <ULandingHero>
-    <template #title>
-      <span class="max-w-1.5">{{ page.title }}</span>
+    <template #title class="">
+      <div class="animate__animated animate__backInDown">
+        <span class="max-w-1.2">{{ page.title }}</span>
+      </div>
     </template>
 
     <template #description>
-      <span>{{ page.hero.description }}</span>
+      <div class="animate__animated animate__jello">
+        <span>{{ page.hero.description }}</span>
+      </div>
     </template>
 
     <template #headline>

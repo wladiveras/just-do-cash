@@ -20,15 +20,23 @@ const links = [
 
 <template>
   <div>
-    <UHeader v-motion-pop-visible class="border-b border-gray-300">
+    <UHeader
+      fixed
+      v-motion-pop-visible
+      class="border-b border-gray-300 mb-[3rem]"
+      :ui="{
+        wrapper:
+          'bg-background/75 backdrop-blur border-b border-gray-200 dark:border-gray-800 -mb-px sticky top-0 z-50',
+      }"
+    >
       <template #logo>
         <UIcon name="streamline:subscription-cashflow" class="w-auto h-6" />
       </template>
 
       <template #center>
-        <ULink to="/" class="text-lg font-semibold hidden md:block">
-          Beleza Natural
-        </ULink>
+        <div class="animate__animated animate__slideInDown">
+          <OrderStep />
+        </div>
       </template>
 
       <template #right>

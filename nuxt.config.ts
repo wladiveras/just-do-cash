@@ -9,43 +9,28 @@ export default defineNuxtConfig({
     "@vueuse/nuxt",
     "@nuxtjs/i18n",
     "@pinia/nuxt",
+    "@pinia-plugin-persistedstate/nuxt",
     "@nuxtjs/supabase",
     "@formkit/auto-animate",
     "@vueuse/motion/nuxt",
   ],
-  ssr: true,
-  i18n: {
-    langDir: "assets/locales/",
-    locales: [
-      {
-        code: "en",
-        iso: "en-US",
-        file: "en.json",
-      },
-      {
-        code: "es",
-        iso: "es",
-        file: "es.json",
-      },
-      {
-        code: "pt",
-        iso: "pt-BR",
-        file: "pt.json",
-      },
-    ],
-    strategy: "prefix_except_default",
-    detectBrowserLanguage: false,
-    defaultLocale: "pt",
-  },
+  css: ["~/assets/scss/main.scss"],
+
   nitro: {
     prerender: {
+      routes: ["/"],
       autoSubfolderIndex: false,
     },
   },
-  ui: {
-    icons: ["heroicons", "simple-icons"],
-  },
   app: {
+    head: {
+      link: [
+        {
+          rel: "stylesheet",
+          href: "https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css",
+        },
+      ],
+    },
     pageTransition: { name: "page", mode: "out-in" },
   },
   runtimeConfig: {
@@ -79,11 +64,26 @@ export default defineNuxtConfig({
       pathPrefix: false,
     },
   ],
+  vite: {
+    css: {
+      preprocessorOptions: {
+        scss: {
+          additionalData: '@use "@/assets/scss/main.scss" as *;',
+        },
+      },
+    },
+  },
   supabase: {
     redirectOptions: {
       login: "/login",
       callback: "/confirm",
-      exclude: ["/", "/confirm", "/login", "/purchase", "/order"],
+      exclude: [
+        "/",
+        "/confirm",
+        "/login",
+        "/order/complete",
+        "/order/checkout",
+      ],
       cookieRedirect: true,
     },
     cookieOptions: {
