@@ -3,21 +3,25 @@ import { object, string, type InferType, ValidationError } from "yup";
 
 // Stores
 const orderStore = useOrderStore();
-const card = orderStore.checkout.card;
+const { checkout, steps } = orderStore;
 
 // Composables
 const toast = useToast();
 
 // Trigger to next step from summary
-watchEffect(() => {
-  if (orderStore.steps.trigger === true) {
-    handleNextStep();
-  }
-});
+watch(
+  () => steps.trigger,
+  (value) => {
+    if (value === true) {
+      handleNextStep();
+    }
+  },
+);
 
 const cardSchema = object({
   holderName: string().required("Nome do titular do cartão é obrigatório"),
   number: string()
+    .min(16, "Minimo de 16 dígitos")
     .max(19, "Maximo de 19 dígitos")
     .required("Número do cartão é obrigatório")
     .test("credit-card", "Número de cartão inválido", (value) => {
@@ -52,7 +56,7 @@ const cardSchema = object({
     .length(3, "CVV deve ter 3 dígitos"),
 });
 
-// Gen type to schema
+// Gen type to from schema
 type TCardSchema = InferType<typeof cardSchema>;
 
 const holderInputMaskOptions = {
@@ -67,12 +71,18 @@ const holderInputMaskOptions = {
 };
 
 const handleNextStep = async () => {
-  try {
-    await cardSchema.validate(card);
-  } catch (error) {
-    if (error instanceof ValidationError) {
-      toast.add({ title: error.errors[0] });
+  if (steps.trigger === true) {
+    try {
+      await cardSchema.validate(checkout.card);
+    } catch (error) {
+      if (error instanceof ValidationError) {
+        toast.add({
+          title: error.errors[0],
+          icon: "material-symbols:error-outline",
+        });
+      }
     }
+    orderStore.TriggerStep(false);
   }
 };
 </script>
@@ -83,14 +93,14 @@ const handleNextStep = async () => {
       <ClientOnly>
         <UForm
           :schema="cardSchema"
-          :state="card"
+          :state="checkout.card"
           class="space-y-4 space-y-4 flex flex-col justify-top p-[2rem]"
         >
           <UFormGroup label="Nome no Cartão" name="holderName">
             <UInput
               v-maska:[holderInputMaskOptions]
               data-maska="A A A"
-              v-model="card.holderName"
+              v-model="checkout.card.holderName"
               maxlength="30"
             />
           </UFormGroup>
@@ -99,7 +109,7 @@ const handleNextStep = async () => {
             <UInput
               v-maska
               data-maska="#### #### #### ####"
-              v-model="card.number"
+              v-model="checkout.card.number"
               maxlength="30"
             />
           </UFormGroup>
@@ -107,7 +117,7 @@ const handleNextStep = async () => {
           <div class="grid grid-cols-3 gap-2">
             <UFormGroup label="Exp. Mês" name="expireMonth">
               <USelect
-                v-model="card.expireMonth"
+                v-model="checkout.card.expireMonth"
                 icon="quill:snooze-month"
                 size="sm"
                 :options="months"
@@ -116,7 +126,7 @@ const handleNextStep = async () => {
             </UFormGroup>
             <UFormGroup label="Exp. Ano" name="expireYear">
               <USelect
-                v-model="card.expireYear"
+                v-model="checkout.card.expireYear"
                 icon="quill:snooze-month"
                 size="sm"
                 :options="years"
@@ -125,7 +135,7 @@ const handleNextStep = async () => {
             </UFormGroup>
             <UFormGroup label="CVV" name="cvv">
               <UInput
-                v-model="card.cvv"
+                v-model="checkout.card.cvv"
                 icon="iconoir:card-lock"
                 size="sm"
                 v-maska
@@ -142,11 +152,11 @@ const handleNextStep = async () => {
         <Card
           v-motion-fade-visible
           class="transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-110 duration-300"
-          :cardholder="card.holderName"
-          :cardnumber="card.number"
-          :expire_month="card.expireMonth"
-          :expire_year="card.expireYear"
-          :cvv="card.cvv"
+          :cardholder="checkout.card.holderName"
+          :cardnumber="checkout.card.number"
+          :expire_month="checkout.card.expireMonth"
+          :expire_year="checkout.card.expireYear"
+          :cvv="checkout.card.cvv"
         />
       </div>
     </div>

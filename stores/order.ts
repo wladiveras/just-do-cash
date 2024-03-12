@@ -38,9 +38,6 @@ export const useOrderStore = defineStore("order", {
   actions: {
     TriggerStep(value: boolean) {
       this.steps.trigger = value;
-      setTimeout(() => {
-        this.steps.trigger = !this.steps.trigger;
-      }, 5000);
     },
     nextStep() {
       this.steps.step++;

@@ -1,8 +1,9 @@
 <script lang="ts" setup>
+// Stores
 const orderStore = useOrderStore();
+const { steps } = orderStore;
 
-const trigger = computed(() => orderStore.steps.trigger);
-
+// Actions
 const nextStep = () => {
   orderStore.TriggerStep(true);
 };
@@ -39,8 +40,8 @@ const nextStep = () => {
               variant="solid"
               label="Concluir Pedido"
               block
-              :loading="trigger"
-              :disabled="trigger"
+              :loading="steps.trigger"
+              :disabled="steps.trigger"
               @click="nextStep"
             />
           </div>
