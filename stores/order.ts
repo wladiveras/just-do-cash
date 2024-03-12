@@ -23,6 +23,7 @@ export const useOrderStore = defineStore("order", {
         id: 0,
         name: "",
         price: 0,
+        method: "credit_card",
         card: {
           holderName: "",
           number: "",

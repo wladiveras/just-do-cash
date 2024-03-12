@@ -1,4 +1,33 @@
-<script lang="ts" setup></script>
+<script lang="ts" setup>
+const orderStore = useOrderStore();
+const { checkout, steps } = orderStore;
+
+// Composables
+const toast = useToast();
+
+// Trigger to next step from summary
+watch(
+  () => steps.trigger,
+  (value) => {
+    if (value === true) {
+      handleNextStep();
+    }
+  },
+);
+
+onMounted(() => {
+  checkout.method = "paypal";
+});
+
+// Handle Next Step from summary
+const handleNextStep = async () => {
+  if (steps.trigger === true) {
+    try {
+    } catch (error) {}
+    orderStore.TriggerStep(false);
+  }
+};
+</script>
 
 <template>
   <div class="w-full flex flex-col gap-y-4">
