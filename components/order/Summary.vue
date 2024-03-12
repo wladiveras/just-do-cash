@@ -1,4 +1,12 @@
-<script lang="ts" setup></script>
+<script lang="ts" setup>
+const orderStore = useOrderStore();
+
+const trigger = computed(() => orderStore.steps.trigger);
+
+const nextStep = () => {
+  orderStore.TriggerStep(true);
+};
+</script>
 <template>
   <div>
     <UContainer>
@@ -19,16 +27,21 @@
         <p>Um texto apresentavel do produto e todos os passos concluidos</p>
 
         <template #footer>
-          <div class="animate__animated animate__zoomInDown">
+          <div
+            class="animate__animated animate__zoomInDown"
+            v-motion-roll-visible-top
+          >
             <UButton
               v-motion-fade-visible
               class="m-auto mx-auto w-full text-center"
               color="primary"
               icon="line-md:confirm"
               variant="solid"
-              to="purchase"
               label="Concluir Pedido"
               block
+              :loading="trigger"
+              :disabled="trigger"
+              @click="nextStep"
             />
           </div>
         </template>

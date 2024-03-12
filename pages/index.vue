@@ -16,3 +16,8 @@ onMounted(() => {
     <LandingFaq />
   </div>
 </template>
+<style lang="scss" scoped>
+.w-content {
+  @include w-border-debug;
+}
+</style>

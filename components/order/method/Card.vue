@@ -1,22 +1,22 @@
 <script lang="ts" setup>
-import { object, string } from "yup";
+import { object, string, type InferType, ValidationError } from "yup";
 
+// Stores
 const orderStore = useOrderStore();
 const card = orderStore.checkout.card;
 
-const options = {
-  tokens: {
-    A: {
-      pattern: /[A-Z]/,
-      multiple: true,
-      useMax: 10,
-      transform: (chr: string) => chr.toUpperCase(),
-    },
-  },
-};
+// Composables
+const toast = useToast();
 
-const schema = object({
-  holdername: string().required("Nome do titular do cartão é obrigatório"),
+// Trigger to next step from summary
+watchEffect(() => {
+  if (orderStore.steps.trigger === true) {
+    handleNextStep();
+  }
+});
+
+const cardSchema = object({
+  holderName: string().required("Nome do titular do cartão é obrigatório"),
   number: string()
     .max(19, "Maximo de 19 dígitos")
     .required("Número do cartão é obrigatório")
@@ -52,16 +52,29 @@ const schema = object({
     .length(3, "CVV deve ter 3 dígitos"),
 });
 
-const months = Array.from({ length: 12 }, (_, index) => {
-  const month = (index + 1).toString().padStart(2, "0");
-  return { value: month, label: month };
-});
+// Gen type to schema
+type TCardSchema = InferType<typeof cardSchema>;
 
-const currentYear = new Date().getFullYear();
-const years = Array.from({ length: 31 }, (_, index) => {
-  const year = currentYear + index;
-  return { value: year.toString(), label: year.toString() };
-});
+const holderInputMaskOptions = {
+  tokens: {
+    A: {
+      pattern: /[A-Z]/,
+      multiple: true,
+      useMax: 10,
+      transform: (chr: string) => chr.toUpperCase(),
+    },
+  },
+};
+
+const handleNextStep = async () => {
+  try {
+    await cardSchema.validate(card);
+  } catch (error) {
+    if (error instanceof ValidationError) {
+      toast.add({ title: error.errors[0] });
+    }
+  }
+};
 </script>
 
 <template>
@@ -69,20 +82,20 @@ const years = Array.from({ length: 31 }, (_, index) => {
     <div class="grid grid-cols-1 md:grid-cols-2 gap-2">
       <ClientOnly>
         <UForm
-          :schema="schema"
+          :schema="cardSchema"
           :state="card"
           class="space-y-4 space-y-4 flex flex-col justify-top p-[2rem]"
         >
-          <UFormGroup label="Nome no Cartão">
+          <UFormGroup label="Nome no Cartão" name="holderName">
             <UInput
-              v-maska:[options]
+              v-maska:[holderInputMaskOptions]
               data-maska="A A A"
-              v-model="card.holdername"
+              v-model="card.holderName"
               maxlength="30"
             />
           </UFormGroup>
 
-          <UFormGroup label="Número do Cartão">
+          <UFormGroup label="Número do Cartão" name="number">
             <UInput
               v-maska
               data-maska="#### #### #### ####"
@@ -92,7 +105,7 @@ const years = Array.from({ length: 31 }, (_, index) => {
           </UFormGroup>
 
           <div class="grid grid-cols-3 gap-2">
-            <UFormGroup label="Exp. Mês">
+            <UFormGroup label="Exp. Mês" name="expireMonth">
               <USelect
                 v-model="card.expireMonth"
                 icon="quill:snooze-month"
@@ -101,7 +114,7 @@ const years = Array.from({ length: 31 }, (_, index) => {
                 placeholder="Mês..."
               />
             </UFormGroup>
-            <UFormGroup label="Exp. Ano">
+            <UFormGroup label="Exp. Ano" name="expireYear">
               <USelect
                 v-model="card.expireYear"
                 icon="quill:snooze-month"
@@ -110,7 +123,7 @@ const years = Array.from({ length: 31 }, (_, index) => {
                 placeholder="Ano..."
               />
             </UFormGroup>
-            <UFormGroup label="CVV">
+            <UFormGroup label="CVV" name="cvv">
               <UInput
                 v-model="card.cvv"
                 icon="iconoir:card-lock"
@@ -129,7 +142,7 @@ const years = Array.from({ length: 31 }, (_, index) => {
         <Card
           v-motion-fade-visible
           class="transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-110 duration-300"
-          :cardholder="card.holdername"
+          :cardholder="card.holderName"
           :cardnumber="card.number"
           :expire_month="card.expireMonth"
           :expire_year="card.expireYear"
