@@ -18,6 +18,11 @@ watch(
   },
 );
 
+onMounted(() => {
+  checkout.method = "paypal";
+});
+
+// Schema Validation
 const cardSchema = object({
   holderName: string().required("Nome do titular do cartão é obrigatório"),
   number: string()
@@ -70,6 +75,7 @@ const holderInputMaskOptions = {
   },
 };
 
+// Handle Next Step from summary
 const handleNextStep = async () => {
   if (steps.trigger === true) {
     try {

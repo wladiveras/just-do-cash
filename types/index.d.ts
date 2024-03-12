@@ -65,6 +65,7 @@ interface ICheckout {
   id: number;
   name: string;
   price: number;
+  method: string;
   card: {
     holderName: string;
     number: string;
