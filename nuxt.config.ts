@@ -15,7 +15,7 @@ export default defineNuxtConfig({
     "@vueuse/motion/nuxt",
   ],
   css: ["~/assets/scss/main.scss"],
-  ssr: false,
+  ssr: true,
   nitro: {
     prerender: {
       routes: ["/"],
