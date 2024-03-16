@@ -29,7 +29,7 @@ export const useOrderStore = defineStore("order", {
         neighborhood: "",
         city: "",
         state: "",
-        country: "",
+        country: "BR",
         complement: "",
         zipcode: "",
       },

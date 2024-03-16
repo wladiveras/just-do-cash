@@ -12,19 +12,19 @@ onMounted(() => {
   <UContainer>
     <div class="flex flex-col md:flex-row gap-10 md:gap-0">
       <!-- Dados Pessoais do cliente -->
-      <OrderStepPersonal class="px-0 py-0" v-if="steps.step === 1" />
+      <OrderStepPersonal class="flex-2 px-0 py-0" v-if="steps.step === 1" />
 
       <!-- Dados de entrega do cliente apenas caso tenha que receber produtos fisicos -->
-      <OrderStepDelivery class="px-0 py-0" v-if="steps.step === 2" />
+      <OrderStepDelivery class="flex-1 px-0 py-0" v-if="steps.step === 2" />
 
       <!-- Detalhamento do pedido -->
-      <OrderStepInvoice class="px-0 py-0" v-if="steps.step === 4" />
+      <OrderStepInvoice class="flex-1 px-0 py-0" v-if="steps.step === 4" />
 
       <!-- Etapa para escolher  o metodo de pagamento e finalizar o pedido <obrigatoria> -->
-      <OrderStepPayment class="px-0 py-0" v-if="steps.step === 3" />
+      <OrderStepPayment class="flex-1 px-0 py-0" v-if="steps.step === 3" />
 
       <!-- Sumario do pedido e controle de etapas -->
-      <OrderSummary v-if="steps.step >= 3" />
+      <OrderSummary v-if="steps.step >= 2" class="flex-3 md:max-w-[400px]" />
     </div>
   </UContainer>
 </template>

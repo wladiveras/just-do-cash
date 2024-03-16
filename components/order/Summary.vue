@@ -1,7 +1,23 @@
 <script lang="ts" setup>
 // Stores
 const orderStore = useOrderStore();
-const { steps, isLoading } = orderStore;
+const { steps } = orderStore;
+
+const icon = ref("line-md:arrow-small-right");
+const label = ref("Continuar");
+
+watch(
+  () => steps.step,
+  () => {
+    if (steps.step === steps.max) {
+      icon.value = "line-md:check-all";
+      label.value = "Finalizar Pedido";
+    } else {
+      icon.value = "line-md:arrow-small-right";
+      label.value = "Continuar";
+    }
+  },
+);
 
 // Actions
 const nextStep = () => {
@@ -36,9 +52,9 @@ const nextStep = () => {
               v-motion-fade-visible
               class="m-auto mx-auto w-full text-center"
               color="primary"
-              icon="line-md:confirm"
+              :icon="icon"
               variant="solid"
-              label="Concluir Pedido"
+              :label="label"
               block
               :loading="steps.trigger"
               :disabled="steps.trigger"

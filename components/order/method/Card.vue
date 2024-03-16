@@ -80,6 +80,7 @@ const handleNextStep = async () => {
   if (steps.trigger === true) {
     try {
       await cardSchema.validate(payment.card);
+      orderStore.nextStep();
     } catch (error) {
       if (error instanceof ValidationError) {
         toast.add({

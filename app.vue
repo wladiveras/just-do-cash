@@ -30,7 +30,7 @@ useHead({
 
 <style lang="scss" scoped>
 .main {
-  overflow: hidden;
+  overflow-x: hidden;
 }
 
 .page-enter-active,

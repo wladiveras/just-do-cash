@@ -3,7 +3,7 @@ import { object, string, type InferType, ValidationError } from "yup";
 
 // Stores
 const orderStore = useOrderStore();
-const { isLoading, customer, steps } = orderStore;
+const { customer, steps } = orderStore;
 
 // Composables
 const toast = useToast();
@@ -53,6 +53,7 @@ const handleNextStep = async () => {
   if (steps.trigger === true) {
     try {
       await personalSchema.validate(customer);
+      orderStore.nextStep();
     } catch (error) {
       if (error instanceof ValidationError) {
         toast.add({
