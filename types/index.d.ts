@@ -43,11 +43,13 @@ export interface Range {
 }
 
 interface IOrderState {
+  isLoading: boolean;
   steps: IStep;
   items: IItems[];
   seller: ISeller;
   customer: ICustomer;
-  checkout: ICheckout;
+  address: IAddress;
+  payment: IPayment;
   token: string | "";
 }
 interface IStep {
@@ -55,13 +57,23 @@ interface IStep {
   max: number;
   trigger: boolean;
 }
+interface IAddress {
+  street: string;
+  number: string;
+  neighborhood: string;
+  city: string;
+  state: string;
+  country: string;
+  complement: string;
+  zipcode: string;
+}
 interface IItems {
   id: number;
   name: string;
   price: number;
 }
 
-interface ICheckout {
+interface IPayment {
   id: number;
   name: string;
   price: number;
@@ -84,4 +96,7 @@ interface ISeller {
 interface ICustomer {
   id: number;
   name: string;
+  email: string;
+  phone: string;
+  document: string;
 }

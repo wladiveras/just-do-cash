@@ -4,6 +4,7 @@ import type { IOrderState } from "~/types";
 export const useOrderStore = defineStore("order", {
   state: (): IOrderState => {
     return {
+      isLoading: false,
       steps: {
         step: 1,
         max: 3,
@@ -18,8 +19,21 @@ export const useOrderStore = defineStore("order", {
       customer: {
         id: 0,
         name: "",
+        email: "",
+        phone: "",
+        document: "",
       },
-      checkout: {
+      address: {
+        street: "",
+        number: "",
+        neighborhood: "",
+        city: "",
+        state: "",
+        country: "BR",
+        complement: "",
+        zipcode: "",
+      },
+      payment: {
         id: 0,
         name: "",
         price: 0,
@@ -37,7 +51,7 @@ export const useOrderStore = defineStore("order", {
     };
   },
   actions: {
-    TriggerStep(value: boolean) {
+    triggerStep(value: boolean) {
       this.steps.trigger = value;
     },
     nextStep() {

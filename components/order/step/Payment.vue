@@ -1,4 +1,5 @@
 <script lang="ts" setup>
+const orderStore = useOrderStore();
 // Payment Methods
 const paymentMethods = reactive([
   {
@@ -20,6 +21,10 @@ const changeSelectedMethod = (method: any) => {
     m.active = false;
   });
   method.active = true;
+};
+
+const previousStep = () => {
+  orderStore.prevStep();
 };
 </script>
 
@@ -49,7 +54,7 @@ const changeSelectedMethod = (method: any) => {
                 variant="link"
                 label="Button"
                 :trailing="false"
-                to="/"
+                @click="previousStep"
               >
                 Voltar
               </UButton>

@@ -18,7 +18,7 @@ useHead({
 </script>
 
 <template>
-  <UMain>
+  <UMain class="main">
     <NuxtLoadingIndicator />
     <NuxtLayout>
       <NuxtPage />
@@ -29,6 +29,10 @@ useHead({
 </template>
 
 <style lang="scss" scoped>
+.main {
+  overflow-x: hidden;
+}
+
 .page-enter-active,
 .page-leave-active {
   transition: all 0.4s;

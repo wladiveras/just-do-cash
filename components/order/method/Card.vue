@@ -3,7 +3,7 @@ import { object, string, type InferType, ValidationError } from "yup";
 
 // Stores
 const orderStore = useOrderStore();
-const { checkout, steps } = orderStore;
+const { payment, steps } = orderStore;
 
 // Composables
 const toast = useToast();
@@ -19,7 +19,7 @@ watch(
 );
 
 onMounted(() => {
-  checkout.method = "paypal";
+  payment.method = "credit_card";
 });
 
 // Schema Validation
@@ -79,7 +79,8 @@ const holderInputMaskOptions = {
 const handleNextStep = async () => {
   if (steps.trigger === true) {
     try {
-      await cardSchema.validate(checkout.card);
+      await cardSchema.validate(payment.card);
+      orderStore.nextStep();
     } catch (error) {
       if (error instanceof ValidationError) {
         toast.add({
@@ -88,7 +89,7 @@ const handleNextStep = async () => {
         });
       }
     }
-    orderStore.TriggerStep(false);
+    orderStore.triggerStep(false);
   }
 };
 </script>
@@ -99,14 +100,14 @@ const handleNextStep = async () => {
       <ClientOnly>
         <UForm
           :schema="cardSchema"
-          :state="checkout.card"
+          :state="payment.card"
           class="space-y-4 space-y-4 flex flex-col justify-top p-[2rem]"
         >
           <UFormGroup label="Nome no Cartão" name="holderName">
             <UInput
               v-maska:[holderInputMaskOptions]
               data-maska="A A A"
-              v-model="checkout.card.holderName"
+              v-model="payment.card.holderName"
               maxlength="30"
             />
           </UFormGroup>
@@ -115,7 +116,7 @@ const handleNextStep = async () => {
             <UInput
               v-maska
               data-maska="#### #### #### ####"
-              v-model="checkout.card.number"
+              v-model="payment.card.number"
               maxlength="30"
             />
           </UFormGroup>
@@ -123,7 +124,7 @@ const handleNextStep = async () => {
           <div class="grid grid-cols-3 gap-2">
             <UFormGroup label="Exp. Mês" name="expireMonth">
               <USelect
-                v-model="checkout.card.expireMonth"
+                v-model="payment.card.expireMonth"
                 icon="quill:snooze-month"
                 size="sm"
                 :options="months"
@@ -132,7 +133,7 @@ const handleNextStep = async () => {
             </UFormGroup>
             <UFormGroup label="Exp. Ano" name="expireYear">
               <USelect
-                v-model="checkout.card.expireYear"
+                v-model="payment.card.expireYear"
                 icon="quill:snooze-month"
                 size="sm"
                 :options="years"
@@ -141,7 +142,7 @@ const handleNextStep = async () => {
             </UFormGroup>
             <UFormGroup label="CVV" name="cvv">
               <UInput
-                v-model="checkout.card.cvv"
+                v-model="payment.card.cvv"
                 icon="iconoir:card-lock"
                 size="sm"
                 v-maska
@@ -158,11 +159,11 @@ const handleNextStep = async () => {
         <Card
           v-motion-fade-visible
           class="transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-110 duration-300"
-          :cardholder="checkout.card.holderName"
-          :cardnumber="checkout.card.number"
-          :expire_month="checkout.card.expireMonth"
-          :expire_year="checkout.card.expireYear"
-          :cvv="checkout.card.cvv"
+          :cardholder="payment.card.holderName"
+          :cardnumber="payment.card.number"
+          :expire_month="payment.card.expireMonth"
+          :expire_year="payment.card.expireYear"
+          :cvv="payment.card.cvv"
         />
       </div>
     </div>
