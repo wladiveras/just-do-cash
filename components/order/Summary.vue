@@ -1,11 +1,11 @@
 <script lang="ts" setup>
 // Stores
 const orderStore = useOrderStore();
-const { steps } = orderStore;
+const { steps, isLoading } = orderStore;
 
 // Actions
 const nextStep = () => {
-  orderStore.TriggerStep(true);
+  orderStore.triggerStep(true);
 };
 </script>
 <template>

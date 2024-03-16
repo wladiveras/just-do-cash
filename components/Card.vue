@@ -1,6 +1,6 @@
 <script lang="ts" setup>
 const orderStore = useOrderStore();
-const { checkout } = storeToRefs(orderStore);
+const { payment } = storeToRefs(orderStore);
 
 const props = defineProps({
   cardholder: {
@@ -63,12 +63,12 @@ function discoverCardBrand(cardNumber: string) {
 
   for (const { pattern, brand } of regexes) {
     if (pattern.test(number)) {
-      checkout.value.card.brand = brand;
+      payment.value.card.brand = brand;
       return brand;
     }
   }
 
-  checkout.value.card.brand = "Unknown";
+  payment.value.card.brand = "Unknown";
   return "Unknown";
 }
 

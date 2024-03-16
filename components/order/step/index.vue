@@ -1,25 +1,39 @@
 <script lang="ts" setup>
+const orderStore = useOrderStore();
+const { steps } = orderStore;
+
+// Actions
+const nextStep = () => {
+  orderStore.triggerStep(true);
+};
+
 const links = [
   {
     step: 1,
     label: "Dados Pessoais",
     icon: "fa6-solid:address-card",
-    to: "/",
+    active: false,
   },
   {
     step: 2,
     label: "Dados de Entrega",
     icon: "entypo:address",
+    ui: { color: "primary" },
+    active: true,
   },
   {
     step: 3,
     label: "Pagamento",
     icon: "fluent-mdl2:payment-card",
+    active: false,
   },
 ];
 
 const isOpen = ref(false);
-const currentStep = links.filter((link) => link.step === 3);
+
+const changeStep = (step: number) => {
+  console.log(step);
+};
 </script>
 
 <template>
@@ -37,8 +51,6 @@ const currentStep = links.filter((link) => link.step === 3);
       </UBreadcrumb>
 
       <UContainer class="block md:hidden cursor-pointer" @click="isOpen = true">
-        <UIcon :name="currentStep[0].icon" size="1.5rem" class="mr-[0.4rem]" />
-        <span>{{ currentStep[0].label }}</span>
       </UContainer>
     </UContainer>
 
@@ -64,11 +76,10 @@ const currentStep = links.filter((link) => link.step === 3);
             padding: 'p-0 ps-4',
           }"
           :links="links"
+          @click="changeStep"
         />
 
-        <template #footer>
-          <Placeholder class="h-8" />
-        </template>
+        <template #footer> x </template>
       </UCard>
     </USlideover>
   </div>

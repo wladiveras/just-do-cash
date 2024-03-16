@@ -1,6 +1,6 @@
 <script lang="ts" setup>
 const orderStore = useOrderStore();
-const { checkout, steps } = orderStore;
+const { payment, steps } = orderStore;
 
 // Composables
 const toast = useToast();
@@ -16,7 +16,7 @@ watch(
 );
 
 onMounted(() => {
-  checkout.method = "paypal";
+  payment.method = "paypal";
 });
 
 // Handle Next Step from summary
@@ -24,7 +24,7 @@ const handleNextStep = async () => {
   if (steps.trigger === true) {
     try {
     } catch (error) {}
-    orderStore.TriggerStep(false);
+    orderStore.triggerStep(false);
   }
 };
 </script>
