@@ -43,7 +43,7 @@
     "@nuxt/eslint-config": "^0.2.0",
     "@nuxtjs/i18n": "^8.1.1",
     "@nuxtjs/supabase": "^1.1.7",
-    "@types/node": "^20.11.24",
+    "@types/node": "^20.11.29",
     "@typescript-eslint/eslint-plugin": "^7.1.1",
     "@typescript-eslint/parser": "^7.1.1",
     "eslint": "^8.57.0",
