@@ -18,6 +18,13 @@ watch(
   },
 );
 
+// Scroll to top
+const mainContainer = <HTMLElement | null>null;
+
+onMounted(() => {
+  mainContainer?.scrollIntoView({ behavior: "smooth" });
+});
+
 // Schema Validation
 const personalSchema = object({
   email: string()
@@ -59,7 +66,7 @@ const handleTrigger = async () => {
 </script>
 
 <template>
-  <UContainer>
+  <UContainer v-ref="mainContainer">
     <UForm
       :schema="personalSchema"
       :state="customer"
@@ -104,8 +111,8 @@ const handleTrigger = async () => {
               size="xl"
             />
           </UFormGroup>
-          <div class="flex justify-center w-full">
-            <div class="w-full mr-[1rem]">
+          <div class="flex flex-wrap justify-center w-full">
+            <div class="w-full md:flex-1 md:mr-5">
               <UFormGroup name="phone" label="Celular" class="mb-5">
                 <UInput
                   variant="outline"
@@ -119,7 +126,7 @@ const handleTrigger = async () => {
                 />
               </UFormGroup>
             </div>
-            <div class="w-full ml-[1rem]">
+            <div class="w-full md:flex-1 md:ml-5">
               <UFormGroup name="document" label="Documento" class="mb-5">
                 <UInput
                   variant="outline"

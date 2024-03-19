@@ -1,5 +1,11 @@
 <script lang="ts" setup>
-const orderStore = useOrderStore();
+// Scroll to top
+const mainContainer = <HTMLElement | null>null;
+
+onMounted(() => {
+  mainContainer?.scrollIntoView({ behavior: "smooth" });
+});
+
 // Payment Methods
 const paymentMethods = reactive([
   {
@@ -22,14 +28,10 @@ const changeSelectedMethod = (method: any) => {
   });
   method.active = true;
 };
-
-const previousStep = () => {
-  orderStore.prevStep();
-};
 </script>
 
 <template>
-  <UContainer class="mb-[10rem]">
+  <UContainer v-ref="mainContainer" class="mb-[10rem]">
     <div class="animate__animated animate__bounceIn">
       <div class="flex items-center justify-center flex-wrap">
         <div class="w-full text-center mb-10 mt-10">
