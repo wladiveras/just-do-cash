@@ -113,7 +113,7 @@ const handleTrigger = async () => {
           <UFormGroup label="CEP" name="zipcode" class="mb-5">
             <UInput
               variant="outline"
-              icon="line-md:phone-add"
+              icon="line-md:map-marker-multiple-alt-filled"
               v-model="address.zipcode"
               size="xl"
               v-maska
@@ -124,7 +124,7 @@ const handleTrigger = async () => {
           <UFormGroup label="Rua/Logradouro" name="street" class="mb-5">
             <UInput
               variant="outline"
-              icon="line-md:phone-add"
+              icon="line-md:home-simple"
               v-model="address.street"
               size="xl"
               maxlength="30"
@@ -135,7 +135,7 @@ const handleTrigger = async () => {
               <UFormGroup label="Número" name="number" class="mb-5">
                 <UInput
                   variant="outline"
-                  icon="line-md:phone-add"
+                  icon="line-md:map-marker-alt"
                   v-model="address.number"
                   size="xl"
                   maxlength="30"
@@ -146,7 +146,7 @@ const handleTrigger = async () => {
               <UFormGroup label="Bairro" name="neighborhood" class="mb-5">
                 <UInput
                   variant="outline"
-                  icon="line-md:phone-add"
+                  icon="line-md:home-simple"
                   v-model="address.neighborhood"
                   size="xl"
                   maxlength="30"
@@ -160,7 +160,7 @@ const handleTrigger = async () => {
               <UFormGroup label="Cidade" name="city" class="mb-5">
                 <UInput
                   variant="outline"
-                  icon="line-md:phone-add"
+                  icon="line-md:map-marker-alt"
                   v-model="address.city"
                   size="xl"
                   maxlength="30"
@@ -171,7 +171,7 @@ const handleTrigger = async () => {
               <UFormGroup label="País" name="country" class="mb-5">
                 <UInput
                   variant="outline"
-                  icon="line-md:phone-add"
+                  icon="line-md:map-marker-alt-filled"
                   v-model="address.country"
                   size="xl"
                   maxlength="30"
@@ -184,7 +184,7 @@ const handleTrigger = async () => {
               <UFormGroup label="Estado" name="state" class="mb-5">
                 <UInput
                   variant="outline"
-                  icon="line-md:phone-add"
+                  icon="line-md:map-marker-alt-filled"
                   v-model="address.state"
                   size="xl"
                   maxlength="30"
@@ -196,7 +196,7 @@ const handleTrigger = async () => {
           <UFormGroup label="Complemento" name="complement" class="mb-5">
             <UInput
               variant="outline"
-              icon="line-md:phone-add"
+              icon="line-md:map-marker-alt"
               v-model="address.complement"
               size="xl"
               maxlength="30"
