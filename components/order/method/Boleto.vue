@@ -16,7 +16,7 @@ watch(
 );
 
 onMounted(() => {
-  payment.method = "PAYPAL";
+  payment.method = "BOLETO";
 });
 
 // Handle Next Step from summary
@@ -35,15 +35,14 @@ const handleTrigger = async () => {
       <div class="space-y-4 flex flex-col justify-top p-[2rem]">
         <p class="text-base pl-2">
           Ao clicar em <span class="text-primary">"Finalizar Pedido"</span>,
-          você será redirecionado para o site do PayPal para concluir sua compra
-          de forma segura.
+          você será redirecionado para a página de confirmação do pedido.
         </p>
       </div>
 
       <div class="space-y-4 flex flex-col justify-center items-center">
         <div class="max-w-[20rem]">
           <UIcon
-            name="logos:paypal"
+            name="fa-solid:file-invoice"
             class="text-[10rem] transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-110 duration-300 cursor-pointer"
           />
         </div>
