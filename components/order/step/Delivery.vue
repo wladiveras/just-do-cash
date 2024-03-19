@@ -37,6 +37,33 @@ const addressSchema = object({
   zipcode: string().required("É obrigatório informar um CEP"),
 });
 
+const fetchData = async (zipcode: any) => {
+  try {
+    const response = await fetch(`https://viacep.com.br/ws/${zipcode}/json/`);
+    const data = await response.json();
+    updateAddress(data);
+  } catch (error) {
+    console.error("Error fetching data from viacep.com.br", error);
+  }
+};
+
+// Update address values in pinia
+const updateAddress = (data: any) => {
+  address.street = data.logradouro;
+  address.neighborhood = data.bairro;
+  address.city = data.localidade;
+  address.state = data.uf;
+  address.country = "Brasil";
+  address.zipcode = data.cep;
+};
+
+watch(
+  () => address.zipcode,
+  (zipcode) => {
+    if (zipcode.length >= 9) fetchData(zipcode);
+  },
+);
+
 // Handle Next Step from summary
 const handleTrigger = async () => {
   if (steps.trigger === true) {
@@ -86,17 +113,18 @@ const handleTrigger = async () => {
           <UFormGroup label="CEP" name="zipcode" class="mb-5">
             <UInput
               variant="outline"
-              icon="line-md:phone-add"
+              icon="line-md:map-marker-multiple-alt-filled"
               v-model="address.zipcode"
               size="xl"
-              maxlength="30"
+              v-maska
+              data-maska="['#####-###']"
               placeholder="Informe o CEP para carregar o endereço"
             />
           </UFormGroup>
           <UFormGroup label="Rua/Logradouro" name="street" class="mb-5">
             <UInput
               variant="outline"
-              icon="line-md:phone-add"
+              icon="line-md:home-simple"
               v-model="address.street"
               size="xl"
               maxlength="30"
@@ -107,7 +135,7 @@ const handleTrigger = async () => {
               <UFormGroup label="Número" name="number" class="mb-5">
                 <UInput
                   variant="outline"
-                  icon="line-md:phone-add"
+                  icon="line-md:map-marker-alt"
                   v-model="address.number"
                   size="xl"
                   maxlength="30"
@@ -118,7 +146,7 @@ const handleTrigger = async () => {
               <UFormGroup label="Bairro" name="neighborhood" class="mb-5">
                 <UInput
                   variant="outline"
-                  icon="line-md:phone-add"
+                  icon="line-md:home-simple"
                   v-model="address.neighborhood"
                   size="xl"
                   maxlength="30"
@@ -132,7 +160,7 @@ const handleTrigger = async () => {
               <UFormGroup label="Cidade" name="city" class="mb-5">
                 <UInput
                   variant="outline"
-                  icon="line-md:phone-add"
+                  icon="line-md:map-marker-alt"
                   v-model="address.city"
                   size="xl"
                   maxlength="30"
@@ -143,7 +171,7 @@ const handleTrigger = async () => {
               <UFormGroup label="País" name="country" class="mb-5">
                 <UInput
                   variant="outline"
-                  icon="line-md:phone-add"
+                  icon="line-md:map-marker-alt-filled"
                   v-model="address.country"
                   size="xl"
                   maxlength="30"
@@ -156,7 +184,7 @@ const handleTrigger = async () => {
               <UFormGroup label="Estado" name="state" class="mb-5">
                 <UInput
                   variant="outline"
-                  icon="line-md:phone-add"
+                  icon="line-md:map-marker-alt-filled"
                   v-model="address.state"
                   size="xl"
                   maxlength="30"
@@ -168,7 +196,7 @@ const handleTrigger = async () => {
           <UFormGroup label="Complemento" name="complement" class="mb-5">
             <UInput
               variant="outline"
-              icon="line-md:phone-add"
+              icon="line-md:map-marker-alt"
               v-model="address.complement"
               size="xl"
               maxlength="30"
