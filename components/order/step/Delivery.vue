@@ -7,20 +7,17 @@ const { customer, address, steps } = orderStore;
 
 // Composables
 const toast = useToast();
+const { isMobile } = useDevice();
 
 // Trigger to next step from summary
 watch(
   () => steps.trigger,
   (value) => {
     if (value === true) {
-      handleNextStep();
+      handleTrigger();
     }
   },
 );
-
-const nextStep = () => {
-  orderStore.triggerStep(true);
-};
 
 const previousStep = () => {
   orderStore.prevStep();
@@ -34,12 +31,11 @@ const addressSchema = object({
   city: string().required("É obrigatório informar uma cidade"),
   state: string().required("É obrigatório informar um estado"),
   //country: string().required("É obrigatório informar um país"),
-  complement: string().required("É obrigatório informar um complemento"),
   zipcode: string().required("É obrigatório informar um CEP"),
 });
 
 // Handle Next Step from summary
-const handleNextStep = async () => {
+const handleTrigger = async () => {
   if (steps.trigger === true) {
     try {
       await addressSchema.validate(address);
@@ -59,81 +55,104 @@ const handleNextStep = async () => {
 </script>
 
 <template>
-  <div>
-    <UContainer>
-      <UCard
-        class="animate__animated animate__bounceIn"
-        :ui="{
-          wrapper:
-            'p-0 m-0 m-0 border-s border-gray-200 dark:border-gray-800 space-y-2',
-          padding: 'p-0 m-0',
-        }"
-      >
-        <template #header>
-          <div class="flex items-center justify-between">
-            <div>
-              <h1 class="text-lg font-semibold">Dados de Entrega</h1>
-              <span class="text-sm text-gray-600">
-                <b>{{ customer.name }}</b> Informe os dados para a entrega do
-                seu produto
-              </span>
-            </div>
-            <div>
-              <UButton
-                icon="i-heroicons-arrow-left"
-                size="sm"
-                color="primary"
-                variant="link"
-                label="Button"
-                :trailing="false"
-                @click="previousStep"
-              >
-                Voltar
-              </UButton>
-            </div>
+  <UContainer class="mb-[7rem]">
+    <UForm
+      :schema="addressSchema"
+      :state="customer"
+      class="space-y-4 space-y-4 flex flex-col justify-top p-[2rem] max-w-[800px]"
+    >
+      <div class="animate__animated animate__bounceIn">
+        <div class="flex items-center justify-center flex-wrap">
+          <div class="w-full text-center mb-10 mt-10">
+            <UIcon
+              name="streamline:subscription-cashflow"
+              class="w-auto h-16"
+            />
           </div>
-        </template>
-        <div>
-          <div class="border-b pt-5 pb-5 dark:border-gray-800">
-            <div class="w-full flex flex-wrap sm:flex-nowrap">
-              <div class="text-xl flex items-center block w-full">
-                <UForm
-                  :schema="addressSchema"
-                  :state="address"
-                  class="space-y-4 space-y-4 flex flex-col justify-top p-[2rem]"
-                >
-                  <UFormGroup label="Rua" name="street">
-                    <UInput v-model="address.street" />
-                  </UFormGroup>
 
-                  <UFormGroup label="Numero" name="number">
-                    <UInput v-model="address.number" />
-                  </UFormGroup>
-
-                  <UFormGroup label="Bairro" name="neighborhood">
-                    <UInput v-model="address.neighborhood" />
-                  </UFormGroup>
-                  <UFormGroup label="Cidade" name="city">
-                    <UInput v-model="address.city" />
-                  </UFormGroup>
-                  <UFormGroup label="Estado" name="state">
-                    <UInput v-model="address.state" />
-                  </UFormGroup>
-
-                  <UFormGroup label="Complemento" name="complement">
-                    <UInput v-model="address.complement" />
-                  </UFormGroup>
-                  <UFormGroup label="CEP" name="zipcode">
-                    <UInput v-model="address.zipcode" />
-                  </UFormGroup>
-                </UForm>
-              </div>
-            </div>
+          <div class="text-center">
+            <p class="text-2xl">Endereço de Entrega</p>
+            <p class="text-sm mb-10 text-gray-500 dark:text-gray-400">
+              Agora, informe o endereço de entrega, é nessa etapa que cuidamos
+              para que o seu produto chegue até você com toda segurança e
+              agilidade.
+            </p>
           </div>
         </div>
-      </UCard>
-    </UContainer>
-  </div>
+        <div>
+          <UFormGroup label="Logradouro" name="street" class="mb-5">
+            <UInput
+              variant="outline"
+              icon="line-md:phone-add"
+              v-model="address.street"
+              size="xl"
+              maxlength="30"
+            />
+          </UFormGroup>
+
+          <UFormGroup label="Número" name="number" class="mb-5">
+            <UInput
+              variant="outline"
+              icon="line-md:phone-add"
+              v-model="address.number"
+              size="xl"
+              maxlength="30"
+            />
+          </UFormGroup>
+
+          <UFormGroup label="Bairro" name="neighborhood" class="mb-5">
+            <UInput
+              variant="outline"
+              icon="line-md:phone-add"
+              v-model="address.neighborhood"
+              size="xl"
+              maxlength="30"
+            />
+          </UFormGroup>
+
+          <UFormGroup label="Cidade" name="city" class="mb-5">
+            <UInput
+              variant="outline"
+              icon="line-md:phone-add"
+              v-model="address.city"
+              size="xl"
+              maxlength="30"
+            />
+          </UFormGroup>
+
+          <UFormGroup label="Estado" name="state" class="mb-5">
+            <UInput
+              variant="outline"
+              icon="line-md:phone-add"
+              v-model="address.state"
+              size="xl"
+              maxlength="30"
+            />
+          </UFormGroup>
+
+          <UFormGroup label="Complemento" name="complement" class="mb-5">
+            <UInput
+              variant="outline"
+              icon="line-md:phone-add"
+              v-model="address.complement"
+              size="xl"
+              maxlength="30"
+            />
+          </UFormGroup>
+
+          <UFormGroup label="CEP" name="zipcode" class="mb-5">
+            <UInput
+              variant="outline"
+              icon="line-md:phone-add"
+              v-model="address.zipcode"
+              size="xl"
+              maxlength="30"
+            />
+          </UFormGroup>
+        </div>
+      </div>
+    </UForm>
+  </UContainer>
 </template>
 
 <style></style>

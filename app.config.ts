@@ -29,7 +29,7 @@ export default defineAppConfig({
       rounded: "rounded",
     },
     header: {
-      wrapper: "lg:!border-transparent bg-gray-50 dark:bg-gray-950",
+      wrapper: "bg-gray-50 dark:bg-gray-950",
       links: {
         wrapper:
           "ring-1 ring-gray-200 dark:ring-gray-800 px-3 gap-x-0 rounded-full",

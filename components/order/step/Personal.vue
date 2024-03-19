@@ -13,20 +13,10 @@ watch(
   () => steps.trigger,
   (value) => {
     if (value === true) {
-      handleNextStep();
+      handleTrigger();
     }
   },
 );
-
-const PersonalStep = ref(false);
-
-const nextStep = () => {
-  orderStore.triggerStep(true);
-};
-
-const triggerPersonalStep = () => {
-  PersonalStep.value = !PersonalStep.value;
-};
 
 // Schema Validation
 const personalSchema = object({
@@ -49,7 +39,7 @@ const personalSchema = object({
 });
 
 // Handle Next Step from summary
-const handleNextStep = async () => {
+const handleTrigger = async () => {
   if (steps.trigger === true) {
     try {
       await personalSchema.validate(customer);
@@ -73,9 +63,9 @@ const handleNextStep = async () => {
     <UForm
       :schema="personalSchema"
       :state="customer"
-      class="space-y-4 space-y-4 flex flex-col justify-top p-[2rem]"
+      class="space-y-4 space-y-4 flex flex-col justify-top p-[2rem] max-w-[800px]"
     >
-      <div v-show="!PersonalStep" class="animate__animated animate__backInUp">
+      <div class="animate__animated animate__bounceIn">
         <div class="flex items-center justify-center flex-wrap">
           <div class="w-full text-center mb-10 mt-10">
             <UIcon
@@ -85,58 +75,12 @@ const handleNextStep = async () => {
           </div>
 
           <div class="text-center">
-            <p class="text-2xl">Vamos começar com seu email</p>
-            <p class="text-lg mb-10">Informe seu email para continuar</p>
-          </div>
-        </div>
-
-        <UFormGroup name="email">
-          <UInput
-            variant="outline"
-            icon="line-md:email-opened-twotone-alt"
-            v-model="customer.email"
-            placeholder="Ex: email@justdo.cash"
-            maxlength="30"
-            size="xl"
-          />
-        </UFormGroup>
-        <UButton
-          class="m-auto mx-auto w-full text-center mt-10"
-          icon="line-md:arrow-small-right"
-          color="primary"
-          variant="solid"
-          size="md"
-          block
-          @click="triggerPersonalStep"
-          :loading="steps.trigger"
-          :disabled="steps.trigger"
-        >
-          Continuar
-        </UButton>
-      </div>
-      <div v-if="PersonalStep" class="animate__animated animate__bounceIn">
-        <div class="flex items-center justify-center flex-wrap">
-          <div class="w-full text-center mb-10 mt-10">
-            <UIcon
-              name="streamline:subscription-cashflow"
-              class="w-auto h-16"
-            />
-          </div>
-
-          <div class="text-center">
-            <UButton
-              icon="i-heroicons-arrow-left"
-              size="sm"
-              color="primary"
-              variant="link"
-              label="Button"
-              :trailing="false"
-              @click="triggerPersonalStep"
-            >
-              Mudar Email
-            </UButton>
-            <p class="text-2xl">Agora informe seu dados pessoais</p>
-            <p class="text-lg mb-10">Informe os dados pessoas para continuar</p>
+            <p class="text-2xl">Dados Pessoais</p>
+            <p class="text-sm mb-10 text-gray-500 dark:text-gray-400">
+              Informe seu sdados pessoais, dessa forma, conseguiremos
+              identificar você para garantir que o produto chegue em suas mãos
+              da maneira mais segura e rápida possível.
+            </p>
           </div>
         </div>
         <div>
@@ -150,48 +94,49 @@ const handleNextStep = async () => {
               size="xl"
             />
           </UFormGroup>
-          <UFormGroup name="document" label="Documento" class="mb-5">
+          <UFormGroup name="email" label="Email" class="mb-5">
             <UInput
               variant="outline"
-              icon="line-md:document-add"
-              v-model="customer.document"
-              placeholder="CPF ou CNPJ"
-              v-maska
-              data-maska="[
-                '###.###.###-##',
-                '##.###.###/####-##'
-              ]"
+              icon="line-md:email-opened-twotone-alt"
+              v-model="customer.email"
+              placeholder="Ex: email@justdo.cash"
               maxlength="30"
               size="xl"
             />
           </UFormGroup>
-          <UFormGroup name="phone" label="Celular" class="mb-5">
-            <UInput
-              variant="outline"
-              icon="line-md:phone-add"
-              v-model="customer.phone"
-              v-maska
-              data-maska="['+55 (##) #####-####']"
-              placeholder="(xx) xxxxx-xxxx"
-              maxlength="30"
-              size="xl"
-            />
-          </UFormGroup>
-          <UFormGroup name="next">
-            <UButton
-              class="m-auto mx-auto w-full text-center mt-10"
-              icon="line-md:arrow-small-right"
-              color="primary"
-              variant="solid"
-              size="md"
-              block
-              @click="nextStep"
-              :loading="steps.trigger"
-              :disabled="steps.trigger"
-            >
-              Continuar
-            </UButton>
-          </UFormGroup>
+          <div class="flex justify-center w-full">
+            <div class="w-full mr-[1rem]">
+              <UFormGroup name="phone" label="Celular" class="mb-5">
+                <UInput
+                  variant="outline"
+                  icon="line-md:phone-add"
+                  v-model="customer.phone"
+                  v-maska
+                  data-maska="['+55 (##) #####-####']"
+                  placeholder="(xx) xxxxx-xxxx"
+                  maxlength="30"
+                  size="xl"
+                />
+              </UFormGroup>
+            </div>
+            <div class="w-full ml-[1rem]">
+              <UFormGroup name="document" label="Documento" class="mb-5">
+                <UInput
+                  variant="outline"
+                  icon="line-md:document-add"
+                  v-model="customer.document"
+                  placeholder="CPF ou CNPJ"
+                  v-maska
+                  data-maska="[
+                    '###.###.###-##',
+                    '##.###.###/####-##'
+                  ]"
+                  maxlength="30"
+                  size="xl"
+                />
+              </UFormGroup>
+            </div>
+          </div>
         </div>
       </div>
     </UForm>

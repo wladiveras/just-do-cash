@@ -29,70 +29,64 @@ const previousStep = () => {
 </script>
 
 <template>
-  <div>
-    <UContainer>
-      <UCard
-        :ui="{
-          wrapper:
-            'p-0 m-0 m-0 border-s border-gray-200 dark:border-gray-800 space-y-2',
-          padding: 'p-0 m-0',
-        }"
-      >
-        <template #header>
-          <div class="flex items-center justify-between">
-            <div>
-              <h1 class="text-lg font-semibold">Metodo de Pagamento</h1>
-              <span class="text-sm text-gray-600"
-                >Selecione um metodo de pagamento</span
-              >
-            </div>
-            <div>
-              <UButton
-                icon="i-heroicons-arrow-left"
-                size="sm"
-                color="primary"
-                variant="link"
-                label="Button"
-                :trailing="false"
-                @click="previousStep"
-              >
-                Voltar
-              </UButton>
-            </div>
-          </div>
-        </template>
-        <div>
+  <UContainer class="mb-[10rem]">
+    <div class="animate__animated animate__bounceIn">
+      <div class="flex items-center justify-center flex-wrap">
+        <div class="w-full text-center mb-10 mt-10">
+          <UIcon name="streamline:subscription-cashflow" class="w-auto h-16" />
+        </div>
+
+        <div class="text-center">
+          <p class="text-2xl">Formas de Pagamento</p>
+          <p class="text-sm mb-10 text-gray-500 dark:text-gray-400">
+            Quase lá, agora escolha uma forma de pagamento para concluir seu
+            pedido.
+          </p>
+        </div>
+      </div>
+      <div>
+        <div
+          v-for="method in paymentMethods"
+          :key="method.label"
+          v-auto-animate
+          class="payment-method border-b pt-5 pb-5 dark:border-gray-800"
+        >
           <div
-            v-for="method in paymentMethods"
-            :key="method.label"
-            v-auto-animate
-            class="payment-method border-b pt-5 pb-5 dark:border-gray-800"
+            class="w-full flex flex-wrap sm:flex-nowrap"
+            @click="changeSelectedMethod(method)"
           >
             <div
-              class="w-full flex flex-wrap sm:flex-nowrap"
-              @click="changeSelectedMethod(method)"
+              v-auto-animate
+              class="font-bold text-xl flex items-center block w-full cursor-pointer"
+              :class="{
+                'text-primary dark:text-primary': method.active,
+              }"
             >
-              <div
-                v-auto-animate
-                class="font-bold text-xl flex items-center block w-full"
-                :class="{
-                  'text-primary dark:text-primary': method.active,
-                }"
-              >
-                <UIcon :name="method.icon" class="mr-2 text-xl" />
-                <span>{{ method.label }}</span>
+              <div class="flex justify-between w-full">
+                <div>
+                  <UIcon :name="method.icon" class="mr-2 mt-[-0.2rem]" />
+                  <span>{{ method.label }}</span>
+                </div>
+                <div>
+                  <UTooltip
+                    :text="`Clique para selecionar a forma de pagamento ${method.label}`"
+                    :popper="{ placement: 'left', arrow: true }"
+                  >
+                    <UIcon name="game-icons:click" class="" />
+                  </UTooltip>
+                </div>
               </div>
             </div>
-            <component
-              :is="method.component"
-              v-if="method.active"
-              v-motion-roll-visible-bottom
-            />
           </div>
+          <component
+            :is="method.component"
+            v-if="method.active"
+            v-motion-roll-visible-bottom
+          />
         </div>
-      </UCard>
-    </UContainer>
-  </div>
+      </div>
+    </div>
+  </UContainer>
 </template>
 
 <style></style>

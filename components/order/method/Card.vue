@@ -13,7 +13,7 @@ watch(
   () => steps.trigger,
   (value) => {
     if (value === true) {
-      handleNextStep();
+      handleTrigger();
     }
   },
 );
@@ -76,7 +76,7 @@ const holderInputMaskOptions = {
 };
 
 // Handle Next Step from summary
-const handleNextStep = async () => {
+const handleTrigger = async () => {
   if (steps.trigger === true) {
     try {
       await cardSchema.validate(payment.card);
