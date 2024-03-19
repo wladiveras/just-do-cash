@@ -37,8 +37,9 @@ const handleTrigger = async () => {
           <UIcon name="logos:paypal" class="ml-2" /> Pague com PayPal
         </h2>
         <p class="text-base pl-2">
-          Ao clicar em "Concluir Pedido", você será redirecionado para o site do
-          PayPal para concluir sua compra de forma segura.
+          Ao clicar em <span class="text-primary">"Finalizar Pedido"</span>,
+          você será redirecionado para o site do PayPal para concluir sua compra
+          de forma segura.
         </p>
       </div>
 

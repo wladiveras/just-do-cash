@@ -41,6 +41,11 @@ export default defineNuxtConfig({
     },
     pageTransition: { name: "page", mode: "out-in" },
   },
+  router: {
+    options: {
+      scrollBehaviorType: "smooth",
+    },
+  },
   runtimeConfig: {
     turnstile: {
       siteKey: process.env.TURNSTILE_SITE_KEY,

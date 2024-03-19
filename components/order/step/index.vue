@@ -19,25 +19,22 @@ watch(
 );
 
 // Actions
-
 const previousStep = () => {
   orderStore.prevStep();
-  window.scrollTo({ top: 0, behavior: "smooth" });
 };
 
 const triggerStep = () => {
   orderStore.triggerStep(true);
-  window.scrollTo({ top: 0, behavior: "smooth" });
 };
 </script>
 
 <template>
   <UContainer>
-    <UCard class="max-w-[20rem] m-auto">
+    <UCard class="max-w-[24rem] m-auto">
       <div
-        class="flex justify-between items-center animate__animated animate__backInUp"
+        class="flex justify-center items-center animate__animated animate__backInUp"
       >
-        <div v-if="steps.step >= 2" class="w-full mr-[1rem]">
+        <div v-if="steps.step >= 2" class="w-full">
           <UButtonGroup
             size="sm"
             orientation="horizontal"
@@ -56,20 +53,20 @@ const triggerStep = () => {
             </UButton>
           </UButtonGroup>
         </div>
-        <div class="w-full ml-[1rem]">
+        <div class="w-full">
           <UButtonGroup
             size="sm"
             orientation="horizontal"
             class="w-full"
             :class="{
-              'w-[8rem]': steps.step >= 2,
+              'w-[10rem]': steps.step >= 2,
             }"
           >
             <UButton
               class="text-center"
               color="primary"
               variant="solid"
-              label="Continuar"
+              :label="label"
               size="md"
               block
               @click="triggerStep"
@@ -77,7 +74,7 @@ const triggerStep = () => {
               :disabled="steps.trigger"
             >
               <template #trailing>
-                <UIcon name="line-md:arrow-small-right" size="1.3rem" />
+                <UIcon :name="icon" size="1.3rem" />
               </template>
             </UButton>
           </UButtonGroup>
