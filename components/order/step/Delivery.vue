@@ -168,6 +168,17 @@ const handleTrigger = async () => {
               </UFormGroup>
             </div>
             <div class="w-full md:flex-1 md:ml-5 md:mr-5">
+              <UFormGroup label="Estado" name="state" class="mb-5">
+                <UInput
+                  variant="outline"
+                  icon="line-md:map-marker-alt-filled"
+                  v-model="address.state"
+                  size="xl"
+                  maxlength="30"
+                />
+              </UFormGroup>
+            </div>
+            <div class="w-full md:flex-1 md:ml-5">
               <UFormGroup label="País" name="country" class="mb-5">
                 <UInput
                   variant="outline"
@@ -177,17 +188,6 @@ const handleTrigger = async () => {
                   maxlength="30"
                   value="Brasil"
                   disabled
-                />
-              </UFormGroup>
-            </div>
-            <div class="w-full md:flex-1 md:ml-5">
-              <UFormGroup label="Estado" name="state" class="mb-5">
-                <UInput
-                  variant="outline"
-                  icon="line-md:map-marker-alt-filled"
-                  v-model="address.state"
-                  size="xl"
-                  maxlength="30"
                 />
               </UFormGroup>
             </div>
