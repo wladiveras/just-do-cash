@@ -30,10 +30,8 @@ const triggerStep = () => {
 
 <template>
   <UContainer>
-    <UCard class="max-w-[24rem] m-auto">
-      <div
-        class="flex justify-center items-center animate__animated animate__backInUp"
-      >
+    <UCard class="max-w-[24rem] m-auto animate__animated animate__backInUp">
+      <div class="flex justify-center items-center">
         <div v-if="steps.step >= 2" class="w-full">
           <UButtonGroup
             size="sm"

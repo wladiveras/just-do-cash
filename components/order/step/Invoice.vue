@@ -1,13 +1,11 @@
-<template>
-  <div>
-    
-  </div>
-</template>
-
 <script lang="ts" setup>
-
+definePageMeta({
+  scrollToTop: true,
+});
 </script>
 
-<style>
+<template>
+  <div></div>
+</template>
 
-</style>
+<style></style>

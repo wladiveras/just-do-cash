@@ -19,7 +19,7 @@ watch(
 );
 
 onMounted(() => {
-  payment.method = "credit_card";
+  payment.method = "CREDIT_CARD";
 });
 
 // Schema Validation

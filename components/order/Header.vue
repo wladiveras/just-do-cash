@@ -8,7 +8,7 @@ const { isMobile } = useDevice();
 </script>
 
 <template>
-  <div class="fixed w-full z-10">
+  <div class="w-full z-10">
     <UHeader
       fixed
       v-motion-pop-visible
@@ -58,7 +58,7 @@ const { isMobile } = useDevice();
       </template>
 
       <template #right>
-        <ToggleLocation size="sm" />
+        <!-- <ToggleLocation size="sm" /> -->
         <UColorModeButton size="sm" />
       </template>
     </UHeader>
