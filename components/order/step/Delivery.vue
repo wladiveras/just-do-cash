@@ -37,6 +37,33 @@ const addressSchema = object({
   zipcode: string().required("É obrigatório informar um CEP"),
 });
 
+const fetchData = async (zipcode: any) => {
+  try {
+    const response = await fetch(`https://viacep.com.br/ws/${zipcode}/json/`);
+    const data = await response.json();
+    updateAddress(data);
+  } catch (error) {
+    console.error("Error fetching data from viacep.com.br", error);
+  }
+};
+
+// Update address values in pinia
+const updateAddress = (data: any) => {
+  address.street = data.logradouro;
+  address.neighborhood = data.bairro;
+  address.city = data.localidade;
+  address.state = data.uf;
+  address.country = "Brasil";
+  address.zipcode = data.cep;
+};
+
+watch(
+  () => address.zipcode,
+  (zipcode) => {
+    if (zipcode.length >= 9) fetchData(zipcode);
+  },
+);
+
 // Handle Next Step from summary
 const handleTrigger = async () => {
   if (steps.trigger === true) {
@@ -89,7 +116,8 @@ const handleTrigger = async () => {
               icon="line-md:phone-add"
               v-model="address.zipcode"
               size="xl"
-              maxlength="30"
+              v-maska
+              data-maska="['#####-###']"
               placeholder="Informe o CEP para carregar o endereço"
             />
           </UFormGroup>
