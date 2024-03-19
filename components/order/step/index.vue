@@ -2,87 +2,89 @@
 const orderStore = useOrderStore();
 const { steps } = orderStore;
 
+const icon = ref("line-md:arrow-small-right");
+const label = ref("Continuar");
+
+watch(
+  () => steps.step,
+  () => {
+    if (steps.step === steps.max) {
+      icon.value = "line-md:check-all";
+      label.value = "Finalizar Pedido";
+    } else {
+      icon.value = "line-md:arrow-small-right";
+      label.value = "Continuar";
+    }
+  },
+);
+
 // Actions
-const nextStep = () => {
-  orderStore.triggerStep(true);
+
+const previousStep = () => {
+  orderStore.prevStep();
+  window.scrollTo({ top: 0, behavior: "smooth" });
 };
 
-const links = [
-  {
-    step: 1,
-    label: "Dados Pessoais",
-    icon: "fa6-solid:address-card",
-    active: false,
-  },
-  {
-    step: 2,
-    label: "Dados de Entrega",
-    icon: "entypo:address",
-    ui: { color: "primary" },
-    active: true,
-  },
-  {
-    step: 3,
-    label: "Pagamento",
-    icon: "fluent-mdl2:payment-card",
-    active: false,
-  },
-];
-
-const isOpen = ref(false);
-
-const changeStep = (step: number) => {
-  console.log(step);
+const triggerStep = () => {
+  orderStore.triggerStep(true);
+  window.scrollTo({ top: 0, behavior: "smooth" });
 };
 </script>
 
 <template>
-  <div class="flex justify-center">
-    <UContainer class="flex flex-col items-center">
-      <UBreadcrumb
-        v-auto-animate
-        :links="links"
-        :ui="{ ol: 'gap-x-3', li: 'gap-x-3' }"
-        class="hidden sm:block"
+  <UContainer>
+    <UCard class="max-w-[20rem] m-auto">
+      <div
+        class="flex justify-between items-center animate__animated animate__backInUp"
       >
-        <template #divider>
-          <UIcon name="line-md:chevron-small-right" size="2rem" />
-        </template>
-      </UBreadcrumb>
-
-      <UContainer class="block md:hidden cursor-pointer" @click="isOpen = true">
-      </UContainer>
-    </UContainer>
-
-    <USlideover v-model="isOpen">
-      <UCard
-        class="flex flex-col flex-1"
-        :ui="{
-          body: { base: 'flex-1' },
-          ring: '',
-          divide: 'divide-y divide-gray-100 dark:divide-gray-800',
-        }"
-      >
-        <template #header>
-          <span class="font-bold text-base">
-            <UIcon name="bi:bar-chart-steps" /> Etapas
-          </span>
-        </template>
-
-        <UVerticalNavigation
-          :ui="{
-            wrapper: 'border-s border-gray-200 dark:border-gray-800 space-y-2',
-            base: 'border-s -ms-px leading-6 before:hidden',
-            padding: 'p-0 ps-4',
-          }"
-          :links="links"
-          @click="changeStep"
-        />
-
-        <template #footer> x </template>
-      </UCard>
-    </USlideover>
-  </div>
+        <div v-if="steps.step >= 2" class="w-full mr-[1rem]">
+          <UButtonGroup
+            size="sm"
+            orientation="horizontal"
+            class="w-full w-[8rem]"
+          >
+            <UButton
+              class="text-center"
+              color="primary"
+              variant="outline"
+              icon="line-md:arrow-small-left"
+              size="md"
+              label="Voltar"
+              block
+              @click="previousStep"
+            >
+            </UButton>
+          </UButtonGroup>
+        </div>
+        <div class="w-full ml-[1rem]">
+          <UButtonGroup
+            size="sm"
+            orientation="horizontal"
+            class="w-full"
+            :class="{
+              'w-[8rem]': steps.step >= 2,
+            }"
+          >
+            <UButton
+              class="text-center"
+              color="primary"
+              variant="solid"
+              label="Continuar"
+              size="md"
+              block
+              @click="triggerStep"
+              :loading="steps.trigger"
+              :disabled="steps.trigger"
+            >
+              <template #trailing>
+                <UIcon name="line-md:arrow-small-right" size="1.3rem" />
+              </template>
+            </UButton>
+          </UButtonGroup>
+        </div>
+      </div>
+    </UCard>
+  </UContainer>
 </template>
 
 <style></style>

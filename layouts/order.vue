@@ -9,7 +9,7 @@ const isLoading = ref(true);
 
 onMounted(() => {
   isLoading.value = false;
-})
+});
 </script>
 
 <template>
@@ -18,7 +18,7 @@ onMounted(() => {
     <div v-show="!isLoading" class="h-screen w-full">
       <UPage>
         <OrderHeader />
-        <UPageBody>
+        <UPageBody class="mt-[6rem] h-screen">
           <slot />
         </UPageBody>
       </UPage>

@@ -51,7 +51,7 @@ nuxtApp.hooks.hookOnce("page:finish", () => {
     document.querySelector("#promotion")!,
     document.querySelector("#faq")!,
   ]);
-})
+});
 
 const supabase = useSupabaseClient();
 const user = useSupabaseUser();
@@ -65,12 +65,12 @@ const handleLogin = () => {
 const handleLogout = async () => {
   await supabase.auth.signOut().catch((error) => {
     return console.log(error);
-  })
-}
+  });
+};
 </script>
 
 <template>
-  <UHeader :links="links">
+  <UHeader :links="links" class="lg:!border-transparent">
     <template #logo>
       <div v-motion-pop-visible>
         {{ name }}

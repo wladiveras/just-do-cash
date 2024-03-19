@@ -14,6 +14,9 @@ dependencies:
   '@nuxt/ui-pro':
     specifier: ^1.0.1
     version: 1.0.2(nuxt@3.10.3)(rollup@4.12.1)(vite@5.1.6)(vue@3.4.21)
+  '@nuxtjs/device':
+    specifier: ^3.1.1
+    version: 3.1.1(rollup@4.12.1)
   '@nuxtjs/fontaine':
     specifier: ^0.4.1
     version: 0.4.1(rollup@4.12.1)
@@ -79,6 +82,9 @@ devDependencies:
   '@nuxtjs/supabase':
     specifier: ^1.1.7
     version: 1.1.7(rollup@4.12.1)
+  '@nuxtjs/turnstile':
+    specifier: ^0.6.3
+    version: 0.6.3(rollup@4.12.1)
   '@types/node':
     specifier: ^20.11.24
     version: 20.11.25
@@ -1899,6 +1905,16 @@ packages:
       - supports-color
     dev: false
 
+  /@nuxtjs/device@3.1.1(rollup@4.12.1):
+    resolution: {integrity: sha512-wHTziEevt1hdgePQwPhEedWW3COalhP0YGVB+sGLqSrKujX8vdz7lcBFB01KIftpaP8kY5H8pssibNaJbxGcYw==}
+    dependencies:
+      '@nuxt/kit': 3.10.3(rollup@4.12.1)
+      defu: 6.1.4
+    transitivePeerDependencies:
+      - rollup
+      - supports-color
+    dev: false
+
   /@nuxtjs/fontaine@0.4.1(rollup@4.12.1):
     resolution: {integrity: sha512-8VnrFYnilfqlQVsCufiqoWusivYVOwP/0Nzu9FV44oryQlBa3qiT7EyOkKSmOxf9yZWCZBRc2wjTSxI+WTYlpg==}
     dependencies:
@@ -2038,6 +2054,17 @@ packages:
       - ts-node
       - uWebSockets.js
     dev: false
+
+  /@nuxtjs/turnstile@0.6.3(rollup@4.12.1):
+    resolution: {integrity: sha512-POo7J6mlN4apRKQQziyvbBN7IsOtDiDuH0euAWrFv5LUBuBlPcARJMsBhziYWp7hTSGpqS/DHj8/5mrVltQdzg==}
+    dependencies:
+      '@nuxt/kit': 3.10.3(rollup@4.12.1)
+      defu: 6.1.4
+      pathe: 1.1.2
+    transitivePeerDependencies:
+      - rollup
+      - supports-color
+    dev: true
 
   /@parcel/watcher-android-arm64@2.4.1:
     resolution: {integrity: sha512-LOi/WTbbh3aTn2RYddrO8pnapixAziFl6SMxHM69r3tvdSm94JtCenaKgk1GRg5FJ5wpMCpHeW+7yqPlvZv7kg==}

@@ -10,7 +10,7 @@ watch(
   () => steps.trigger,
   (value) => {
     if (value === true) {
-      handleNextStep();
+      handleTrigger();
     }
   },
 );
@@ -20,7 +20,7 @@ onMounted(() => {
 });
 
 // Handle Next Step from summary
-const handleNextStep = async () => {
+const handleTrigger = async () => {
   if (steps.trigger === true) {
     try {
     } catch (error) {}

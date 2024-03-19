@@ -2,27 +2,6 @@
 // Stores
 const orderStore = useOrderStore();
 const { steps } = orderStore;
-
-const icon = ref("line-md:arrow-small-right");
-const label = ref("Continuar");
-
-watch(
-  () => steps.step,
-  () => {
-    if (steps.step === steps.max) {
-      icon.value = "line-md:check-all";
-      label.value = "Finalizar Pedido";
-    } else {
-      icon.value = "line-md:arrow-small-right";
-      label.value = "Continuar";
-    }
-  },
-);
-
-// Actions
-const nextStep = () => {
-  orderStore.triggerStep(true);
-};
 </script>
 <template>
   <div>
@@ -46,20 +25,9 @@ const nextStep = () => {
         <template #footer>
           <div
             class="animate__animated animate__zoomInDown"
-            v-motion-roll-visible-top
+            v-motion-fade-visible
           >
-            <UButton
-              v-motion-fade-visible
-              class="m-auto mx-auto w-full text-center"
-              color="primary"
-              :icon="icon"
-              variant="solid"
-              :label="label"
-              block
-              :loading="steps.trigger"
-              :disabled="steps.trigger"
-              @click="nextStep"
-            />
+            <OrderStep />
           </div>
         </template>
       </UCard>

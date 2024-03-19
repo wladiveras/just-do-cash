@@ -13,7 +13,15 @@ export default defineNuxtConfig({
     "@nuxtjs/supabase",
     "@formkit/auto-animate",
     "@vueuse/motion/nuxt",
+    "@nuxtjs/device",
+    "@nuxtjs/turnstile",
   ],
+  turnstile: {
+    siteKey: process.env.TURNSTILE_SITE_KEY,
+  },
+  device: {
+    refreshOnResize: true,
+  },
   css: ["~/assets/scss/main.scss"],
   ssr: true,
   nitro: {
@@ -34,6 +42,9 @@ export default defineNuxtConfig({
     pageTransition: { name: "page", mode: "out-in" },
   },
   runtimeConfig: {
+    turnstile: {
+      siteKey: process.env.TURNSTILE_SITE_KEY,
+    },
     public: {
       name: process.env.APP_NAME || "Only do Cash",
       baseUrl: process.env.BASE_URL || "http://localhost:3000",
