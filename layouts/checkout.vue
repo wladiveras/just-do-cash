@@ -18,7 +18,7 @@ onMounted(() => {
     <div v-show="!isLoading" class="h-screen w-full">
       <UPage>
         <OrderHeader />
-        <UPageBody class="mt-[6rem] h-screen">
+        <UPageBody class="mt-[2rem] h-screen">
           <slot />
         </UPageBody>
       </UPage>
