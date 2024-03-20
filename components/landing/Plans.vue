@@ -79,11 +79,11 @@ const page = reactive({
     >
       <UPricingGrid
         id="pricing"
-        v-motion-pop-visible
         compact
         class="scroll-mt-[calc(var(--header-height)+140px+128px+96px)]"
       >
         <UPricingCard
+          v-motion-pop-visible
           v-for="(plan, index) in page.plans"
           :key="index"
           align="top"

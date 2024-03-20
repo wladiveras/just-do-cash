@@ -83,7 +83,7 @@ const handleTrigger = async () => {
           <UFormGroup name="name" label="Nome" class="mb-5">
             <UInput
               variant="outline"
-              icon="line-md:account"
+              icon="carbon:user"
               v-model="customer.name"
               placeholder="Nome Completo"
               maxlength="30"
@@ -93,7 +93,7 @@ const handleTrigger = async () => {
           <UFormGroup name="email" label="Email" class="mb-5">
             <UInput
               variant="outline"
-              icon="line-md:email-opened-twotone-alt"
+              icon="carbon:email"
               v-model="customer.email"
               placeholder="Ex: email@justdo.cash"
               maxlength="30"
@@ -105,7 +105,7 @@ const handleTrigger = async () => {
               <UFormGroup name="phone" label="Celular" class="mb-5">
                 <UInput
                   variant="outline"
-                  icon="line-md:phone-add"
+                  icon="carbon:phone"
                   v-model="customer.phone"
                   v-maska
                   data-maska="['+55 (##) #####-####']"
