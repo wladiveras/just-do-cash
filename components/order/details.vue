@@ -13,7 +13,7 @@ const props = defineProps({
 
 <template>
   <div>
-    <div class="flex items-center justify-center flex-wrap">
+    <div class="flex items-center justify-center flex-wrap mb-[3rem]">
       <div class="w-full text-center mb-10 pb-10 border-b dark:border-gray-800">
         <div>
           <div>

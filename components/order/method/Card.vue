@@ -59,6 +59,7 @@ const cardSchema = object({
   cvv: string()
     .required("CVV é obrigatório")
     .length(3, "CVV deve ter 3 dígitos"),
+  installments: string().required("Selecione a quantidade de parcelas"),
 });
 
 // Gen type to from schema
@@ -92,67 +93,116 @@ const handleTrigger = async () => {
     orderStore.triggerStep(false);
   }
 };
+
+// Installments
+const installments = [
+  {
+    name: "1 x R$ 37,99",
+    value: 1,
+    active: true,
+  },
+  {
+    name: "2 x R$ 19,31",
+    value: 2,
+  },
+  {
+    name: "3 x R$ 13,05",
+    value: 3,
+  },
+  {
+    name: "4 x R$ 9,93",
+    value: 4,
+  },
+];
 </script>
 
 <template>
   <div class="w-full flex flex-col">
     <div class="grid grid-cols-1 md:grid-cols-2 gap-2">
-      <ClientOnly>
-        <UForm
-          :schema="cardSchema"
-          :state="payment.card"
-          class="space-y-4 space-y-4 flex flex-col justify-top p-[2rem]"
+      <UForm
+        :schema="cardSchema"
+        :state="payment.card"
+        class="space-y-4 space-y-4 flex flex-col justify-top p-[2rem]"
+      >
+        <UFormGroup label="Nome no Cartão" name="holderName">
+          <UInput
+            v-maska:[holderInputMaskOptions]
+            data-maska="A A A"
+            v-model="payment.card.holderName"
+            maxlength="30"
+            placeholder="Ex: Nome Sobrenome..."
+            size="xl"
+          />
+        </UFormGroup>
+
+        <UFormGroup label="Número do Cartão" name="number">
+          <UInput
+            v-maska
+            data-maska="#### #### #### ####"
+            v-model="payment.card.number"
+            maxlength="30"
+            placeholder="Ex: 1234 5678 9876 54321..."
+            size="xl"
+          />
+        </UFormGroup>
+
+        <div
+          class="flex flex-wrap justify-center w-full space-y-4 space-y-4 md:space-y-0 md:space-y-0"
         >
-          <UFormGroup label="Nome no Cartão" name="holderName">
-            <UInput
-              v-maska:[holderInputMaskOptions]
-              data-maska="A A A"
-              v-model="payment.card.holderName"
-              maxlength="30"
+          <UFormGroup
+            label="Exp. Mês"
+            name="expireMonth"
+            class="w-full md:flex-1 md:mr-5"
+          >
+            <USelect
+              v-model="payment.card.expireMonth"
+              icon="quill:snooze-month"
+              size="xl"
+              :options="months"
+              placeholder="Mês..."
             />
           </UFormGroup>
 
-          <UFormGroup label="Número do Cartão" name="number">
+          <UFormGroup
+            label="Exp. Ano"
+            name="expireYear"
+            class="w-full md:flex-1 md:mr-5"
+          >
+            <USelect
+              v-model="payment.card.expireYear"
+              icon="quill:snooze-month"
+              size="xl"
+              :options="years"
+              placeholder="Ano..."
+            />
+          </UFormGroup>
+
+          <UFormGroup label="CVV" name="cvv" class="w-full md:flex-1 md:mr-5">
             <UInput
+              v-model="payment.card.cvv"
+              icon="iconoir:card-lock"
+              size="xl"
               v-maska
-              data-maska="#### #### #### ####"
-              v-model="payment.card.number"
-              maxlength="30"
+              data-maska="####"
+              placeholder="ex: 123"
             />
           </UFormGroup>
+        </div>
 
-          <div class="grid grid-cols-3 gap-2">
-            <UFormGroup label="Exp. Mês" name="expireMonth">
-              <USelect
-                v-model="payment.card.expireMonth"
-                icon="quill:snooze-month"
-                size="sm"
-                :options="months"
-                placeholder="Mês..."
-              />
-            </UFormGroup>
-            <UFormGroup label="Exp. Ano" name="expireYear">
-              <USelect
-                v-model="payment.card.expireYear"
-                icon="quill:snooze-month"
-                size="sm"
-                :options="years"
-                placeholder="Ano..."
-              />
-            </UFormGroup>
-            <UFormGroup label="CVV" name="cvv">
-              <UInput
-                v-model="payment.card.cvv"
-                icon="iconoir:card-lock"
-                size="sm"
-                v-maska
-                data-maska="####"
-                placeholder="ex: 123"
-              />
-            </UFormGroup>
-          </div>
-        </UForm>
-      </ClientOnly>
+        <UFormGroup label="Parcelas" name="installments">
+          <USelect
+            placeholder="Seleciona a quantidade de parcelas..."
+            v-model="payment.card.installments"
+            :options="installments"
+            option-attribute="name"
+            size="xl"
+          >
+            <template #trailing>
+              <UIcon name="i-heroicons-arrows-up-down-20-solid" />
+            </template>
+          </USelect>
+        </UFormGroup>
+      </UForm>
       <div
         class="space-y-4 flex flex-col justify-center items-center flex-wrap"
       >

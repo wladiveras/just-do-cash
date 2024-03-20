@@ -56,6 +56,7 @@ interface IStep {
   step: number;
   max: number;
   trigger: boolean;
+  rollback: boolean;
 }
 interface IAddress {
   street: string;
@@ -85,6 +86,7 @@ interface IPayment {
     expireYear: string;
     cvv: string;
     brand: string;
+    installments: number;
   };
 }
 

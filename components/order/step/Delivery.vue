@@ -1,10 +1,6 @@
 <script lang="ts" setup>
 import { object, string, type InferType, ValidationError } from "yup";
 
-definePageMeta({
-  scrollToTop: true,
-});
-
 // Stores
 const orderStore = useOrderStore();
 const { address, steps } = orderStore;
@@ -85,13 +81,19 @@ const handleTrigger = async () => {
 </script>
 
 <template>
-  <UContainer class="mb-[7rem]">
+  <UContainer class="mb-[15rem]">
     <UForm
       :schema="addressSchema"
       :state="address"
       class="space-y-4 space-y-4 flex flex-col justify-top p-[2rem] max-w-[800px]"
     >
-      <div class="animate__animated animate__backInRight">
+      <div
+        class="animate__animated"
+        :class="{
+          animate__backInRight: steps.rollback === false,
+          animate__backInLeft: steps.rollback === true,
+        }"
+      >
         <OrderDetails
           title="Endereço de Entrega"
           description="Agora, informe o endereço de entrega, é nessa etapa que cuidamos

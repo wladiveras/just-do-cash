@@ -1,7 +1,9 @@
 <script lang="ts" setup>
-definePageMeta({
-  scrollToTop: true,
-});
+const orderStore = useOrderStore();
+const { payment, steps } = orderStore;
+
+// Composables
+const toast = useToast();
 </script>
 
 <template>
