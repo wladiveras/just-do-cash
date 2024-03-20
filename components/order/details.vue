@@ -16,36 +16,37 @@ const props = defineProps({
     <div
       class="flex items-center justify-center flex-wrap mb-[3rem] border-b dark:border-gray-800 pb-10"
     >
-      <div class="w-full text-center mb-10 pb-10 border-b dark:border-gray-800">
-        <div>
-          <div>
-            <UAvatar
-              size="3xl"
-              src="https://imgs.search.brave.com/0R7bcQZDgbJqMyFh3GdAVAkFFvu_odufF8mRnfAj-5s/rs:fit:860:0:0/g:ce/aHR0cHM6Ly9pbWFn/ZW5zLXJldmlzdGEu/dml2YWRlY29yYS5j/b20uYnIvdXBsb2Fk/cy8yMDIwLzA3L2xp/bmRhLWlkZWlhLWRl/LWNhaXhhLXN1cnBy/ZXNhLWRlLWFuaXZl/cnMlQzMlQTFyaW8t/Rm90by1CZWlqb3Mt/RXZlbnRzLmpwZw"
-              alt="Product"
-              class="w-auto transition ease-in-out hover:-translate-y-1 hover:scale-110 duration-300"
-              :ui="{ rounded: 'rounded ' }"
-            />
-          </div>
-          <div>
-            <h1 class="text-2xl font-bold mt-5">
-              Box Premium
-              <UBadge
-                label="Assinatura"
-                variant="subtle"
-                class="relative bottom-1"
+      <div
+        class="w-full text-center md:text-left mb-10 pb-10 border-b dark:border-gray-800"
+      >
+        <div class="flex justify-center space-between">
+          <div class="flex flex-wrap space-between">
+            <div class="mr-5 w-full md:w-[350px]">
+              <img
+                class="w-full md:w-auto bg-auto rounded-md transition ease-in-out hover:-translate-y-1 hover:scale-110 duration-300"
+                src="https://blog.hubhomebox.com.br/wp-content/uploads/2020/09/clubes-de-assinatura-de-produtos-de-beleza-clubes-de-beleza-clubes-de-produtos-de-beleza-assinatura-produtos-de-beleza-1-1280x640.jpg"
               />
-            </h1>
-            <p class="text-sm text-gray-600 dark:text-gray-400">
-              criado por Wladi Granger
-            </p>
-            <p class="text-3xl font-bold text-primary">RS$ 120,99</p>
-            <p class="text-sm text-primary">
-              ou em 4 x de R$ 30,25 * no cartão
-            </p>
-            <p class="text-sm text-gray-600 dark:text-gray-400">
-              Promoção EXCLUSIVA
-            </p>
+            </div>
+            <div class="m-auto">
+              <h1 class="text-2xl font-bold text-center md:text-left">
+                Box Premium
+                <UBadge
+                  label="Assinatura"
+                  variant="subtle"
+                  class="relative bottom-1"
+                />
+              </h1>
+              <p class="text-sm text-gray-600 dark:text-gray-400">
+                criado por Wladi Granger
+              </p>
+              <p class="text-3xl font-bold text-primary">RS$ 120,99</p>
+              <p class="text-sm text-primary">
+                ou em 4 x de R$ 30,25 * no cartão
+              </p>
+              <p class="text-sm text-gray-600 dark:text-gray-400">
+                Promoção EXCLUSIVA
+              </p>
+            </div>
           </div>
         </div>
       </div>
