@@ -66,6 +66,11 @@ pnpm run preview
 
 Check out the [nuxt 3 documentation](https://nuxt.com/docs) and [nuxt UI](https://ui.nuxt.com/getting-started/) for more information.
 
+## Utils Links
+
+[iconify icons](https://icon-sets.iconify.design/)
+[Tailwind css](https://tailwindcss.com/docs/)
+
 ## Licence
 
 [MIT](./LICENSE)

@@ -177,7 +177,7 @@ const installments = [
             />
           </UFormGroup>
 
-          <UFormGroup label="CVV" name="cvv" class="w-full md:flex-1 md:mr-5">
+          <UFormGroup label="CVV" name="cvv" class="w-full md:flex-1">
             <UInput
               v-model="payment.card.cvv"
               icon="iconoir:card-lock"

@@ -81,7 +81,7 @@ const handleTrigger = async () => {
 </script>
 
 <template>
-  <UContainer class="mb-[15rem]">
+  <UContainer class="mb-[5rem]">
     <UForm
       :schema="addressSchema"
       :state="address"
