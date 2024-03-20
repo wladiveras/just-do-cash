@@ -40,7 +40,7 @@ const changeSelectedMethod = (method: any) => {
 </script>
 
 <template>
-  <UContainer class="mb-[8rem]">
+  <UContainer class="mb-[10rem]">
     <div
       class="animate__animated"
       :class="{

@@ -102,15 +102,15 @@ const installments = [
     active: true,
   },
   {
-    name: "2 x R$ 19,31",
+    name: "2 x R$ 60,50",
     value: 2,
   },
   {
-    name: "3 x R$ 13,05",
+    name: "3 x R$ 40,33",
     value: 3,
   },
   {
-    name: "4 x R$ 9,93",
+    name: "4 x R$ 30,25",
     value: 4,
   },
 ];
