@@ -28,7 +28,9 @@ const props = defineProps({
               />
             </div>
             <div class="m-auto">
-              <h1 class="text-2xl font-bold text-center md:text-left">
+              <h1
+                class="text-2xl font-bold text-center md:text-left mt-5 md:mt-0"
+              >
                 Box Premium
                 <UBadge
                   label="Assinatura"
