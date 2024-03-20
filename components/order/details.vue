@@ -13,15 +13,16 @@ const props = defineProps({
 
 <template>
   <div>
-    <div class="flex items-center justify-center flex-wrap">
+    <div class="flex items-center justify-center flex-wrap mb-[3rem]">
       <div class="w-full text-center mb-10 pb-10 border-b dark:border-gray-800">
         <div>
           <div>
             <UAvatar
-              size="xl"
-              src="https://avatars.githubusercontent.com/u/739984?v=4"
+              size="3xl"
+              src="https://hotmart.s3.amazonaws.com/product_pictures/4ffaecd8-bc79-4d65-8716-872f90fcfb79/CpiadePostsestoryprontoseeditveisnocanva10801080px5.png"
               alt="Product"
-              class="w-auto"
+              class="w-auto transition ease-in-out hover:-translate-y-1 hover:scale-110 duration-300"
+              :ui="{ rounded: 'rounded ' }"
             />
           </div>
           <div>

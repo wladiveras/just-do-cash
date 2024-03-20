@@ -1,10 +1,6 @@
 <script lang="ts" setup>
 import { object, string, type InferType, ValidationError } from "yup";
 
-definePageMeta({
-  scrollToTop: true,
-});
-
 // Stores
 const orderStore = useOrderStore();
 const { address, steps } = orderStore;
@@ -85,13 +81,19 @@ const handleTrigger = async () => {
 </script>
 
 <template>
-  <UContainer class="mb-[7rem]">
+  <UContainer class="mb-[15rem]">
     <UForm
       :schema="addressSchema"
       :state="address"
       class="space-y-4 space-y-4 flex flex-col justify-top p-[2rem] max-w-[800px]"
     >
-      <div class="animate__animated animate__backInRight">
+      <div
+        class="animate__animated"
+        :class="{
+          animate__backInRight: steps.rollback === false,
+          animate__backInLeft: steps.rollback === true,
+        }"
+      >
         <OrderDetails
           title="Endereço de Entrega"
           description="Agora, informe o endereço de entrega, é nessa etapa que cuidamos
@@ -102,7 +104,7 @@ const handleTrigger = async () => {
           <UFormGroup label="CEP" name="zipcode" class="mb-5">
             <UInput
               variant="outline"
-              icon="line-md:map-marker-multiple-alt-filled"
+              icon="mdi:location"
               v-model="address.zipcode"
               size="xl"
               v-maska
@@ -113,7 +115,7 @@ const handleTrigger = async () => {
           <UFormGroup label="Rua/Logradouro" name="street" class="mb-5">
             <UInput
               variant="outline"
-              icon="line-md:home-simple"
+              icon="gis:location-man-alt"
               v-model="address.street"
               size="xl"
               maxlength="30"
@@ -137,7 +139,7 @@ const handleTrigger = async () => {
               <UFormGroup label="Bairro" name="neighborhood" class="mb-5">
                 <UInput
                   variant="outline"
-                  icon="line-md:home-simple"
+                  icon="uil:estate"
                   v-model="address.neighborhood"
                   size="xl"
                   maxlength="30"
@@ -152,7 +154,7 @@ const handleTrigger = async () => {
               <UFormGroup label="Cidade" name="city" class="mb-5">
                 <UInput
                   variant="outline"
-                  icon="line-md:map-marker-alt"
+                  icon="carbon:location"
                   v-model="address.city"
                   size="xl"
                   maxlength="30"
@@ -164,7 +166,7 @@ const handleTrigger = async () => {
               <UFormGroup label="Estado" name="state" class="mb-5">
                 <UInput
                   variant="outline"
-                  icon="line-md:map-marker-alt-filled"
+                  icon="carbon:location"
                   v-model="address.state"
                   size="xl"
                   maxlength="30"
@@ -176,7 +178,7 @@ const handleTrigger = async () => {
               <UFormGroup label="País" name="country" class="mb-5">
                 <UInput
                   variant="outline"
-                  icon="line-md:map-marker-alt-filled"
+                  icon="carbon:location"
                   v-model="address.country"
                   size="xl"
                   maxlength="30"
@@ -190,7 +192,7 @@ const handleTrigger = async () => {
           <UFormGroup label="Complemento" name="complement" class="mb-5">
             <UInput
               variant="outline"
-              icon="line-md:map-marker-alt"
+              icon="grommet-icons:map-location"
               v-model="address.complement"
               size="xl"
               maxlength="30"

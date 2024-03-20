@@ -1,7 +1,7 @@
 <script lang="ts" setup>
-definePageMeta({
-  scrollToTop: true,
-});
+// Stores
+const orderStore = useOrderStore();
+const { steps } = orderStore;
 
 // Payment Methods
 const paymentMethods = reactive([
@@ -40,52 +40,56 @@ const changeSelectedMethod = (method: any) => {
 </script>
 
 <template>
-  <UContainer class="mb-[10rem]">
-    <div class="animate__animated animate__backInRight">
+  <UContainer class="mb-[15rem]">
+    <div
+      class="animate__animated"
+      :class="{
+        animate__backInRight: steps.rollback === false,
+        animate__backInLeft: steps.rollback === true,
+      }"
+    >
       <OrderDetails
         title="Formas de Pagamento"
         description="Quase lá, agora escolha uma forma de pagamento para concluir seu
             pedido."
       />
       <div>
-        <div
-          v-for="method in paymentMethods"
-          :key="method.label"
-          v-auto-animate
-          class="payment-method border-b pt-5 pb-5 dark:border-gray-800"
-        >
+        <div class="border-t dark:border-gray-800">
           <div
-            class="w-full flex flex-wrap sm:flex-nowrap"
-            @click="changeSelectedMethod(method)"
+            v-for="method in paymentMethods"
+            :key="method.label"
+            v-auto-animate
+            class="payment-method border-b pt-5 pb-5 dark:border-gray-800"
           >
             <div
-              v-auto-animate
-              class="font-bold text-xl flex items-center block w-full cursor-pointer"
-              :class="{
-                'text-primary dark:text-primary': method.active,
-              }"
+              class="w-full flex flex-wrap sm:flex-nowrap"
+              @click="changeSelectedMethod(method)"
             >
-              <div class="flex justify-between w-full">
-                <div>
-                  <UIcon :name="method.icon" class="mr-2 mt-[-0.2rem]" />
-                  <span>{{ method.label }}</span>
-                </div>
-                <div>
-                  <UTooltip
-                    :text="`Clique para selecionar a forma de pagamento ${method.label}`"
-                    :popper="{ placement: 'left', arrow: true }"
-                  >
-                    <UIcon name="game-icons:click" class="" />
-                  </UTooltip>
+              <div
+                v-auto-animate
+                class="font-bold text-xl flex items-center block w-full cursor-pointer"
+                :class="{
+                  'text-primary dark:text-primary': method.active,
+                }"
+              >
+                <div class="flex justify-between w-full">
+                  <div>
+                    <UIcon :name="method.icon" class="mr-2 mt-[-0.2rem]" />
+                    <span>{{ method.label }}</span>
+                  </div>
+                  <div>
+                    <UTooltip
+                      :text="`Clique para selecionar a forma de pagamento ${method.label}`"
+                      :popper="{ placement: 'left', arrow: true }"
+                    >
+                      <UIcon name="game-icons:click" class="" />
+                    </UTooltip>
+                  </div>
                 </div>
               </div>
             </div>
+            <component :is="method.component" v-if="method.active" />
           </div>
-          <component
-            :is="method.component"
-            v-if="method.active"
-            v-motion-roll-visible-bottom
-          />
         </div>
       </div>
     </div>

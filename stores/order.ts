@@ -1,3 +1,4 @@
+import { time } from "console";
 import { v4 as uuidv4 } from "uuid";
 import type { IOrderState } from "~/types";
 
@@ -6,9 +7,10 @@ export const useOrderStore = defineStore("order", {
     return {
       isLoading: false,
       steps: {
-        step: 1,
+        step: 3,
         max: 3,
         trigger: false,
+        rollback: false,
       },
 
       items: [],
@@ -45,6 +47,7 @@ export const useOrderStore = defineStore("order", {
           expireYear: "",
           cvv: "",
           brand: "",
+          installments: 1,
         },
       },
       token: "",
@@ -55,13 +58,20 @@ export const useOrderStore = defineStore("order", {
       this.steps.trigger = value;
     },
     nextStep() {
+      this.steps.rollback = false;
       this.steps.step++;
     },
     prevStep() {
-      this.steps.step--;
+      this.steps.rollback = true;
+
+      if (this.steps.step >= 1) {
+        this.steps.step--;
+      }
     },
     setStep(step: number) {
-      this.steps.step = step;
+      if (this.steps.step > this.steps.max) {
+        this.steps.step = step;
+      }
     },
     captureLead() {
       if (!this.token) {

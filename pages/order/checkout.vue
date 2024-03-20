@@ -1,6 +1,7 @@
 <script lang="ts" setup>
 definePageMeta({
-  layout: "order",
+  layout: "checkout",
+  scrollToTop: true,
 });
 </script>
 
