@@ -7,7 +7,7 @@ export const useOrderStore = defineStore("order", {
     return {
       isLoading: false,
       steps: {
-        step: 3,
+        step: 1,
         max: 3,
         trigger: false,
         rollback: false,
