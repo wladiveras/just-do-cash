@@ -40,7 +40,7 @@ const changeSelectedMethod = (method: any) => {
 </script>
 
 <template>
-  <UContainer class="mb-[15rem]">
+  <UContainer class="mb-[8rem]">
     <div
       class="animate__animated"
       :class="{
@@ -54,7 +54,7 @@ const changeSelectedMethod = (method: any) => {
             pedido."
       />
       <div>
-        <div class="border-t dark:border-gray-800">
+        <div class="dark:border-gray-800">
           <div
             v-for="method in paymentMethods"
             :key="method.label"
