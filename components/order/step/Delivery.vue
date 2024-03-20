@@ -115,7 +115,7 @@ const handleTrigger = async () => {
           <UFormGroup label="Rua/Logradouro" name="street" class="mb-5">
             <UInput
               variant="outline"
-              icon="gis:location-man-alt"
+              icon="line-md:map-marker-alt"
               v-model="address.street"
               size="xl"
               maxlength="30"
@@ -127,7 +127,7 @@ const handleTrigger = async () => {
               <UFormGroup label="Número" name="number" class="mb-5">
                 <UInput
                   variant="outline"
-                  icon="line-md:map-marker-alt"
+                  icon="gis:location-man-alt"
                   v-model="address.number"
                   size="xl"
                   maxlength="30"
@@ -182,7 +182,7 @@ const handleTrigger = async () => {
                   v-model="address.country"
                   size="xl"
                   maxlength="30"
-                  value="Brasil"
+                  value="BR"
                   disabled
                 />
               </UFormGroup>

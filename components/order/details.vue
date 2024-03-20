@@ -21,7 +21,7 @@ const props = defineProps({
           <div>
             <UAvatar
               size="3xl"
-              src="https://hotmart.s3.amazonaws.com/product_pictures/4ffaecd8-bc79-4d65-8716-872f90fcfb79/CpiadePostsestoryprontoseeditveisnocanva10801080px5.png"
+              src="https://imgs.search.brave.com/0R7bcQZDgbJqMyFh3GdAVAkFFvu_odufF8mRnfAj-5s/rs:fit:860:0:0/g:ce/aHR0cHM6Ly9pbWFn/ZW5zLXJldmlzdGEu/dml2YWRlY29yYS5j/b20uYnIvdXBsb2Fk/cy8yMDIwLzA3L2xp/bmRhLWlkZWlhLWRl/LWNhaXhhLXN1cnBy/ZXNhLWRlLWFuaXZl/cnMlQzMlQTFyaW8t/Rm90by1CZWlqb3Mt/RXZlbnRzLmpwZw"
               alt="Product"
               class="w-auto transition ease-in-out hover:-translate-y-1 hover:scale-110 duration-300"
               :ui="{ rounded: 'rounded ' }"
@@ -29,7 +29,7 @@ const props = defineProps({
           </div>
           <div>
             <h1 class="text-2xl font-bold mt-5">
-              Canva Pack Marketing Digital
+              Box Premium
               <UBadge
                 label="Assinatura"
                 variant="subtle"
@@ -39,8 +39,10 @@ const props = defineProps({
             <p class="text-sm text-gray-600 dark:text-gray-400">
               criado por Wladi Granger
             </p>
-            <p class="text-3xl font-bold text-primary">RS$ 37,99</p>
-            <p class="text-sm text-primary">ou em 4 x de R$ 9,93 * no cartão</p>
+            <p class="text-3xl font-bold text-primary">RS$ 120,99</p>
+            <p class="text-sm text-primary">
+              ou em 4 x de R$ 30,25 * no cartão
+            </p>
             <p class="text-sm text-gray-600 dark:text-gray-400">
               Promoção EXCLUSIVA
             </p>
