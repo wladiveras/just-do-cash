@@ -54,7 +54,7 @@ const props = defineProps({
               size="1.5rem"
               class="mr-2"
             />
-            <p class="text-2xl">{{ props.title }}</p>
+            <p class="text-2xl font-semibold">{{ props.title }}</p>
           </div>
 
           <template #panel>
