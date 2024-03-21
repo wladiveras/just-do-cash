@@ -21,9 +21,9 @@ const props = defineProps({
       >
         <div class="flex justify-center space-between">
           <div class="flex flex-wrap space-between">
-            <div class="mr-5 w-full md:w-[350px]">
+            <div class="w-full md:mr-5 md:w-[350px]">
               <img
-                class="w-full m-auto md:w-auto bg-auto rounded-md transition ease-in-out hover:-translate-y-1 hover:scale-110 duration-300"
+                class="m-auto md:w-auto bg-auto rounded-md transition ease-in-out hover:-translate-y-1 hover:scale-110 duration-300"
                 src="https://blog.hubhomebox.com.br/wp-content/uploads/2020/09/clubes-de-assinatura-de-produtos-de-beleza-clubes-de-beleza-clubes-de-produtos-de-beleza-assinatura-produtos-de-beleza-1-1280x640.jpg"
               />
             </div>
