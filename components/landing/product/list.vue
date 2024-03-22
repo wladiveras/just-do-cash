@@ -14,7 +14,7 @@ const isOpen = ref(false);
       <template #description>
         <div class="m-auto">
           <h1
-            class="text-2xl font-bold text-center md:text-left mt-5 md:mt-0"
+            class="text-2xl font-bold text-center md:text-left mt-1 md:mt-0"
           ></h1>
 
           <p class="text-2xl font-bold text-primary">RS$ 120,99</p>
@@ -45,7 +45,7 @@ const isOpen = ref(false);
       <template #description>
         <div class="m-auto">
           <h1
-            class="text-2xl font-bold text-center md:text-left mt-5 md:mt-0"
+            class="text-2xl font-bold text-center md:text-left mt-1 md:mt-0"
           ></h1>
 
           <p class="text-2xl font-bold text-primary">RS$ 120,99</p>
@@ -60,12 +60,11 @@ const isOpen = ref(false);
       </template>
       <template #image>
         <img
-          src="https://picsum.photos/640/360"
+          src="https://blog.hubhomebox.com.br/wp-content/uploads/2020/09/clubes-de-assinatura-de-produtos-de-beleza-clubes-de-beleza-clubes-de-produtos-de-beleza-assinatura-produtos-de-beleza-1-1280x640.jpg"
           class="w-full h-full object-cover rounded-lg"
         />
-      </template>
-    </UBlogPost>
-    <UBlogPost
+      </template> </UBlogPost
+    ><UBlogPost
       @click="isOpen = true"
       orientation="horizontal"
       class="transition ease-in-out hover:-translate-y-1 hover:scale-110 duration-300 cursor-pointer"
@@ -74,7 +73,7 @@ const isOpen = ref(false);
       <template #description>
         <div class="m-auto">
           <h1
-            class="text-2xl font-bold text-center md:text-left mt-5 md:mt-0"
+            class="text-2xl font-bold text-center md:text-left mt-1 md:mt-0"
           ></h1>
 
           <p class="text-2xl font-bold text-primary">RS$ 120,99</p>
@@ -89,12 +88,11 @@ const isOpen = ref(false);
       </template>
       <template #image>
         <img
-          src="https://picsum.photos/640/360"
+          src="https://blog.hubhomebox.com.br/wp-content/uploads/2020/09/clubes-de-assinatura-de-produtos-de-beleza-clubes-de-beleza-clubes-de-produtos-de-beleza-assinatura-produtos-de-beleza-1-1280x640.jpg"
           class="w-full h-full object-cover rounded-lg"
         />
-      </template>
-    </UBlogPost>
-    <UBlogPost
+      </template> </UBlogPost
+    ><UBlogPost
       @click="isOpen = true"
       orientation="horizontal"
       class="transition ease-in-out hover:-translate-y-1 hover:scale-110 duration-300 cursor-pointer"
@@ -103,7 +101,7 @@ const isOpen = ref(false);
       <template #description>
         <div class="m-auto">
           <h1
-            class="text-2xl font-bold text-center md:text-left mt-5 md:mt-0"
+            class="text-2xl font-bold text-center md:text-left mt-1 md:mt-0"
           ></h1>
 
           <p class="text-2xl font-bold text-primary">RS$ 120,99</p>
@@ -118,12 +116,11 @@ const isOpen = ref(false);
       </template>
       <template #image>
         <img
-          src="https://picsum.photos/640/360"
+          src="https://blog.hubhomebox.com.br/wp-content/uploads/2020/09/clubes-de-assinatura-de-produtos-de-beleza-clubes-de-beleza-clubes-de-produtos-de-beleza-assinatura-produtos-de-beleza-1-1280x640.jpg"
           class="w-full h-full object-cover rounded-lg"
         />
-      </template>
-    </UBlogPost>
-    <UBlogPost
+      </template> </UBlogPost
+    ><UBlogPost
       @click="isOpen = true"
       orientation="horizontal"
       class="transition ease-in-out hover:-translate-y-1 hover:scale-110 duration-300 cursor-pointer"
@@ -132,7 +129,7 @@ const isOpen = ref(false);
       <template #description>
         <div class="m-auto">
           <h1
-            class="text-2xl font-bold text-center md:text-left mt-5 md:mt-0"
+            class="text-2xl font-bold text-center md:text-left mt-1 md:mt-0"
           ></h1>
 
           <p class="text-2xl font-bold text-primary">RS$ 120,99</p>
@@ -147,12 +144,11 @@ const isOpen = ref(false);
       </template>
       <template #image>
         <img
-          src="https://picsum.photos/640/360"
+          src="https://blog.hubhomebox.com.br/wp-content/uploads/2020/09/clubes-de-assinatura-de-produtos-de-beleza-clubes-de-beleza-clubes-de-produtos-de-beleza-assinatura-produtos-de-beleza-1-1280x640.jpg"
           class="w-full h-full object-cover rounded-lg"
         />
-      </template>
-    </UBlogPost>
-    <UBlogPost
+      </template> </UBlogPost
+    ><UBlogPost
       @click="isOpen = true"
       orientation="horizontal"
       class="transition ease-in-out hover:-translate-y-1 hover:scale-110 duration-300 cursor-pointer"
@@ -161,7 +157,7 @@ const isOpen = ref(false);
       <template #description>
         <div class="m-auto">
           <h1
-            class="text-2xl font-bold text-center md:text-left mt-5 md:mt-0"
+            class="text-2xl font-bold text-center md:text-left mt-1 md:mt-0"
           ></h1>
 
           <p class="text-2xl font-bold text-primary">RS$ 120,99</p>
@@ -176,10 +172,11 @@ const isOpen = ref(false);
       </template>
       <template #image>
         <img
-          src="https://picsum.photos/640/360"
+          src="https://blog.hubhomebox.com.br/wp-content/uploads/2020/09/clubes-de-assinatura-de-produtos-de-beleza-clubes-de-beleza-clubes-de-produtos-de-beleza-assinatura-produtos-de-beleza-1-1280x640.jpg"
           class="w-full h-full object-cover rounded-lg"
         />
       </template>
     </UBlogPost>
+    <!-- test -->
   </UBlogList>
 </template>
