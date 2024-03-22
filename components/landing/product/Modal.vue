@@ -15,7 +15,7 @@ const closeModal = () => {
         rounded: '',
         divide: 'divide-y divide-gray-100 dark:divide-gray-800',
         body: {
-          base: 'grow md:items-center md:justify-center md:flex',
+          base: 'grow  md:justify-center md:flex',
         },
       }"
     >
@@ -109,7 +109,7 @@ const closeModal = () => {
 
               <UContainer>
                 <UCard
-                  class="max-w-[24rem] w-full m-auto animate__animated animate__backInUp fixed bottom-10 left-0 right-0"
+                  class="max-w-[24rem] w-full m-auto animate__animated animate__backInUp fixed bottom-3 left-0 right-0 z-50"
                 >
                   <div class="flex justify-center items-center">
                     <div class="w-full">
@@ -138,6 +138,9 @@ const closeModal = () => {
                     </div>
                   </div>
                 </UCard>
+                <div class="hidden md:block mt-5">
+                  <LandingProductList />
+                </div>
               </UContainer>
             </div>
           </template>
