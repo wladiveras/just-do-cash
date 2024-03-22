@@ -12,6 +12,7 @@ const props = defineProps({
   <LandingProductModal v-model="isOpen" @close-modal="isOpen = false" />
   <UBlogList orientation="horizontal">
     <UBlogPost
+      v-motion-pop-visible
       @click="isOpen = true"
       orientation="horizontal"
       class="transition ease-in-out hover:-translate-y-1 hover:scale-110 duration-300 cursor-pointer"
@@ -43,6 +44,7 @@ const props = defineProps({
 
     <!-- test -->
     <UBlogPost
+      v-motion-pop-visible
       @click="isOpen = true"
       orientation="horizontal"
       class="transition ease-in-out hover:-translate-y-1 hover:scale-110 duration-300 cursor-pointer"
@@ -69,8 +71,10 @@ const props = defineProps({
           src="https://blog.hubhomebox.com.br/wp-content/uploads/2020/09/clubes-de-assinatura-de-produtos-de-beleza-clubes-de-beleza-clubes-de-produtos-de-beleza-assinatura-produtos-de-beleza-1-1280x640.jpg"
           class="w-full h-full object-cover rounded-lg"
         />
-      </template> </UBlogPost
-    ><UBlogPost
+      </template>
+    </UBlogPost>
+    <UBlogPost
+      v-motion-pop-visible
       @click="isOpen = true"
       orientation="horizontal"
       class="transition ease-in-out hover:-translate-y-1 hover:scale-110 duration-300 cursor-pointer"
@@ -101,6 +105,7 @@ const props = defineProps({
     </UBlogPost>
 
     <UBlogPost
+      v-motion-pop-visible
       v-if="props.total === true"
       @click="isOpen = true"
       orientation="horizontal"
@@ -131,6 +136,7 @@ const props = defineProps({
       </template>
     </UBlogPost>
     <UBlogPost
+      v-motion-pop-visible
       v-if="props.total === true"
       @click="isOpen = true"
       orientation="horizontal"
