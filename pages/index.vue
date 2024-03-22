@@ -9,6 +9,7 @@ onMounted(() => {
 <template>
   <div>
     <LandingHeader />
+    <LandingLogos />
     <LandingServices />
     <LandingPlans />
     <LandingTestemonial />

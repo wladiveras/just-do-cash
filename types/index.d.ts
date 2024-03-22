@@ -42,6 +42,115 @@ export interface Range {
   end: Date;
 }
 
+interface ILandingState {
+  isLoading: boolean;
+  faq: IFaq;
+  header: IFaqHeader;
+  logos: ILogos;
+  plans: IPlans;
+  services: IServices;
+  testimonials: ITestimonials;
+  promotion: IPromotion;
+}
+
+interface IPromotion {
+  title: string;
+  description: string;
+  label: string;
+  path: string;
+  label: string;
+  src: string;
+}
+
+interface ITestimonials {
+  title: string;
+  headline: string;
+  description: string;
+  items: ITestimonialsItems[];
+}
+
+interface ITestimonialsItems {
+  quote: string;
+  author: ITestimonialsAuthor;
+}
+
+interface ITestimonialsAuthor {
+  name: string;
+  description: string;
+  avatar: ITestimonialsAVatar;
+}
+
+interface ITestimonialsAVatar {
+  src: string;
+  loading: string;
+}
+
+interface IServices {
+  title: string;
+  description: string;
+  headline: string;
+  items: iServicesItems[];
+}
+
+interface iServicesItems {
+  title: string;
+  description: string;
+  icon: string;
+  to: string;
+}
+
+interface IPlans {
+  title: string;
+  description: string;
+  headline: string;
+  subscriptions: IPlansSubscriptions[];
+}
+
+interface IPlansSubscriptions {
+  title: string;
+  description: string;
+  price: string;
+  align: string;
+  highlight: boolean;
+  scale: boolean;
+  button: IPlansButton;
+  features: array;
+}
+
+interface IPlansButton {
+  label: string;
+  color: string;
+  to: string;
+  click?: Function;
+}
+
+interface IFaqHeader {
+  title: string;
+  description: string;
+  content: IContentHeader;
+}
+
+interface IContentHeader {
+  type: string;
+  src: string;
+}
+
+interface ILogos {
+  title: string;
+  icons: Array;
+}
+
+interface IFaq {
+  title: string;
+  description: string;
+  items: IFaqItem[];
+}
+
+interface IFaqItem {
+  label: string;
+  content: string;
+}
+
 interface IOrderState {
   isLoading: boolean;
   steps: IStep;

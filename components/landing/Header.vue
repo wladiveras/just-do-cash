@@ -1,49 +1,22 @@
 <script lang="ts" setup>
+const landingStore = useLandingStore();
+const { header } = landingStore;
+
+// Composables
+const toast = useToast();
 const { t } = useI18n();
-
-const page = reactive({
-  title: "Descubra a Beleza em Cada Caixa Assinaturas Personalizadas para Você",
-  description:
-    "Transforme Sua Rotina de Beleza com Nossas Caixas de Assinatura Exclusivas.",
-  hero: {
-    title:
-      "Transforme Sua Rotina de Beleza com Nossas Caixas de Assinatura Exclusivas",
-    description:
-      "Você está pronto para elevar sua rotina de beleza a um novo patamar? oferecemos uma experiência única e personalizada que vai revolucionar sua maneira de cuidar de si mesmo.",
-
-    links: [
-      {
-        label: "Entrar",
-        icon: "i-heroicons-arrow-right-20-solid",
-        trailing: true,
-        to: "/login",
-        size: "xl",
-      },
-    ],
-  },
-  logos: {
-    title: "Parceiros de confiança",
-    icons: [
-      "tabler:brand-disney",
-      "tabler:brand-visa",
-      "i-simple-icons-netlify",
-      "tabler:brand-bluesky",
-      "tabler:brand-airbnb",
-    ],
-  },
-});
 </script>
 <template>
   <ULandingHero>
     <template #title class="">
       <div class="animate__animated animate__backInDown">
-        <span class="max-w-1.2">{{ page.title }}</span>
+        <span class="max-w-1.2">{{ header.title }}</span>
       </div>
     </template>
 
     <template #description>
       <div class="animate__animated animate__jello">
-        <span>{{ page.hero.description }}</span>
+        <span>{{ header.description }}</span>
       </div>
     </template>
 
@@ -56,8 +29,9 @@ const page = reactive({
           class="aspect-w-16 aspect-h-9 rounded-lg relative overflow-hidden border border-dashed border-gray-950/10 dark:border-white/10"
         >
           <iframe
+            v-if="header.content.type === 'video'"
             class="absolute"
-            src="https://www.youtube.com/embed/hf1iUqZc4lc?si=Ft1nA9pjI710pjGX"
+            :src="header.content.src"
             title="YouTube video player"
             frameborder="0"
             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
@@ -66,19 +40,6 @@ const page = reactive({
         </div>
       </div>
     </div>
-
-    <ULandingLogos
-      v-motion-slide-visible-right
-      :title="page.logos.title"
-      align="center"
-    >
-      <UIcon
-        v-for="icon in page.logos.icons"
-        :key="icon"
-        :name="icon"
-        class="w-12 h-12 lg:w-16 lg:h-16 flex-shrink-0 text-gray-900 dark:text-white"
-      />
-    </ULandingLogos>
   </ULandingHero>
 </template>
 
