@@ -7,15 +7,16 @@ onMounted(() => {
 </script>
 
 <template>
-  <div>
+  <UContainer>
     <LandingHeader />
     <LandingLogos />
+    <LandingProduct />
     <LandingServices />
     <LandingPlans />
     <LandingTestemonial />
     <LandingPromotion />
     <LandingFaq />
-  </div>
+  </UContainer>
 </template>
 <style lang="scss" scoped>
 .w-content {

@@ -45,7 +45,7 @@ export interface Range {
 interface ILandingState {
   isLoading: boolean;
   faq: IFaq;
-  header: IFaqHeader;
+  header: IHeader;
   logos: ILogos;
   plans: IPlans;
   services: IServices;
@@ -124,7 +124,7 @@ interface IPlansButton {
   click?: Function;
 }
 
-interface IFaqHeader {
+interface IHeader {
   title: string;
   description: string;
   content: IContentHeader;
@@ -133,6 +133,7 @@ interface IFaqHeader {
 interface IContentHeader {
   type: string;
   src: string;
+  carousel: Array;
 }
 
 interface ILogos {

@@ -10,8 +10,16 @@ export const useLandingStore = defineStore("landing", {
         description:
           "Você está pronto para elevar sua rotina de beleza a um novo patamar? oferecemos uma experiência única e personalizada que vai revolucionar sua maneira de cuidar de si mesmo.",
         content: {
-          type: "video",
+          type: "carousel",
           src: "https://www.youtube.com/embed/hf1iUqZc4lc?si=Ft1nA9pjI710pjGX",
+          carousel: [
+            "https://picsum.photos/1920/1080?random=1",
+            "https://picsum.photos/1920/1080?random=2",
+            "https://picsum.photos/1920/1080?random=3",
+            "https://picsum.photos/1920/1080?random=4",
+            "https://picsum.photos/1920/1080?random=5",
+            "https://picsum.photos/1920/1080?random=6",
+          ],
         },
       },
       logos: {

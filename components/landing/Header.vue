@@ -7,8 +7,8 @@ const toast = useToast();
 const { t } = useI18n();
 </script>
 <template>
-  <ULandingHero>
-    <template #title class="">
+  <ULandingHero class="relative mt-[-8rem]">
+    <template #title>
       <div class="animate__animated animate__backInDown">
         <span class="max-w-1.2">{{ header.title }}</span>
       </div>
@@ -20,9 +20,7 @@ const { t } = useI18n();
       </div>
     </template>
 
-    <template #headline>
-      <!-- todo: add a new feature can be show above title-->
-    </template>
+    <template #headline> </template>
     <div class="relative">
       <div class="bg-background border-gradient rounded-xl p-4">
         <div
@@ -37,6 +35,7 @@ const { t } = useI18n();
             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
             allowfullscreen
           />
+          <LandingCarousel v-if="header.content.type === 'carousel'" />
         </div>
       </div>
     </div>
