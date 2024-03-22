@@ -15,6 +15,7 @@ export default defineNuxtConfig({
     "@vueuse/motion/nuxt",
     "@nuxtjs/device",
     "@nuxtjs/turnstile",
+    "@nuxt/image",
   ],
   turnstile: {
     siteKey: process.env.TURNSTILE_SITE_KEY,

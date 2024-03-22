@@ -70,6 +70,7 @@ Check out the [nuxt 3 documentation](https://nuxt.com/docs) and [nuxt UI](https:
 
 [iconify icons](https://icon-sets.iconify.design/)
 [Tailwind css](https://tailwindcss.com/docs/)
+[Animate Style css](https://animate.style/)
 
 ## Licence
 

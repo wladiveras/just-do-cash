@@ -40,8 +40,8 @@ export default defineAppConfig({
       },
     },
     Landinghero: {
-      wrapper: "py-24 sm:py-32 md:py-40 relative",
-      container: "gap-16 sm:gap-y-24 flex flex-col",
+      wrapper: "py-5 sm:py-10 md:py-10 relative",
+      container: "gap-16 sm:gap-y-10 flex flex-col",
       base: "text-center",
       headline: "mb-10",
       title:

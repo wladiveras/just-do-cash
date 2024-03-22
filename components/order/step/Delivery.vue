@@ -8,6 +8,7 @@ const { address, steps } = orderStore;
 // Composables
 const toast = useToast();
 const { isMobile } = useDevice();
+const { t } = useI18n();
 
 // Trigger to next step from summary
 watch(
@@ -90,8 +91,8 @@ const handleTrigger = async () => {
       <div
         class="animate__animated"
         :class="{
-          animate__backInRight: steps.rollback === false,
-          animate__backInLeft: steps.rollback === true,
+          animate__backInRight: !steps.rollback,
+          animate__backInLeft: steps.rollback,
         }"
       >
         <OrderDetails
