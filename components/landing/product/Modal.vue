@@ -56,7 +56,7 @@ const closeModal = () => {
           class="cursor-pointer"
         >
           <template #description>
-            <div class="gap-10">
+            <div class="gap-10 animate__animated animate__backInDown">
               <UCard
                 :ui="{
                   body: {
@@ -66,7 +66,7 @@ const closeModal = () => {
                 }"
               >
                 <div class="flex items-center flex-wrap justify-center h-full">
-                  <div class="flex justify-center m-auto mb-5 md:hidden">
+                  <div class="flex justify-center m-auto mb-1 md:hidden">
                     <UBadge
                       label="Assinatura"
                       variant="subtle"
@@ -86,7 +86,7 @@ const closeModal = () => {
                     class="space-y-2 flex flex-col justify-center mt-5 md:mt-0 md:flex-1"
                   >
                     <p
-                      class="text-sm font-medium text-gray-900 dark:text-white max-w-md ml-10"
+                      class="text-sm font-medium text-gray-900 dark:text-white max-w-md ml-0 md:ml-10"
                     >
                       Descubra a caixa de beleza perfeita para você! Nossa Box
                       Premium contém uma seleção exclusiva de produtos de beleza
@@ -109,7 +109,7 @@ const closeModal = () => {
 
               <UContainer>
                 <UCard
-                  class="max-w-[24rem] w-full m-auto animate__animated animate__backInUp fixed bottom-3 left-0 right-0 z-50"
+                  class="max-w-[24rem] animate__animated animate__backInDown w-full m-auto fixed bottom-[-9rem] left-0 right-0 z-50"
                 >
                   <div class="flex justify-center items-center">
                     <div class="w-full">
@@ -138,8 +138,8 @@ const closeModal = () => {
                     </div>
                   </div>
                 </UCard>
-                <div class="hidden md:block mt-5">
-                  <LandingProductList />
+                <div class="hidden lg:block mt-[5rem]">
+                  <LandingProductList :total="false" />
                 </div>
               </UContainer>
             </div>

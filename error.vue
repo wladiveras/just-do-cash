@@ -2,8 +2,8 @@
 import type { NuxtError } from "#app";
 
 useSeoMeta({
-  title: "Page not found",
-  description: "We are sorry but this page could not be found.",
+  title: "Pagina não encontrada",
+  description: "A pagina que você procura não foi encontrada",
 });
 
 defineProps({
@@ -15,7 +15,7 @@ defineProps({
 
 useHead({
   htmlAttrs: {
-    lang: "en",
+    lang: "pt-BR",
   },
 });
 </script>
@@ -25,7 +25,18 @@ useHead({
     <UMain>
       <UContainer>
         <UPage>
-          <UPageError :error="error" />
+          <UPageError
+            :error="error"
+            :ui="{
+              default: {
+                clearButton: {
+                  label: 'Voltar',
+                  color: 'primary',
+                  size: 'lg',
+                },
+              },
+            }"
+          />
         </UPage>
       </UContainer>
     </UMain>
