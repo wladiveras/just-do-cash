@@ -167,6 +167,7 @@ const props = defineProps({
       </template>
     </UBlogPost>
     <UBlogPost
+      v-motion-pop-visible
       v-if="props.total === true"
       @click="isOpen = true"
       orientation="horizontal"
