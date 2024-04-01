@@ -83,8 +83,8 @@ devDependencies:
     specifier: ^1.4.0
     version: 1.4.0(rollup@4.13.0)
   '@nuxtjs/supabase':
-    specifier: ^1.1.7
-    version: 1.1.7(rollup@4.13.0)
+    specifier: ^1.2.0
+    version: 1.2.0(rollup@4.13.0)
   '@nuxtjs/turnstile':
     specifier: ^0.6.3
     version: 0.6.3(rollup@4.13.0)
@@ -1924,11 +1924,11 @@ packages:
       - supports-color
     dev: false
 
-  /@nuxtjs/supabase@1.1.7(rollup@4.13.0):
-    resolution: {integrity: sha512-A6nwAA3JjIxMyLvRqBowoALW3U5LVWHP6mK2oXdYsn7nDH0FH9Z3P0ZXr1ivS8RN5CPXkRAW9kuZE/iXuyFILg==}
+  /@nuxtjs/supabase@1.2.0(rollup@4.13.0):
+    resolution: {integrity: sha512-HYII/FX4+39Rt+KLc9zlidNf43OGHvEf4xW+cKyL84Jky0BFuw7wYmCoHZdj7euBrKPnsp0lzPbrnvS+fE6kNA==}
     dependencies:
       '@nuxt/kit': 3.11.1(rollup@4.13.0)
-      '@supabase/supabase-js': 2.39.7
+      '@supabase/supabase-js': 2.41.1
       defu: 6.1.4
       pathe: 1.1.2
     transitivePeerDependencies:
@@ -2458,14 +2458,14 @@ packages:
     resolution: {integrity: sha512-+9jVqKhRSpsc591z5vX+X5Yyw+he/HCB4iQ/RYxw35CEPaY1gnsNE43nf9n9AaYjAQrTiI/mOwKUKdUs9vf7Xg==}
     dev: false
 
-  /@supabase/functions-js@2.1.5:
-    resolution: {integrity: sha512-BNzC5XhCzzCaggJ8s53DP+WeHHGT/NfTsx2wUSSGKR2/ikLFQTBCDzMvGz/PxYMqRko/LwncQtKXGOYp1PkPaw==}
+  /@supabase/auth-js@2.63.0:
+    resolution: {integrity: sha512-yIgcHnlgv24GxHtVGUhwGqAFDyJkPIC/xjx7HostN08A8yCy8HIfl4JEkTKyBqD1v1L05jNEJOUke4Lf4O1+Qg==}
     dependencies:
       '@supabase/node-fetch': 2.6.15
     dev: true
 
-  /@supabase/gotrue-js@2.62.2:
-    resolution: {integrity: sha512-AP6e6W9rQXFTEJ7sTTNYQrNf0LCcnt1hUW+RIgUK+Uh3jbWvcIST7wAlYyNZiMlS9+PYyymWQ+Ykz/rOYSO0+A==}
+  /@supabase/functions-js@2.2.2:
+    resolution: {integrity: sha512-sJGq1nludmi7pY/fdtCpyY/pYonx7MfHdN408bqb736guWcVI1AChYVbI4kUM978EuOE4Ci6l7bUudfGg07QRw==}
     dependencies:
       '@supabase/node-fetch': 2.6.15
     dev: true
@@ -2501,11 +2501,11 @@ packages:
       '@supabase/node-fetch': 2.6.15
     dev: true
 
-  /@supabase/supabase-js@2.39.7:
-    resolution: {integrity: sha512-1vxsX10Uhc2b+Dv9pRjBjHfqmw2N2h1PyTg9LEfICR3x2xwE24By1MGCjDZuzDKH5OeHCsf4it6K8KRluAAEXA==}
+  /@supabase/supabase-js@2.41.1:
+    resolution: {integrity: sha512-xmECLhYugMo/6SObpsOhu5xaxVfsk+JK/d4JSh055bpESmgmN3PLpzbfqejKCpaUeeUNF21+lrJp/U9HQzT9mA==}
     dependencies:
-      '@supabase/functions-js': 2.1.5
-      '@supabase/gotrue-js': 2.62.2
+      '@supabase/auth-js': 2.63.0
+      '@supabase/functions-js': 2.2.2
       '@supabase/node-fetch': 2.6.15
       '@supabase/postgrest-js': 1.9.2
       '@supabase/realtime-js': 2.9.3
