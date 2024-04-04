@@ -86,8 +86,8 @@ devDependencies:
     specifier: ^1.2.0
     version: 1.2.0(rollup@4.13.0)
   '@nuxtjs/turnstile':
-    specifier: ^0.6.3
-    version: 0.6.3(rollup@4.13.0)
+    specifier: ^0.7.1
+    version: 0.7.1(rollup@4.13.0)
   '@types/node':
     specifier: ^20.12.2
     version: 20.12.2
@@ -1963,8 +1963,8 @@ packages:
       - uWebSockets.js
     dev: false
 
-  /@nuxtjs/turnstile@0.6.3(rollup@4.13.0):
-    resolution: {integrity: sha512-POo7J6mlN4apRKQQziyvbBN7IsOtDiDuH0euAWrFv5LUBuBlPcARJMsBhziYWp7hTSGpqS/DHj8/5mrVltQdzg==}
+  /@nuxtjs/turnstile@0.7.1(rollup@4.13.0):
+    resolution: {integrity: sha512-CchOZW6CZmdYLjbNk0OniOHkAU5hvpyUbiDimevfl4IMN8GVX5YWTwbhRYclzTtPBNIvp12fjgGN1yLvgDCSgA==}
     dependencies:
       '@nuxt/kit': 3.11.1(rollup@4.13.0)
       defu: 6.1.4
