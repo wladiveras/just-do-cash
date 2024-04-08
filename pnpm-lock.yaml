@@ -107,8 +107,8 @@ devDependencies:
     specifier: ^5.1.3
     version: 5.1.3(eslint-config-prettier@9.1.0)(eslint@8.57.0)(prettier@3.2.5)
   nuxt-security:
-    specifier: ^1.2.2
-    version: 1.2.2(rollup@4.13.0)
+    specifier: ^1.3.1
+    version: 1.3.1(rollup@4.13.0)
   prettier:
     specifier: ^3.2.5
     version: 3.2.5
@@ -8419,8 +8419,8 @@ packages:
       - vue
     dev: false
 
-  /nuxt-security@1.2.2(rollup@4.13.0):
-    resolution: {integrity: sha512-/g2gjl4ReruHe2RDv+LkWvkNFXl2GMKLvDQgdEuMPTrL+9fYARkdCKC2iDvPaBp0EymlFDVGIjtlzLAxAWkgbg==}
+  /nuxt-security@1.3.1(rollup@4.13.0):
+    resolution: {integrity: sha512-IzomR5lj1wgk4eALQK7z1GoBZoNYkCmLs3dGeVRmAkFIGrLftZqRxwWDia1HYgqiF4nGInHu/JxGEEvuZaq0yg==}
     dependencies:
       '@nuxt/kit': 3.11.1(rollup@4.13.0)
       basic-auth: 2.0.1
@@ -8428,7 +8428,7 @@ packages:
       defu: 6.1.4
       nuxt-csurf: 1.5.1(rollup@4.13.0)
       pathe: 1.1.2
-      unplugin-remove: 0.1.7(rollup@4.13.0)
+      unplugin-remove: 1.0.1(rollup@4.13.0)
       xss: 1.0.15
     transitivePeerDependencies:
       - rollup
@@ -10870,8 +10870,8 @@ packages:
       - supports-color
     dev: false
 
-  /unplugin-remove@0.1.7(rollup@4.13.0):
-    resolution: {integrity: sha512-7BaEfgR/hMQRgaN++RAILeq9/wBrJPqCLRsQH+ow8979s2TE3TAFE4rQRmMUPcJ/w4ccsVSLepwGbimLMkQjyA==}
+  /unplugin-remove@1.0.1(rollup@4.13.0):
+    resolution: {integrity: sha512-gH0TlpRNRakOaXa/TmI9MwZltWcQPceqnG1q+w0/Y49XSX9Bvg6tnwGYJaMer436YqBZfHmcEpxbDJq6rNy8bA==}
     dependencies:
       '@rollup/pluginutils': 5.1.0(rollup@4.13.0)
       magic-string: 0.30.8
