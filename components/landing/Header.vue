@@ -30,7 +30,7 @@ const { t } = useI18n();
             v-if="header.content.type === 'video'"
             class="absolute"
             :src="header.content.src"
-            title="YouTube video player"
+            title="YouTube video"
             frameborder="0"
             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
             allowfullscreen
