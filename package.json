@@ -44,7 +44,7 @@
     "@nuxt/eslint-config": "^0.2.0",
     "@nuxt/image": "^1.5.0",
     "@nuxtjs/i18n": "^8.1.1",
-    "@nuxtjs/supabase": "^1.2.0",
+    "@nuxtjs/supabase": "^1.2.2",
     "@nuxtjs/turnstile": "^0.7.1",
     "@types/node": "^20.12.2",
     "@typescript-eslint/eslint-plugin": "^7.3.1",
