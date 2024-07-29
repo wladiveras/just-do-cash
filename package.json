@@ -41,7 +41,7 @@
     "zod": "^3.22.4"
   },
   "devDependencies": {
-    "@nuxt/eslint-config": "^0.2.0",
+    "@nuxt/eslint-config": "^0.4.0",
     "@nuxt/image": "^1.5.0",
     "@nuxtjs/i18n": "^8.1.1",
     "@nuxtjs/supabase": "^1.2.0",
