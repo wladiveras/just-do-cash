@@ -1,40 +1,23 @@
-# name: Deploy
-# on:
-#   push:
-#     branches: production
-#   pull_request:
-#     branches: production
+name: Deploy
 
-# jobs:
-#   deploy:
-#     name: Deploy
-#     runs-on: ubuntu-latest
+on:
+  push:
+    branches: [ production ]
 
-#     permissions:
-#       id-token: write
-#       contents: read
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
 
-#     steps:
-#       - name: Clone repository
-#         uses: actions/checkout@v3
-
-#       - name: Install Deno
-#         uses: denoland/setup-deno@v1
-#         with:
-#           deno-version: v1.x
-
-#       - name: Install Node.js
-#         uses: actions/setup-node@v3
-#         with:
-#           node-version: lts/*
-
-#       - name: Build step
-#         run: "npm install && NITRO_PRESET=deno-deploy npm run build"
-
-#       - name: Upload to Deno Deploy
-#         uses: denoland/deployctl@v1
-#         with:
-#           project: "wise-rabbit-69"
-#           entrypoint: "server/index.ts"
-#           root: ".output"
-
+      - name: Create Sentry release
+        uses: getsentry/action-release@v1
+        env:
+          SENTRY_AUTH_TOKEN: ${{ secrets.SENTRY_AUTH_TOKEN }}
+          SENTRY_ORG: ${{ secrets.SENTRY_ORG }}
+          SENTRY_PROJECT: ${{ secrets.SENTRY_PROJECT }}
+        with:
+          environment: production

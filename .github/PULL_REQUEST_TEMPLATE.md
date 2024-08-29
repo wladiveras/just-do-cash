@@ -1,35 +1,32 @@
 <!---
-☝️ PR title should follow conventional commits (https://conventionalcommits.org)
+☝️ O título do PR deve seguir commits convencionais (https://conventionalcommits.org)
 -->
 
-### 🔗 Linked issue
+### 🔗 Issue vinculada
 
-<!-- If it resolves an open issue, please link the issue here. For example "Resolves #123" -->
+<!-- Se resolver uma issue aberta, por favor, vincule a issue aqui. Por exemplo "Resolve a issue #123" -->
 
-### ❓ Type of change
+### ❓ Tipo de Mudança
 
-<!-- What types of changes does your code introduce? Put an `x` in all the boxes that apply. -->
+<!-- Quais tipos de mudanças seu código introduz? Marque um `x` em todas as caixas que se aplicam. -->
 
-- [ ] 📖 Documentation (updates to the documentation or readme)
-- [ ] 🐞 Bug fix (a non-breaking change that fixes an issue)
-- [ ] 👌 Enhancement (improving an existing functionality)
-- [ ] ✨ New feature (a non-breaking change that adds functionality)
-- [ ] 🧹 Chore (updates to the build process or auxiliary tools and libraries)
-- [ ] ⚠️ Breaking change (fix or feature that would cause existing functionality to change)
+- [ ] 📖 Documentação (atualizações na documentação ou readme)
+- [ ] 🐞 Correção de bug (uma mudança que não quebra nada e corrige um problema)
+- [ ] 👌 Melhoria (melhorando uma funcionalidade existente)
+- [ ] ✨ Nova funcionalidade (uma mudança que não quebra nada e adiciona funcionalidade)
+- [ ] 🧹 Tarefa (atualizações no processo de construção ou ferramentas auxiliares e bibliotecas)
+- [ ] ⚠️ Mudança critica (correção ou funcionalidade que causaria uma mudança na funcionalidade existente)
 
-### 📚 Description
+### 📚 Descrição
 
-<!-- Describe your changes in detail -->
-
-<!-- Why is this change required? What problem does it solve? -->
+<!-- Descreva suas mudanças em detalhes -->
+<!-- Por que essa mudança é necessária? Qual problema ela resolve? -->
 
 ### 📝 Checklist
 
-<!-- Put an `x` in all the boxes that apply. -->
+<!-- Marque um `x` em todas as caixas que se aplicam. -->
+<!-- Se sua mudança requer um PR de documentação, por favor, vincule-o adequadamente -->
+<!-- Se você não tem certeza sobre alguma dessas opções, não hesite em perguntar. Estamos aqui para ajudar! -->
 
-<!-- If your change requires a documentation PR, please link it appropriately -->
-
-<!-- If you're unsure about any of these, don't hesitate to ask. We're here to help! -->
-
-- [ ] I have linked an issue or discussion.
-- [ ] I have updated the documentation accordingly.
+- [ ] Eu vinculei uma issue ou discussão.
+- [ ] Eu atualizei a documentação.
