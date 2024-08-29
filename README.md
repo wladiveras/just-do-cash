@@ -1,6 +1,6 @@
-# Saas Landing Page
+# Just do Cash
 
-A Sass landing page designed to showcase your product subscription service, with built-in security features. Additionally, it provides a simple dashboard for you to easily monitor all sales and subscriptions.
+A Sass landing page designed to showcase your product subscription service, with built-in security features. Additionally, it provides a simple dashboard for you to easily monitor all sales and subscriptions with a checkout to sell all your products.
 
 ![fintech](https://i.imgur.com/dXriMYn.png)
 
