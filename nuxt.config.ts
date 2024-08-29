@@ -1,6 +1,7 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
   extends: ["@nuxt/ui-pro"],
+
   modules: [
     "@nuxt/content",
     "@nuxt/ui",
@@ -17,20 +18,25 @@ export default defineNuxtConfig({
     "@nuxtjs/turnstile",
     "@nuxt/image",
   ],
+
   turnstile: {
     siteKey: process.env.TURNSTILE_SITE_KEY,
   },
-  device: {
-    refreshOnResize: true,
+
+  i18n: {
+    vueI18n: "./i18n.config.ts",
   },
+
   css: ["~/assets/scss/main.scss"],
   ssr: true,
+
   nitro: {
     prerender: {
       routes: ["/"],
       autoSubfolderIndex: false,
     },
   },
+
   app: {
     head: {
       link: [
@@ -42,11 +48,13 @@ export default defineNuxtConfig({
     },
     pageTransition: { name: "page", mode: "out-in" },
   },
+
   router: {
     options: {
       scrollBehaviorType: "smooth",
     },
   },
+
   runtimeConfig: {
     turnstile: {
       siteKey: process.env.TURNSTILE_SITE_KEY,
@@ -72,6 +80,7 @@ export default defineNuxtConfig({
       },
     },
   },
+
   components: [
     {
       path: "~/components",
@@ -81,6 +90,7 @@ export default defineNuxtConfig({
       pathPrefix: false,
     },
   ],
+
   vite: {
     css: {
       preprocessorOptions: {
@@ -90,6 +100,7 @@ export default defineNuxtConfig({
       },
     },
   },
+
   supabase: {
     redirectOptions: {
       login: "/login",
@@ -117,6 +128,7 @@ export default defineNuxtConfig({
       },
     },
   },
+
   colorMode: {
     preference: "light",
     fallback: "light",
@@ -127,10 +139,12 @@ export default defineNuxtConfig({
     classSuffix: "-mode",
     storageKey: "nuxt-color-mode",
   },
+
   // Fonts
   fontMetrics: {
     fonts: ["DM Sans"],
   },
+
   googleFonts: {
     display: "swap",
     download: true,
@@ -138,13 +152,17 @@ export default defineNuxtConfig({
       "DM+Sans": [400, 500, 600, 700],
     },
   },
+
   devtools: {
     enabled: true,
     timeline: {
       enabled: true,
     },
   },
+
   typescript: {
     strict: true,
   },
+
+  compatibilityDate: "2024-08-29",
 });
