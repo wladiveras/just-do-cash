@@ -85,8 +85,8 @@ importers:
         specifier: ^1.8.0
         version: 1.8.0(ioredis@5.4.1)(magicast@0.3.5)(rollup@4.21.1)
       '@nuxtjs/supabase':
-        specifier: ^1.3.5
-        version: 1.3.5
+        specifier: ^1.4.0
+        version: 1.4.0
       '@nuxtjs/turnstile':
         specifier: ^0.7.1
         version: 0.7.1(magicast@0.3.5)(rollup@4.21.1)
@@ -1300,8 +1300,8 @@ packages:
   '@nuxtjs/mdc@0.8.3':
     resolution: {integrity: sha512-FqvJFWkBN9u2FeWog+7+C0aIOx0WIu61TYgAXPmmIOVVua6s2mXQsMyF3fXY2M56QBIaYJzK/SYN+5FGr5GNTQ==}
 
-  '@nuxtjs/supabase@1.3.5':
-    resolution: {integrity: sha512-hRHlRm7mAAUbcLSuc5X1ST5VdZLXwiQeYA/vpK54bVhZ/sU62T8/KqYhogrSul20ZDBZyGs1ugD3V79nysK24Q==}
+  '@nuxtjs/supabase@1.4.0':
+    resolution: {integrity: sha512-IWe+zIfL4nZ6+2Ul2J2cu53RluuM7xChLPJV0arf4xohYg0WK0Ers6MM65Wx71nmH3AAOpz33apzJn7R1f6JvQ==}
 
   '@nuxtjs/tailwindcss@6.12.1':
     resolution: {integrity: sha512-UKmaPRVpxlFqLorhL6neEba2tySlsj6w6yDb7jzS6A0AAjyBQ6k3BQqWO+AaTy2iQLX7eR+1yj3/w43HzY8RtA==}
@@ -1620,8 +1620,8 @@ packages:
   '@supabase/realtime-js@2.10.2':
     resolution: {integrity: sha512-qyCQaNg90HmJstsvr2aJNxK2zgoKh9ZZA8oqb7UT2LCh3mj9zpa3Iwu167AuyNxsxrUE8eEJ2yH6wLCij4EApA==}
 
-  '@supabase/ssr@0.4.1':
-    resolution: {integrity: sha512-000i7y4ITXjXU0T1JytZYU33VbUNklX9YN47hCweaLKsTBAEigJJJCeq3G+/IiwEggBt58Vu0KQ3UGXON7OmDQ==}
+  '@supabase/ssr@0.5.1':
+    resolution: {integrity: sha512-+G94H/GZG0nErZ3FQV9yJmsC5Rj7dmcfCAwOt37hxeR1La+QTl8cE9whzYwPUrTJjMLGNXoO+1BMvVxwBAbz4g==}
     peerDependencies:
       '@supabase/supabase-js': ^2.43.4
 
@@ -8098,9 +8098,9 @@ snapshots:
       - rollup
       - supports-color
 
-  '@nuxtjs/supabase@1.3.5':
+  '@nuxtjs/supabase@1.4.0':
     dependencies:
-      '@supabase/ssr': 0.4.1(@supabase/supabase-js@2.45.2)
+      '@supabase/ssr': 0.5.1(@supabase/supabase-js@2.45.2)
       '@supabase/supabase-js': 2.45.2
       defu: 6.1.4
       pathe: 1.1.2
@@ -8476,12 +8476,10 @@ snapshots:
       - bufferutil
       - utf-8-validate
 
-  '@supabase/ssr@0.4.1(@supabase/supabase-js@2.45.2)':
+  '@supabase/ssr@0.5.1(@supabase/supabase-js@2.45.2)':
     dependencies:
       '@supabase/supabase-js': 2.45.2
       cookie: 0.6.0
-    optionalDependencies:
-      '@rollup/rollup-linux-x64-gnu': 4.21.1
 
   '@supabase/storage-js@2.7.0':
     dependencies:
