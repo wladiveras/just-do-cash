@@ -27,7 +27,7 @@
     "@pinia/nuxt": "^0.5.4",
     "@types/uuid": "^10.0.0",
     "@unovis/ts": "^1.4.4",
-    "@unovis/vue": "^1.4.4",
+    "@unovis/vue": "^1.5.2",
     "@vueuse/motion": "^2.2.3",
     "@vueuse/nuxt": "^10.11.1",
     "animate.css": "^4.1.1",
